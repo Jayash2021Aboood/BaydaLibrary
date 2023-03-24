@@ -1,0 +1,12 @@
+
+
+=================== Create Bayda Library Website Project =======================
+
+1- Create Admin Control Panel Site
+    - All Crud Opreations with out any Logic.
+2- Create Employee Control Panel Site
+    - All CRUD Opreations With Logic 
+3- Create Student Control Panel Site
+    - the Pages that display all library content with logic.
+4- Create Visitor Website
+    - display books and another information.

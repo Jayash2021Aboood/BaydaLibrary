@@ -5,7 +5,7 @@
   include_once('../../includes/section.php');
   include_once('../../includes/section.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Detail Section";
   $row = new Section(null);

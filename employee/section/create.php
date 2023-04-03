@@ -3,7 +3,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/section.php');
   include_once('../../includes/section.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
 
   

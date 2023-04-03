@@ -1,10 +1,9 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
   include_once('../../includes/book.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Book";
   $row = new Book(null);
@@ -124,58 +123,60 @@
                                 <!-- Form Group (number_copies)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="number_copies">Number Copies</label>
-                                    <input class="form-control" id="number_copies" name="number_copies" type="text" placeholder="Number Copies"
-                                        value="<?php echo $row['number_copies'];?>" readonly />
+                                    <input class="form-control" id="number_copies" name="number_copies" type="text"
+                                        placeholder="Number Copies" value="<?php echo $row['number_copies'];?>"
+                                        readonly />
                                 </div>
                                 <!-- Form Group (publish_date)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="publish_date">Publish Date</label>
-                                    <input class="form-control" id="publish_date" name="publish_date" type="text" placeholder="Publish Date"
-                                        value="<?php echo $row['publish_date'];?>" readonly />
+                                    <input class="form-control" id="publish_date" name="publish_date" type="text"
+                                        placeholder="Publish Date" value="<?php echo $row['publish_date'];?>"
+                                        readonly />
                                 </div>
                                 <!-- Form Group (detail)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="detail">Detail</label>
-                                    <input class="form-control" id="detail" name="detail" type="text" placeholder="Detail"
-                                        value="<?php echo $row['detail'];?>" readonly />
+                                    <input class="form-control" id="detail" name="detail" type="text"
+                                        placeholder="Detail" value="<?php echo $row['detail'];?>" readonly />
                                 </div>
                                 <!-- Form Group (book_image)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="book_image">Book Image</label>
-                                    <input class="form-control" id="book_image" name="book_image" type="text" placeholder="Book Image"
-                                        value="<?php echo $row['book_image'];?>" readonly />
+                                    <input class="form-control" id="book_image" name="book_image" type="text"
+                                        placeholder="Book Image" value="<?php echo $row['book_image'];?>" readonly />
                                 </div>
                                 <!-- Form Group (book_file)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="book_file">Book File</label>
-                                    <input class="form-control" id="book_file" name="book_file" type="text" placeholder="Book File"
-                                        value="<?php echo $row['book_file'];?>" readonly />
+                                    <input class="form-control" id="book_file" name="book_file" type="text"
+                                        placeholder="Book File" value="<?php echo $row['book_file'];?>" readonly />
                                 </div>
                                 <!-- Form Group (author_id)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="author_id">Author</label>
-                                    <input class="form-control" id="author_id" name="author_id" type="text" placeholder="Author"
-                                        value="<?php echo $row['author_id'];?>" readonly />
+                                    <input class="form-control" id="author_id" name="author_id" type="text"
+                                        placeholder="Author" value="<?php echo $row['author_id'];?>" readonly />
                                 </div>
                                 <!-- Form Group (publisher_id)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="publisher_id">Publisher</label>
-                                    <input class="form-control" id="publisher_id" name="publisher_id" type="text" placeholder="Publisher"
-                                        value="<?php echo $row['publisher_id'];?>" readonly />
+                                    <input class="form-control" id="publisher_id" name="publisher_id" type="text"
+                                        placeholder="Publisher" value="<?php echo $row['publisher_id'];?>" readonly />
                                 </div>
                                 <!-- Form Group (section_id)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="section_id">Section</label>
-                                    <input class="form-control" id="section_id" name="section_id" type="text" placeholder="Section"
-                                        value="<?php echo $row['section_id'];?>" readonly />
+                                    <input class="form-control" id="section_id" name="section_id" type="text"
+                                        placeholder="Section" value="<?php echo $row['section_id'];?>" readonly />
                                 </div>
                                 <!-- Form Group (language_id)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="language_id">Language</label>
-                                    <input class="form-control" id="language_id" name="language_id" type="text" placeholder="Language"
-                                        value="<?php echo $row['language_id'];?>" readonly />
+                                    <input class="form-control" id="language_id" name="language_id" type="text"
+                                        placeholder="Language" value="<?php echo $row['language_id'];?>" readonly />
                                 </div>
- 
+
                             </div>
                             <!-- Submit button-->
                             <button name="deleteBook" class="btn btn-danger" type="submit">Delete</button>

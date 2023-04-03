@@ -3,7 +3,7 @@
   session_start();
   include('../../includes/lib.php');
   include_once('../../includes/language.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Languages";
 ?>

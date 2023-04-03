@@ -3,7 +3,7 @@
 
   include('../../includes/lib.php');
   include_once('../../includes/college.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Edit College";
   //$row = new College(null);

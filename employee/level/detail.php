@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/level.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Detail Level";
   $row = new Level(null);

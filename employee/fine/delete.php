@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/fine.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Fine";
   $row = new Fine(null);

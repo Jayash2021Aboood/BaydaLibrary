@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/department.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Department";
   $row = new Department(null);

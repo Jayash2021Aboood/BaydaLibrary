@@ -6,7 +6,7 @@
   include_once('../../includes/issue.php');
   include_once('../../includes/student.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Detail Fine";
   $row = new Fine(null);

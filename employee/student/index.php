@@ -5,7 +5,7 @@
   include_once('../../includes/student.php');
   include_once('../../includes/department.php');
   include_once('../../includes/level.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Students";
 ?>

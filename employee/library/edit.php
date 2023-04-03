@@ -3,7 +3,7 @@
 
   include('../../includes/lib.php');
   include_once('../../includes/library.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Edit Library";
   //$row = new Library(null);

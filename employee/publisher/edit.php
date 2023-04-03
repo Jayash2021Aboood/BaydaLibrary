@@ -3,7 +3,7 @@
 
   include('../../includes/lib.php');
   include_once('../../includes/publisher.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Edit Publisher";
   //$row = new Publisher(null);

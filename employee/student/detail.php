@@ -6,7 +6,7 @@
   include_once('../../includes/department.php');
   include_once('../../includes/level.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Detail Student";
   $row = new Student(null);

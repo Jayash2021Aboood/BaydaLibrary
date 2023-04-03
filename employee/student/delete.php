@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/student.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Student";
   $row = new Student(null);

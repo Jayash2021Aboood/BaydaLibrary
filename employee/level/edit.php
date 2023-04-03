@@ -3,7 +3,7 @@
 
   include('../../includes/lib.php');
   include_once('../../includes/level.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Edit Level";
   //$row = new Level(null);

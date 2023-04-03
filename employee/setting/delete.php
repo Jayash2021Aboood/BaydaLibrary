@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/setting.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Setting";
   $row = new Setting(null);

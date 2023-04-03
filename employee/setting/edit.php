@@ -3,7 +3,7 @@
 
   include('../../includes/lib.php');
   include_once('../../includes/setting.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Edit Setting";
   //$row = new Setting(null);

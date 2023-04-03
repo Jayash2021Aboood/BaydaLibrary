@@ -7,7 +7,7 @@
   include_once('../../includes/publisher.php');
   include_once('../../includes/section.php');
   include_once('../../includes/language.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Edit Book";
   //$row = new Book(null);
@@ -178,34 +178,36 @@
                                 <!-- Form Group (number_copies)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="number_copies">Number Copies</label>
-                                    <input class="form-control" id="number_copies" name="number_copies" type="text" placeholder="Number Copies"
-                                        value="<?php echo $number_copies;?>" required />
+                                    <input class="form-control" id="number_copies" name="number_copies" type="text"
+                                        placeholder="Number Copies" value="<?php echo $number_copies;?>" required />
                                 </div>
                                 <!-- Form Group (publish_date)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="publish_date">Publish Date</label>
-                                    <input class="form-control" id="publish_date" name="publish_date" type="date" placeholder="Publish Date"
-                                        value="<?php echo $publish_date;?>" required />
+                                    <input class="form-control" id="publish_date" name="publish_date" type="date"
+                                        placeholder="Publish Date" value="<?php echo $publish_date;?>" required />
                                 </div>
                                 <!-- Form Group (detail)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="detail">Detail</label>
-                                    <input class="form-control" id="detail" name="detail" type="text" placeholder="Detail"
-                                        value="<?php echo $detail;?>"  />
+                                    <input class="form-control" id="detail" name="detail" type="text"
+                                        placeholder="Detail" value="<?php echo $detail;?>" />
                                 </div>
                                 <!-- Form Group (book_image)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="book_image">Book Image</label>
-                                    <input id="book_image_old" name="book_image_old" type="hidden" value="<?php echo $book_image;?>" />
-                                    <input class="form-control" id="book_image" name="book_image" type="file" placeholder="Book Image"
-                                        value="<?php echo $book_image;?>"  />
+                                    <input id="book_image_old" name="book_image_old" type="hidden"
+                                        value="<?php echo $book_image;?>" />
+                                    <input class="form-control" id="book_image" name="book_image" type="file"
+                                        placeholder="Book Image" value="<?php echo $book_image;?>" />
                                 </div>
                                 <!-- Form Group (book_file)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="book_file">Book File</label>
-                                    <input id="book_file_old" name="book_file_old" type="hidden" value="<?php echo $book_file;?>" />
-                                    <input class="form-control" id="book_file" name="book_file" type="file" placeholder="Book File"
-                                        value="<?php echo $book_file;?>"  />
+                                    <input id="book_file_old" name="book_file_old" type="hidden"
+                                        value="<?php echo $book_file;?>" />
+                                    <input class="form-control" id="book_file" name="book_file" type="file"
+                                        placeholder="Book File" value="<?php echo $book_file;?>" />
                                 </div>
                                 <!-- Form Group (author_id)-->
                                 <div class="col-md-4 mb-3">
@@ -213,7 +215,8 @@
                                     <select class="form-select" name="author_id" id="author_id" required>
                                         <option disabled value="">Select a Author:</option>
                                         <?php foreach(getAllAuthors() as $Author) { ?>
-                                        <option <?php if($author_id == $Author['id']) echo "selected" ?> value="<?php echo $Author['id']; ?>"> <?php echo $Author['name']; ?>
+                                        <option <?php if($author_id == $Author['id']) echo "selected" ?>
+                                            value="<?php echo $Author['id']; ?>"> <?php echo $Author['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -224,7 +227,8 @@
                                     <select class="form-select" name="publisher_id" id="publisher_id" required>
                                         <option disabled value="">Select a Publisher:</option>
                                         <?php foreach(getAllPublishers() as $Publisher) { ?>
-                                        <option <?php if($publisher_id == $Publisher['id']) echo "selected" ?> value="<?php echo $Publisher['id']; ?>"> <?php echo $Publisher['name']; ?>
+                                        <option <?php if($publisher_id == $Publisher['id']) echo "selected" ?>
+                                            value="<?php echo $Publisher['id']; ?>"> <?php echo $Publisher['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -235,7 +239,8 @@
                                     <select class="form-select" name="section_id" id="section_id" required>
                                         <option disabled value="">Select a Section:</option>
                                         <?php foreach(getAllSections() as $Section) { ?>
-                                        <option <?php if($section_id == $Section['id']) echo "selected" ?> value="<?php echo $Section['id']; ?>"> <?php echo $Section['name']; ?>
+                                        <option <?php if($section_id == $Section['id']) echo "selected" ?>
+                                            value="<?php echo $Section['id']; ?>"> <?php echo $Section['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -246,12 +251,13 @@
                                     <select class="form-select" name="language_id" id="language_id" required>
                                         <option disabled value="">Select a Language:</option>
                                         <?php foreach(getAllLanguages() as $Language) { ?>
-                                        <option <?php if($language_id == $Language['id']) echo "selected" ?> value="<?php echo $Language['id']; ?>"> <?php echo $Language['name']; ?>
+                                        <option <?php if($language_id == $Language['id']) echo "selected" ?>
+                                            value="<?php echo $Language['id']; ?>"> <?php echo $Language['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
                                 </div>
- 
+
                             </div>
                             <!-- Submit button-->
                             <button name="updateBook" class="btn btn-success" type="submit">Save</button>
@@ -266,4 +272,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-

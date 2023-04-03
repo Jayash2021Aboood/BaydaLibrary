@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -7,7 +6,7 @@
   include_once('../../includes/publisher.php');
   include_once('../../includes/section.php');
   include_once('../../includes/language.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Books";
 ?>
@@ -109,35 +108,35 @@
                                         ?>
 
                         <tr>
-                                <td> <?php echo($row['id']); ?> </td>
-                                  <td> <?php echo($row['name']); ?> </td>
-                                  <td> <?php echo($row['number_copies']); ?> </td>
-                                  <td> <?php echo($row['publish_date']); ?> </td>
-                                  <td> <?php echo($row['detail']); ?> </td>
-                                  <td> <?php if(!empty($row['book_image'])){ ?> <a href="<?php echo($PATH_PHOTOES  . $row['book_image']); ?>"
-                                    target="_blank">View</a>
-                                 <?php }?>
+                            <td> <?php echo($row['id']); ?> </td>
+                            <td> <?php echo($row['name']); ?> </td>
+                            <td> <?php echo($row['number_copies']); ?> </td>
+                            <td> <?php echo($row['publish_date']); ?> </td>
+                            <td> <?php echo($row['detail']); ?> </td>
+                            <td> <?php if(!empty($row['book_image'])){ ?> <a
+                                    href="<?php echo($PATH_PHOTOES  . $row['book_image']); ?>" target="_blank">View</a>
+                                <?php }?>
                             </td>
-                                <td> <?php if(!empty($row['book_file'])){ ?> <a href="<?php echo($PATH_PHOTOES  . $row['book_file']); ?>"
-                                    target="_blank">View</a>
-                                 <?php }?>
+                            <td> <?php if(!empty($row['book_file'])){ ?> <a
+                                    href="<?php echo($PATH_PHOTOES  . $row['book_file']); ?>" target="_blank">View</a>
+                                <?php }?>
                             </td>
-                                <td> <?php
+                            <td> <?php
                                     $Author = getAuthorById($row['author_id']) [0];
                                     echo$Author['name']; 
                                     ?>
                             </td>
-                                <td> <?php
+                            <td> <?php
                                     $Publisher = getPublisherById($row['publisher_id']) [0];
                                     echo$Publisher['name']; 
                                     ?>
                             </td>
-                                <td> <?php
+                            <td> <?php
                                     $Section = getSectionById($row['section_id']) [0];
                                     echo$Section['name']; 
                                     ?>
                             </td>
-                                <td> <?php
+                            <td> <?php
                                     $Language = getLanguageById($row['language_id']) [0];
                                     echo$Language['name']; 
                                     ?>
@@ -208,8 +207,8 @@
                         <div class="mb-0">
                             <label class="mb-1 small text-muted" for="formBookName">Book
                                 Name</label>
-                            <input class="form-control" id="formBookName" type="text"
-                                placeholder="Enter Book name..." value="Sales" />
+                            <input class="form-control" id="formBookName" type="text" placeholder="Enter Book name..."
+                                value="Sales" />
                         </div>
                     </form>
                 </div>
@@ -228,5 +227,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-

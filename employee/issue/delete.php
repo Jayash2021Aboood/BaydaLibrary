@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/issue.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Issue";
   $row = new Issue(null);

@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/library.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Library";
   $row = new Library(null);

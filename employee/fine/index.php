@@ -5,7 +5,7 @@
   include_once('../../includes/fine.php');
   include_once('../../includes/issue.php');
   include_once('../../includes/student.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Fines";
 ?>

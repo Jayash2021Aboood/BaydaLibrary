@@ -3,7 +3,7 @@
   session_start();
   include('../../includes/lib.php');
   include_once('../../includes/employee.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Employees";
 ?>

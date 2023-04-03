@@ -1,5 +1,3 @@
-
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -8,7 +6,7 @@
   include_once('../../includes/publisher.php');
   include_once('../../includes/section.php');
   include_once('../../includes/language.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
 
   
@@ -147,37 +145,37 @@
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="name">Name</label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder="Name"
-                                        value="" required  />
+                                        value="" required />
                                 </div>
                                 <!-- Form Group (number_copies)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="number_copies">Number Copies</label>
-                                    <input class="form-control" id="number_copies" name="number_copies" type="text" placeholder="Number Copies"
-                                        value="" required  />
+                                    <input class="form-control" id="number_copies" name="number_copies" type="text"
+                                        placeholder="Number Copies" value="" required />
                                 </div>
                                 <!-- Form Group (publish_date)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="publish_date">Publish Date</label>
-                                    <input class="form-control" id="publish_date" name="publish_date" type="date" placeholder="Publish Date"
-                                        value="" required  />
+                                    <input class="form-control" id="publish_date" name="publish_date" type="date"
+                                        placeholder="Publish Date" value="" required />
                                 </div>
                                 <!-- Form Group (detail)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="detail">Detail</label>
-                                    <input class="form-control" id="detail" name="detail" type="text" placeholder="Detail"
-                                        value=""   />
+                                    <input class="form-control" id="detail" name="detail" type="text"
+                                        placeholder="Detail" value="" />
                                 </div>
                                 <!-- Form Group (book_image)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="book_image">Book Image</label>
-                                    <input class="form-control" id="book_image" name="book_image" type="file" placeholder="Book Image"
-                                        value=""   />
+                                    <input class="form-control" id="book_image" name="book_image" type="file"
+                                        placeholder="Book Image" value="" />
                                 </div>
                                 <!-- Form Group (book_file)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="book_file">Book File</label>
-                                    <input class="form-control" id="book_file" name="book_file" type="file" placeholder="Book File"
-                                        value=""   />
+                                    <input class="form-control" id="book_file" name="book_file" type="file"
+                                        placeholder="Book File" value="" />
                                 </div>
                                 <!-- Form Group (author_id)-->
                                 <div class="col-md-4 mb-3">
@@ -196,7 +194,8 @@
                                     <select class="form-select" name="publisher_id" id="publisher_id" required>
                                         <option selected disabled value="">Select a Publisher:</option>
                                         <?php foreach(getAllPublishers() as $Publisher) { ?>
-                                        <option value="<?php echo $Publisher['id']; ?>"> <?php echo $Publisher['name']; ?>
+                                        <option value="<?php echo $Publisher['id']; ?>">
+                                            <?php echo $Publisher['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -237,6 +236,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-
-

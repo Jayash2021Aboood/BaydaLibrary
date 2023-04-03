@@ -4,7 +4,7 @@
   include('../../includes/lib.php');
   include_once('../../includes/publisher.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Delete Publisher";
   $row = new Publisher(null);

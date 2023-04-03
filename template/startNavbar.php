@@ -11,8 +11,8 @@
             $mainPage = $PATH_SERVER;
             if(isAdmin())
                 $mainPage = $PATH_ADMIN;
-            if(isEngineer())
-                $mainPage = $PATH_ENGINEER;
+            if(isEmployee())
+                $mainPage = $PATH_EMPLOYEE;
             if(isCustomer())
                 $mainPage = $PATH_CUSTOMER;
          ?>
@@ -73,8 +73,8 @@
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                         Account
                     </a>
-                    <?php if(isEngineer()){ ?>
-                    <a class="dropdown-item" href="<?php echo $PATH_ENGINEER; ?>my_bookings.php">
+                    <?php if(isEmployee()){ ?>
+                    <a class="dropdown-item" href="<?php echo $PATH_EMPLOYEE; ?>my_bookings.php">
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                         My Bookings
                     </a>
@@ -236,22 +236,74 @@
                         </a>
 
                         <!-- ============================================================  -->
-                        <!-- ==============   Engineer Pages Link      ==================  -->
+                        <!-- ==============   Employee Pages Link      ==================  -->
                         <!-- ============================================================  -->
 
-                        <?php }else if(isEngineer()){ ?>
+                        <?php }else if(isEmployee()){ ?>
 
                         <div class="sidenav-menu-heading">Control Panel</div>
-                        <a class="nav-link" href="<?php echo $PATH_ENGINEER; ?>">
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE; ?>">
                             <div class="nav-link-icon"><i class="fa fa-home fa-lg"></i>
                             </div>
                             Home
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_ENGINEER_SERVICE; ?>">
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_AUTHOR; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Author
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_BOOK; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Book
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_COLLEGE; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            College
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_DEPARTMENT; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Department
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_EMPLOYEE; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Employee
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_ISSUE; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Issue
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_LANGUAGE; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Language
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_LEVEL; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Level
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_LIBRARY; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Library
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_PUBLISHER; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Publisher
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_SECTION; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Section
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_SETTING; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Setting
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_STUDENT; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            Student
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_SERVICE; ?>">
                             <div class="nav-link-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
                             Service
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_ENGINEER; ?>my_bookings.php">
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE; ?>my_bookings.php">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                             My Booking
                         </a>
@@ -302,7 +354,7 @@
                             <div class="nav-link-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
                             Services
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>engineer_list.php">
+                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>employee_list.php">
                             <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
                             Engineer
                         </a>

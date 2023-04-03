@@ -23,6 +23,21 @@
 
 	$PATH_ADMIN 			= $PATH_SERVER . 'admin/';
 	$PATH_CUSTOMER 			= $PATH_SERVER . 'customer/';
+	$PATH_EMPLOYEE 			= $PATH_SERVER . 'employee/';
+
+	$PATH_EMPLOYEE_AUTHOR = $PATH_EMPLOYEE . 'author/';
+	$PATH_EMPLOYEE_BOOK = $PATH_EMPLOYEE . 'book/';
+	$PATH_EMPLOYEE_COLLEGE = $PATH_EMPLOYEE . 'college/';
+	$PATH_EMPLOYEE_DEPARTMENT = $PATH_EMPLOYEE . 'department/';
+	$PATH_EMPLOYEE_EMPLOYEE = $PATH_EMPLOYEE . 'employee/';
+	$PATH_EMPLOYEE_ISSUE = $PATH_EMPLOYEE . 'issue/';
+	$PATH_EMPLOYEE_LANGUAGE = $PATH_EMPLOYEE . 'language/';
+	$PATH_EMPLOYEE_LEVEL = $PATH_EMPLOYEE . 'level/';
+	$PATH_EMPLOYEE_LIBRARY = $PATH_EMPLOYEE . 'library/';
+	$PATH_EMPLOYEE_PUBLISHER = $PATH_EMPLOYEE . 'publisher/';
+	$PATH_EMPLOYEE_SECTION = $PATH_EMPLOYEE . 'section/';
+	$PATH_EMPLOYEE_SETTING = $PATH_EMPLOYEE . 'setting/';
+	$PATH_EMPLOYEE_STUDENT = $PATH_EMPLOYEE . 'student/';
 
 	$PATH_ENGINEER 			= $PATH_SERVER . 'engineer/';
 	$PATH_ENGINEER_BOOKING 			= $PATH_ENGINEER . 'booking/';
@@ -124,6 +139,22 @@
 			}
   }
 
+  function checkEmployeeSession($path = "http://localhost:90/BaydaLibrary/" , $page = "login.php")
+  {
+            if (!isset($_SESSION['user']))
+            {
+				header('Location:'. $path . $page);
+            }
+			if (!(isset($_SESSION['userType'])))
+			{
+				header('Location:'. $path . $page);
+			} 
+			if($_SESSION['userType'] != 'e')
+			{
+				header('Location:'. $path . $page);
+			}
+  }
+
   function checkCustomerSession($path = "http://localhost:90/BaydaLibrary/" , $page = "login.php")
   {
             if (!isset($_SESSION['user']))
@@ -169,6 +200,7 @@
 
   function isAdmin() { if(getLoginType() == 'a') return true; }
   function isEngineer() { if(getLoginType() == 'e') return true; }
+  function isEmployee() { if(getLoginType() == 'e') return true; }
   function isCustomer() { if(getLoginType() == 'c') return true; }
   function getLoginEmail() { return $_SESSION['user'] ;}
 

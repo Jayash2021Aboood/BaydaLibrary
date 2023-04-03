@@ -1,9 +1,8 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
   include_once('../../includes/author.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Authors";
 ?>
@@ -95,13 +94,13 @@
                                         ?>
 
                         <tr>
-                                <td> <?php echo($row['id']); ?> </td>
-                                  <td> <?php echo($row['name']); ?> </td>
-                                  <td> <?php echo($row['phone']); ?> </td>
-                                  <td> <?php echo($row['email']); ?> </td>
-                                  <td> <?php echo($row['address']); ?> </td>
-                                  <td> <?php echo($row['nationality']); ?> </td>
-  
+                            <td> <?php echo($row['id']); ?> </td>
+                            <td> <?php echo($row['name']); ?> </td>
+                            <td> <?php echo($row['phone']); ?> </td>
+                            <td> <?php echo($row['email']); ?> </td>
+                            <td> <?php echo($row['address']); ?> </td>
+                            <td> <?php echo($row['nationality']); ?> </td>
+
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                     href="edit.php?id=<?php echo($row['id']); ?>">
@@ -187,5 +186,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-

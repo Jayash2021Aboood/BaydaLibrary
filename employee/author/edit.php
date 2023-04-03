@@ -3,7 +3,7 @@
 
   include('../../includes/lib.php');
   include_once('../../includes/author.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Edit Author";
   //$row = new Author(null);
@@ -139,27 +139,27 @@
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="phone">Phone</label>
                                     <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone"
-                                        value="<?php echo $phone;?>"  />
+                                        value="<?php echo $phone;?>" />
                                 </div>
                                 <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="email">Email</label>
                                     <input class="form-control" id="email" name="email" type="email" placeholder="Email"
-                                        value="<?php echo $email;?>"  />
+                                        value="<?php echo $email;?>" />
                                 </div>
                                 <!-- Form Group (address)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="address">Address</label>
-                                    <input class="form-control" id="address" name="address" type="text" placeholder="Address"
-                                        value="<?php echo $address;?>"  />
+                                    <input class="form-control" id="address" name="address" type="text"
+                                        placeholder="Address" value="<?php echo $address;?>" />
                                 </div>
                                 <!-- Form Group (nationality)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="nationality">Nationality</label>
-                                    <input class="form-control" id="nationality" name="nationality" type="text" placeholder="Nationality"
-                                        value="<?php echo $nationality;?>"  />
+                                    <input class="form-control" id="nationality" name="nationality" type="text"
+                                        placeholder="Nationality" value="<?php echo $nationality;?>" />
                                 </div>
- 
+
                             </div>
                             <!-- Submit button-->
                             <button name="updateAuthor" class="btn btn-success" type="submit">Save</button>
@@ -174,4 +174,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-

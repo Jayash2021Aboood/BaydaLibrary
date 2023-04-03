@@ -1,10 +1,8 @@
-
-
 <?php
   session_start();
   include('../../includes/lib.php');
   include_once('../../includes/author.php');
-  checkAdminSession();
+  checkEmployeeSession();
 
 
   
@@ -104,31 +102,31 @@
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="name">Name</label>
                                     <input class="form-control" id="name" name="name" type="text" placeholder="Name"
-                                        value="" required  />
+                                        value="" required />
                                 </div>
                                 <!-- Form Group (phone)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="phone">Phone</label>
                                     <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone"
-                                        value=""   />
+                                        value="" />
                                 </div>
                                 <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="email">Email</label>
                                     <input class="form-control" id="email" name="email" type="email" placeholder="Email"
-                                        value=""   />
+                                        value="" />
                                 </div>
                                 <!-- Form Group (address)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="address">Address</label>
-                                    <input class="form-control" id="address" name="address" type="text" placeholder="Address"
-                                        value=""   />
+                                    <input class="form-control" id="address" name="address" type="text"
+                                        placeholder="Address" value="" />
                                 </div>
                                 <!-- Form Group (nationality)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="nationality">Nationality</label>
-                                    <input class="form-control" id="nationality" name="nationality" type="text" placeholder="Nationality"
-                                        value=""   />
+                                    <input class="form-control" id="nationality" name="nationality" type="text"
+                                        placeholder="Nationality" value="" />
                                 </div>
                             </div>
                             <!-- Submit button-->
@@ -144,6 +142,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-
-

@@ -1,10 +1,9 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
   include_once('../../includes/author.php');
 
-  checkAdminSession();
+  checkEmployeeSession();
 
   $pageTitle = "Detail Author";
   $row = new Author(null);
@@ -134,19 +133,20 @@
                                 <!-- Form Group (address)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="address">Address</label>
-                                    <input class="form-control" id="address" name="address" type="text" placeholder="Address"
-                                        value="<?php echo $row['address'];?>" readonly />
+                                    <input class="form-control" id="address" name="address" type="text"
+                                        placeholder="Address" value="<?php echo $row['address'];?>" readonly />
                                 </div>
                                 <!-- Form Group (nationality)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="nationality">Nationality</label>
-                                    <input class="form-control" id="nationality" name="nationality" type="text" placeholder="Nationality"
-                                        value="<?php echo $row['nationality'];?>" readonly />
+                                    <input class="form-control" id="nationality" name="nationality" type="text"
+                                        placeholder="Nationality" value="<?php echo $row['nationality'];?>" readonly />
                                 </div>
- 
+
                             </div>
                             <!-- Submit button-->
-                            <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-success" type="button">Edit</a>
+                            <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-success"
+                                type="button">Edit</a>
                             <a href="index.php" class="btn btn-primary" type="button">Back To List</a>
                         </form>
                     </div>

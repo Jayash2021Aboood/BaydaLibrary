@@ -58,7 +58,7 @@
                             <div class="flex-grow-1">
                                 <div class="small fw-bold text-primary mb-1">Earnings (monthly)</div>
                                 <div class="h5">R.S
-                                    <?php echo (select("select sum(paid_price) as total from booking;")[0])['total']; ?>
+                                    <?php //echo (select("select sum(paid_price) as total from booking;")[0])['total']; ?>
                                 </div>
                                 <div class="text-xs fw-bold text-success d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-up"></i>
@@ -77,9 +77,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-pink mb-3 text-center">Bookings (count)</div>
+                                <div class="fw-bold text-pink mb-3 text-center">Books (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from booking;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from book;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -98,9 +98,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-secondary mb-3 text-center">Engineers (count)</div>
+                                <div class="fw-bold text-secondary mb-3 text-center">Employee (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from engineer;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from employee;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -119,9 +119,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-success mb-3 text-center">Csutomers (count)</div>
+                                <div class="fw-bold text-success mb-3 text-center">Student (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from customer;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from student;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -140,9 +140,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-orange mb-3 text-center">Categories (count)</div>
+                                <div class="fw-bold text-orange mb-3 text-center">Sections (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from service_type;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from section;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -161,9 +161,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-info mb-3 text-center">Services (count)</div>
+                                <div class="fw-bold text-info mb-3 text-center">Authors (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from service;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from author;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>

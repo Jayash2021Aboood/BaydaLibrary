@@ -13,7 +13,7 @@ if (isset($_SESSION['user']))
         }
         else if($_SESSION['userType'] == 'e')
         {
-            header('Location: engineer/index.php');
+            header('Location: employee/index.php');
             exit();
         }
         else if($_SESSION['userType'] == 'c')
@@ -74,42 +74,48 @@ if (isset($_SESSION['user']))
         }
         else if($userType == 'e')
         {
-            $engineers = select("select * from engineer where email like '$email' and password like '$password';");
-            if(count($engineers) > 0)
+            $employees = select("select * from employee where email like '$email' and password like '$password';");
+            if(count($employees) > 0)
             {
 
-                if($engineers[0]['state'] == 'reject'){
-                    $_SESSION["message"] = "your account has been rejected ... contact to adminstrator";
-                    $_SESSION["fail"] = "your account has been rejected ... contact to adminstrator";
-                    header('Location: login.php');
-                    exit();
-                }
-                else if($engineers[0]['state'] == 'request'){
-                    $_SESSION["message"] = "your account not accepted Yet ... contact to adminstrator";
-                    $_SESSION["fail"] = "your account not accepted Yet ... contact to adminstrator";
-                    header('Location: login.php');
-                    exit();
-                }
-                else if($engineers[0]['state'] == 'accept')
-                {
-                    $_SESSION["userID"] = $engineers[0]['id'];
-                    $_SESSION["user"] = $email;
-                    $_SESSION["userType"] = 'e';
-                    $_SESSION['success'] = "Welcome ".$engineers[0]['first_name'] ." ". $engineers[0]['last_name'] ;
-                    header('Location: engineer/index.php');
-                }
-                else
-                {
-                    $_SESSION["message"] = "UnKnow engineer state ... contact admininstrator";
-                    $_SESSION["fail"] = "UnKnow engineer state ... contact admininstrator";
-                    $errors[] = "UnKnow engineer state ... contact admininstrator";
-                }
+                $_SESSION["userID"] = $employees[0]['id'];
+                $_SESSION["user"] = $email;
+                $_SESSION["userType"] = 'e';
+                $_SESSION['success'] = "Welcome ".$employees[0]['name'] ;
+                header('Location: employee/index.php');
+
+                // if($employees[0]['state'] == 'reject'){
+                //     $_SESSION["message"] = "your account has been rejected ... contact to adminstrator";
+                //     $_SESSION["fail"] = "your account has been rejected ... contact to adminstrator";
+                //     header('Location: login.php');
+                //     exit();
+                // }
+                // else if($employees[0]['state'] == 'request'){
+                //     $_SESSION["message"] = "your account not accepted Yet ... contact to adminstrator";
+                //     $_SESSION["fail"] = "your account not accepted Yet ... contact to adminstrator";
+                //     header('Location: login.php');
+                //     exit();
+                // }
+                // else if($employees[0]['state'] == 'accept')
+                // {
+                //     $_SESSION["userID"] = $employees[0]['id'];
+                //     $_SESSION["user"] = $email;
+                //     $_SESSION["userType"] = 'e';
+                //     $_SESSION['success'] = "Welcome ".$employees[0]['first_name'] ." ". $employees[0]['last_name'] ;
+                //     header('Location: employee/index.php');
+                // }
+                // else
+                // {
+                //     $_SESSION["message"] = "UnKnow employee state ... contact admininstrator";
+                //     $_SESSION["fail"] = "UnKnow employee state ... contact admininstrator";
+                //     $errors[] = "UnKnow employee state ... contact admininstrator";
+                // }
             }
             else
             {
-                $_SESSION["message"] = "No Enginner found with this data";
-                $_SESSION["fail"] = "No Enginner found with this data";
-                $errors[] = "No Enginner found with this data";
+                $_SESSION["message"] = "No Employee found with this data";
+                $_SESSION["fail"] = "No Employee found with this data";
+                $errors[] = "No Employee found with this data";
             }
         }
         else if($userType == 'c')

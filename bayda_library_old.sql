@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 09:17 AM
+-- Generation Time: Mar 28, 2023 at 01:30 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 8.0.23
 
@@ -60,8 +60,7 @@ CREATE TABLE `author` (
 --
 
 INSERT INTO `author` (`id`, `name`, `phone`, `email`, `address`, `nationality`) VALUES
-(1, 'Robert Steve', '', '', '', ''),
-(2, 'Test Author', '11112222333', 'TestAuthor@gmail.com', 'Test Author', 'Test Author');
+(1, 'Robert Steve', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -155,9 +154,7 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `name`, `phone`, `email`, `password`, `address`) VALUES
-(1, 'huda', '778866554', 'huda@gmail.com', 'huda', ''),
-(2, 'q', '776654433', 'q@gmail.com', 'q', 'bayda radaa'),
-(3, 'Ali', '778844332', 'ali@gmail.com', 'ali', 'Bayda radaa');
+(1, 'huda', '778866554', 'huda@gmail.com', 'huda', '');
 
 -- --------------------------------------------------------
 
@@ -172,13 +169,6 @@ CREATE TABLE `fine` (
   `amount` int(11) NOT NULL,
   `state` varchar(255) NOT NULL DEFAULT 'draft'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `fine`
---
-
-INSERT INTO `fine` (`id`, `issue_id`, `student_id`, `amount`, `state`) VALUES
-(1, 2, 1, 2, 'draft');
 
 -- --------------------------------------------------------
 
@@ -202,8 +192,7 @@ CREATE TABLE `issue` (
 --
 
 INSERT INTO `issue` (`id`, `book_id`, `student_id`, `issue_date`, `due_date`, `return_date`, `fine_per_day`, `total_fine`) VALUES
-(1, 1, 2, '2023-12-31', '2023-01-08', '0000-00-00', 200, 1),
-(2, 1, 1, '2023-05-01', '2023-05-05', '0000-00-00', 100, 100);
+(1, 1, 2, '2023-12-31', '2023-01-08', '0000-00-00', 200, 1);
 
 -- --------------------------------------------------------
 
@@ -374,9 +363,7 @@ INSERT INTO `webuser` (`id`, `email`, `usertype`) VALUES
 (1, 'admin@gmail.com', 'a'),
 (2, 'ali@gmail.com', 'e'),
 (3, 'q@gmail.com', 'e'),
-(4, 'maryam@gmail.com', 'c'),
-(5, 'bushra@gmail.com', 's'),
-(6, 'hadeel@gmail.com', 's');
+(4, 'maryam@gmail.com', 'c');
 
 --
 -- Indexes for dumped tables
@@ -505,7 +492,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `book`
@@ -529,19 +516,19 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `fine`
 --
 ALTER TABLE `fine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `language`
@@ -589,7 +576,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `webuser`
 --
 ALTER TABLE `webuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

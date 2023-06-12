@@ -1,10 +1,8 @@
 <?php
-//   session_start();
+  session_start();
   include('includes/lib.php');
   include('includes/book.php');
-  $pageTitle = "Books List";
-
-
+  $pageTitle = lang("Books List");
   ?>
 
 <?php include('template/header.php'); ?>
@@ -19,17 +17,17 @@
                 <div class="row align-items-center justify-content-between mt-5">
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title text-primary">
-                            Library Books
+                            <?php echo lang('Library Books'); ?>
                         </h1>
                     </div>
                     <div class="col-6 mb-3">
                         <form action="" method="GET">
                             <div class="input-group">
                                 <input class="form-control" id="search_term" name="search_term" type="text"
-                                    placeholder="search in books ..." aria-label="Enter search term..."
-                                    aria-describedby="button-search">
+                                    placeholder="<?php echo lang('Search in books ...'); ?>"
+                                    aria-label="<?php echo lang('Search for ...'); ?>" aria-describedby="button-search">
                                 <button class="btn btn-primary" id="button-search" name="button-search"
-                                    type="submit">Go!</button>
+                                    type="submit"><?php echo lang('Go'); ?></button>
                             </div>
                         </form>
                     </div>
@@ -45,23 +43,32 @@
                 if(isset($_GET['search_term']) && !empty($_GET['search_term']))
                     $all = getAllBooksBySearch($_GET['search_term']);
                 else
-                    $all = getAllBooks();
+                    $all = getAllBooksBySearch("");
                 if(!(count($all) > 0)) echo /*html*/'<div class="col text-center"> <h2 class="text-danger" >No Books Found To Display. </h2></div>'; 
                 else{ 
                     foreach($all as  $row)
                     {
+                        // var_dump($row);
+                        // exit();
             ?>
             <div class="col-4">
                 <!-- Blog post-->
                 <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="<?php echo $PATH_PHOTOES; ?>book_default.jpg"
-                            alt="..."></a>
+                    <a href="book.php?id=<?php echo $row['id'] ?>"><img class="card-img-top"
+                            src="<?php echo $PATH_PHOTOES . $row['book_image'] ?? 'book_default.jpg'; ?>"
+                            alt="<?php echo $row['book_image'] ?>"></a>
                     <div class="card-body">
-                        <div class="small text-muted">January 1, 2023</div>
+                        <div class="small text-muted"><?php echo $row['author_name']; ?></div>
                         <h2 class="card-title h4"><?php echo $row['name']; ?></h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Reiciendis aliquid atque, nulla.</p>
-                        <a class="btn btn-primary" href="#!">Read more →</a>
+                        <p class="card-text"><?php echo $row['detail']; ?></p>
+                        <p class="card-text"><?php echo displayAvailableCount($row['available_copies_count']); ?></p>
+                        <a class="btn btn-primary"
+                            href="book.php?id=<?php echo $row['id'] ?>"><?php echo lang('Read more'); ?> →</a>
+                        <?php if ( isset($row['book_file']) && !empty($row['book_file'])) { ?>
+                        <a class="btn btn-success"
+                            href="<?php echo $PATH_PHOTOES . $row['book_file'] ; ?>"><?php echo lang('Download'); ?>
+                        </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -82,61 +89,6 @@
                         <a class="btn btn-primary" href="#!">Read more →</a>
                     </div>
                 </div>
-                <!-- Nested row for non-featured blog posts-->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top" src="<?php echo $PATH_PHOTOES; ?>book_default.jpg"
-                                    alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
                     <hr class="my-0">
@@ -154,7 +106,6 @@
             </div>
         </div>
     </div>
-
 </main>
 <!-- محتوى الصفحة -->
 <main class="page">
@@ -172,93 +123,8 @@
     </header>
     <!-- Main page content-->
     <div class="container-xl px-4">
-        <div class="row m-1">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <div class="card mb-6">
-                    <div class="card-header">Search</div>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Enter search term..."
-                                aria-label="Enter search term..." aria-describedby="button-search">
-                            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3"></div>
-        </div>
-
         <div class="row">
             <div class="col-lg-12">
-                <!-- Featured blog post-->
-                <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-                            alt="..."></a>
-                    <div class="card-body">
-                        <div class="small text-muted">January 1, 2023</div>
-                        <h2 class="card-title">Featured Post Title</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi
-                            vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a class="btn btn-primary" href="#!">Read more →</a>
-                    </div>
-                </div>
-                <!-- Nested row for non-featured blog posts-->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top" src="<?php echo $PATH_PHOTOES; ?>book_default.jpg"
-                                    alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                        <!-- Blog post-->
-                        <div class="card mb-4">
-                            <a href="#!"><img class="card-img-top"
-                                    src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..."></a>
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2023</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                                <a class="btn btn-primary" href="#!">Read more →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Pagination-->
                 <nav aria-label="Pagination">
                     <hr class="my-0">
@@ -274,18 +140,6 @@
                     </ul>
                 </nav>
             </div>
-        </div>
-
-        <div class="row">
-            <form method="GET" action="" class="search-form">
-                <label for="book_name">Book Name:</label>
-                <input type="text" name="book_name" id="book_name">
-
-                <label for="num_copies">Number of Copies:</label>
-                <input type="number" name="num_copies" id="num_copies">
-
-                <button type="submit">Search</button>
-            </form>
         </div>
         <div class="row">
             <?php
@@ -312,7 +166,7 @@
                             <?php echo $row['name'].' '; ?>
                         </h5>
                         <p class="card-text">Number of copies : <?php echo $row['number_copies']; ?></p>
-                        <p class="card-text">Author name: <?php echo $row['author_name']; ?></p>
+                        <p class="card-text">Author name: <?php echo $row['author_id']; ?></p>
                     </div>
                     <div class="card-text">
                     </div>

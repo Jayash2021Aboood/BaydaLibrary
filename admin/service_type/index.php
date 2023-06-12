@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -90,10 +89,10 @@
                                         ?>
 
                         <tr>
-                                <td> <?php echo($row['id']); ?> </td>
-                                    <td> <?php echo($row['name']); ?> </td>
-                                    <td> <?php echo($row['detail']); ?> </td>
-    
+                            <td> <?php echo($row['id']); ?> </td>
+                            <td> <?php echo($row['name']); ?> </td>
+                            <td> <?php echo($row['detail']); ?> </td>
+
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                     href="edit.php?id=<?php echo($row['id']); ?>">
@@ -118,8 +117,8 @@
         </div>
     </div>
     <!-- Create ServiceType modal-->
-    <div class="modal fade" id="createServiceTypeModal" tabindex="-1" role="dialog" aria-labelledby="createServiceTypeModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="createServiceTypeModal" tabindex="-1" role="dialog"
+        aria-labelledby="createServiceTypeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -146,8 +145,8 @@
         </div>
     </div>
     <!-- Edit ServiceType modal-->
-    <div class="modal fade" id="editServiceTypeModal" tabindex="-1" role="dialog" aria-labelledby="editServiceTypeModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="editServiceTypeModal" tabindex="-1" role="dialog"
+        aria-labelledby="editServiceTypeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -179,5 +178,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-

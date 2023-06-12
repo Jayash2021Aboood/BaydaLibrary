@@ -72,6 +72,7 @@
 	$PATH_ADMIN_INCLUDES 			= $PATH_ADMIN . 'includes/';
 	$PATH_ADMIN_TEMPLATE 			= $PATH_ADMIN . 'template/';
 	$PATH_ADMIN_PHOTOES 			= $PATH_ADMIN . 'photoes/';
+	$PATH_ADMIN_LANG 			    = $PATH_ADMIN . 'lang/';
 	
 
 	// DIR

@@ -15,7 +15,7 @@
 
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link href="<?php echo $PATH_SERVER ?>css/custom.css" rel="stylesheet" />
+    <!-- <link href="<?php echo $PATH_SERVER ?>css/custom.css" rel="stylesheet" /> -->
     <link rel="icon" type="image/x-icon" href="<?php echo $PATH_SERVER ?>assets/img/favicon.png" />
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
 
@@ -30,4 +30,6 @@
     <script src="<?php echo $PATH_SERVER ?>js/jquery3.6.0.js"></script>
 </head>
 
-<body class="nav-fixed bg-white">
+<!-- <body dir="rtl" class="nav-fixed bg-white"> -->
+
+<body dir="ltr" class="nav-fixed bg-white">

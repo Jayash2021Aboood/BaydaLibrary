@@ -1,3 +1,4 @@
+
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -5,7 +6,7 @@
   include_once('../../includes/section.php');
   checkAdminSession();
 
-  $pageTitle = "Sections";
+  $pageTitle = lang("Sections");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -20,22 +21,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            Section List
+                            <?php echo lang("Section List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
-                            <i class="me-1" data-feather="user"></i>
-                            Manage Users
-                        </a>
-                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#createSectionModal">
-                            <i class="me-1" data-feather="plus"></i>
-                            Create New Section
-                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            Create New Section
+                            <?php echo lang("Create New"); ?>
                         </a>
                     </div>
                 </div>
@@ -50,11 +42,11 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Parent</th>
-                            <th>Number</th>
-                            <th>Name</th>
-                            <th>Actions</th>
+                            <th><?php echo lang("ID"); ?></th>
+                            <th><?php echo lang("Parent"); ?></th>
+                            <th><?php echo lang("Number"); ?></th>
+                            <th><?php echo lang("Name"); ?></th>
+                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
@@ -91,15 +83,15 @@
                                         ?>
 
                         <tr>
-                            <td> <?php echo($row['id']); ?> </td>
-                            <td> <?php
+                                <td> <?php echo($row['id']); ?> </td>
+                                  <td> <?php
                                     $Section = getSectionById($row['parent_id']) [0];
-                                    echo $Section['name']; 
+                                    echo$Section['name']; 
                                     ?>
                             </td>
-                            <td> <?php echo($row['number']); ?> </td>
-                            <td> <?php echo($row['name']); ?> </td>
-
+                                <td> <?php echo($row['number']); ?> </td>
+                                  <td> <?php echo($row['name']); ?> </td>
+  
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                     href="edit.php?id=<?php echo($row['id']); ?>">
@@ -124,8 +116,8 @@
         </div>
     </div>
     <!-- Create Section modal-->
-    <div class="modal fade" id="createSectionModal" tabindex="-1" role="dialog"
-        aria-labelledby="createSectionModalLabel" aria-hidden="true">
+    <div class="modal fade" id="createSectionModal" tabindex="-1" role="dialog" aria-labelledby="createSectionModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -185,3 +177,5 @@
 
 
 <?php include('../../template/footer.php'); ?>
+
+

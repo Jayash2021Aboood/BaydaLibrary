@@ -2,10 +2,10 @@
 <?php
   session_start();
   include('../../includes/lib.php');
-  include_once('../../includes/webuser.php');
+  include_once('../../includes/author.php');
   checkAdminSession();
 
-  $pageTitle = lang("WebUsers");
+  $pageTitle = "Authors";
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -20,13 +20,22 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            <?php echo lang("WebUser List"); ?>
+                            Author List
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
+                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
+                            <i class="me-1" data-feather="user"></i>
+                            Manage Users
+                        </a>
+                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#createAuthorModal">
+                            <i class="me-1" data-feather="plus"></i>
+                            Create New Author
+                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            <?php echo lang("Create New"); ?>
+                            Create New Author
                         </a>
                     </div>
                 </div>
@@ -34,24 +43,30 @@
         </div>
     </header>
     <!-- Main page content-->
-    <?php $all = getAllWebUsers(); ?>
+    <?php $all = getAllAuthors(); ?>
     <div class="container-fluid px-4">
         <div class="card">
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th><?php echo lang("ID"); ?></th>
-                            <th><?php echo lang("Email"); ?></th>
-                            <th><?php echo lang("User Type "); ?></th>
-                            <th><?php echo lang("Actions"); ?></th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Nationality</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
                                             <th>Email</th>
-                                            <th>User Type </th>
+                                            <th>Address</th>
+                                            <th>Nationality</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot> -->
@@ -67,7 +82,7 @@
                                             <td>
                                                 <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                     type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#editWebUserModal"><i
+                                                    data-bs-target="#editAuthorModal"><i
                                                         data-feather="edit"></i></button>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i
                                                         data-feather="trash-2"></i></a>
@@ -81,8 +96,11 @@
 
                         <tr>
                                 <td> <?php echo($row['id']); ?> </td>
+                                  <td> <?php echo($row['name']); ?> </td>
+                                  <td> <?php echo($row['phone']); ?> </td>
                                   <td> <?php echo($row['email']); ?> </td>
-                                  <td> <?php echo($row['usertype']); ?> </td>
+                                  <td> <?php echo($row['address']); ?> </td>
+                                  <td> <?php echo($row['nationality']); ?> </td>
   
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
@@ -107,22 +125,22 @@
             </div>
         </div>
     </div>
-    <!-- Create WebUser modal-->
-    <div class="modal fade" id="createWebUserModal" tabindex="-1" role="dialog" aria-labelledby="createWebUserModalLabel"
+    <!-- Create Author modal-->
+    <div class="modal fade" id="createAuthorModal" tabindex="-1" role="dialog" aria-labelledby="createAuthorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createWebUserModalLabel">Create New WebUser</h5>
+                    <h5 class="modal-title" id="createAuthorModalLabel">Create New Author</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-0">
-                            <label class="mb-1 small text-muted" for="formWebUserName">WebUser
+                            <label class="mb-1 small text-muted" for="formAuthorName">Author
                                 Name</label>
-                            <input class="form-control" id="formWebUserName" type="text"
-                                placeholder="Enter WebUser name..." />
+                            <input class="form-control" id="formAuthorName" type="text"
+                                placeholder="Enter Author name..." />
                         </div>
                     </form>
                 </div>
@@ -130,27 +148,27 @@
                     <button class="btn btn-danger-soft text-danger" type="button"
                         data-bs-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary-soft text-primary" type="button">Create New
-                        WebUser</button>
+                        Author</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Edit WebUser modal-->
-    <div class="modal fade" id="editWebUserModal" tabindex="-1" role="dialog" aria-labelledby="editWebUserModalLabel"
+    <!-- Edit Author modal-->
+    <div class="modal fade" id="editAuthorModal" tabindex="-1" role="dialog" aria-labelledby="editAuthorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editWebUserModalLabel">Edit WebUser</h5>
+                    <h5 class="modal-title" id="editAuthorModalLabel">Edit Author</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-0">
-                            <label class="mb-1 small text-muted" for="formWebUserName">WebUser
+                            <label class="mb-1 small text-muted" for="formAuthorName">Author
                                 Name</label>
-                            <input class="form-control" id="formWebUserName" type="text"
-                                placeholder="Enter WebUser name..." value="Sales" />
+                            <input class="form-control" id="formAuthorName" type="text"
+                                placeholder="Enter Author name..." value="Sales" />
                         </div>
                     </form>
                 </div>

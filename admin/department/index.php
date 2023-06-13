@@ -6,7 +6,7 @@
   include_once('../../includes/college.php');
   checkAdminSession();
 
-  $pageTitle = "Departments";
+  $pageTitle = lang("Departments");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -21,22 +21,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            Department List
+                            <?php echo lang("Department List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
-                            <i class="me-1" data-feather="user"></i>
-                            Manage Users
-                        </a>
-                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#createDepartmentModal">
-                            <i class="me-1" data-feather="plus"></i>
-                            Create New Department
-                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            Create New Department
+                            <?php echo lang("Create New"); ?>
                         </a>
                     </div>
                 </div>
@@ -51,10 +42,10 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>College</th>
-                            <th>Name</th>
-                            <th>Actions</th>
+                            <th><?php echo lang("ID"); ?></th>
+                            <th><?php echo lang("College"); ?></th>
+                            <th><?php echo lang("Name"); ?></th>
+                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>

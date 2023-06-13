@@ -7,7 +7,7 @@
   include_once('../../includes/student.php');
   checkAdminSession();
 
-  $pageTitle = "Fines";
+  $pageTitle = lang("Fines");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -22,22 +22,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            Fine List
+                            <?php echo lang("Fine List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
-                            <i class="me-1" data-feather="user"></i>
-                            Manage Users
-                        </a>
-                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#createFineModal">
-                            <i class="me-1" data-feather="plus"></i>
-                            Create New Fine
-                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            Create New Fine
+                            <?php echo lang("Create New"); ?>
                         </a>
                     </div>
                 </div>
@@ -52,12 +43,12 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Issue</th>
-                            <th>Student</th>
-                            <th>TotalAmount</th>
-                            <th>State</th>
-                            <th>Actions</th>
+                            <th><?php echo lang("ID"); ?></th>
+                            <th><?php echo lang("Issue"); ?></th>
+                            <th><?php echo lang("Student"); ?></th>
+                            <th><?php echo lang("TotalAmount"); ?></th>
+                            <th><?php echo lang("State"); ?></th>
+                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>

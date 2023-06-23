@@ -9,7 +9,7 @@
   include_once('../../includes/language.php');
   checkAdminSession();
 
-  $pageTitle = "Books";
+  $pageTitle = lang("Books");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -24,22 +24,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            Book List
+                            <?php echo lang("Book List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
-                            <i class="me-1" data-feather="user"></i>
-                            Manage Users
-                        </a>
-                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#createBookModal">
-                            <i class="me-1" data-feather="plus"></i>
-                            Create New Book
-                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            Create New Book
+                            <?php echo lang("Create New"); ?>
                         </a>
                     </div>
                 </div>
@@ -54,18 +45,18 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Number Copies</th>
-                            <th>Publish Date</th>
-                            <th>Detail</th>
-                            <th>Book Image</th>
-                            <th>Book File</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
-                            <th>Section</th>
-                            <th>Language</th>
-                            <th>Actions</th>
+                            <th><?php echo lang("ID"); ?></th>
+                            <th><?php echo lang("Name"); ?></th>
+                            <th><?php echo lang("Number Copies"); ?></th>
+                            <th><?php echo lang("Publish Date"); ?></th>
+                            <th><?php echo lang("Detail"); ?></th>
+                            <th><?php echo lang("Book Image"); ?></th>
+                            <th><?php echo lang("Book File"); ?></th>
+                            <th><?php echo lang("Author"); ?></th>
+                            <th><?php echo lang("Publisher"); ?></th>
+                            <th><?php echo lang("Section"); ?></th>
+                            <th><?php echo lang("Language"); ?></th>
+                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>

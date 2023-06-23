@@ -10,7 +10,7 @@
 
 
   
-  $pageTitle = "Add Issue";
+  $pageTitle = lang("Add Issue");
   include('../../template/header.php'); 
   $errors = array();
 
@@ -36,28 +36,28 @@
       $total_fine = $_POST['total_fine'];
 
       if( empty($book_id)){
-        $errors[] = "<li>Book is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Book is requierd.</li>";
+        $errors[] = "<li>" . lang("Book is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Book is requierd") . "</li>";
         }
       if( empty($student_id)){
-        $errors[] = "<li>Student is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Student is requierd.</li>";
+        $errors[] = "<li>" . lang("Student is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Student is requierd") . "</li>";
         }
       if( empty($issue_date)){
-        $errors[] = "<li>Issue Date is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Issue Date is requierd.</li>";
+        $errors[] = "<li>" . lang("Issue Date is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Issue Date is requierd") . "</li>";
         }
       if( empty($due_date)){
-        $errors[] = "<li>Due Date is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Due Date is requierd.</li>";
+        $errors[] = "<li>" . lang("Due Date is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Due Date is requierd") . "</li>";
         }
       if( empty($fine_per_day)){
-        $errors[] = "<li>Fine Per Day is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Fine Per Day is requierd.</li>";
+        $errors[] = "<li>" . lang("Fine Per Day is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Fine Per Day is requierd") . "</li>";
         }
       if( empty($total_fine)){
-        $errors[] = "<li>Total Fine is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Total Fine is requierd.</li>";
+        $errors[] = "<li>" . lang("Total Fine is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Total Fine is requierd") . "</li>";
         }
   
       if(count($errors) == 0)
@@ -73,16 +73,16 @@
                                     );
         if($add ==  true)
         {
-          $_SESSION["message"] = "Issue Added successfuly!";
-          $_SESSION["success"] = "Issue Added successfuly!";
+          $_SESSION["message"] = lang("Issue Added successfuly!");
+          $_SESSION["success"] = lang("Issue Added successfuly!");
           header('Location:'. $PATH_ADMIN_ISSUE .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = "Error when Adding Data";
-          $_SESSION["fail"] = "Error when Adding Data";
-          $errors[] = "Error when Adding Data";
+          $_SESSION["message"] = lang("Error when Adding Data");
+          $_SESSION["fail"] = lang("Error when Adding Data");
+          $errors[] = lang("Error when Adding Data");
         }
         
       }
@@ -104,13 +104,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            Add Issue
+                           <?php echo lang("Add Issue"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            Back to Issues List
+                            <?php echo lang("Back to Issues List"); ?>
                         </a>
                     </div>
                 </div>
@@ -123,67 +123,69 @@
             <div class="col-xl-12">
                 <!-- Issue details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Issue Details</div>
+                    <div class="card-header"><?php echo lang("Issue Details"); ?></div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (book_id)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="book_id">Book</label>
+                                    <label class="small mb-1" for="book_id"><?php echo lang("Book"); ?></label>
                                     <select class="form-select" name="book_id" id="book_id" required>
-                                        <option selected disabled value="">Select a Book:</option>
+                                        <option selected disabled value=""><?php echo lang("Select a Book"); ?>:</option>
                                         <?php foreach(getAllBooks() as $Book) { ?>
                                         <option value="<?php echo $Book['id']; ?>"> <?php echo $Book['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
                                 </div>
+
                                 <!-- Form Group (student_id)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="student_id">Student</label>
+                                    <label class="small mb-1" for="student_id"><?php echo lang("Student"); ?></label>
                                     <select class="form-select" name="student_id" id="student_id" required>
-                                        <option selected disabled value="">Select a Student:</option>
+                                        <option selected disabled value=""><?php echo lang("Select a Student"); ?>:</option>
                                         <?php foreach(getAllStudents() as $Student) { ?>
                                         <option value="<?php echo $Student['id']; ?>"> <?php echo $Student['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
                                 </div>
+
                                 <!-- Form Group (issue_date)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="issue_date">Issue Date</label>
-                                    <input class="form-control" id="issue_date" name="issue_date" type="date" placeholder="Issue Date"
+                                    <label class="small mb-1" for="issue_date"><?php echo lang("Issue Date"); ?></label>
+                                    <input class="form-control" id="issue_date" name="issue_date" type="date" placeholder="<?php echo lang("Issue Date"); ?>"
                                         value="" required  />
                                 </div>
                                 <!-- Form Group (due_date)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="due_date">Due Date</label>
-                                    <input class="form-control" id="due_date" name="due_date" type="date" placeholder="Due Date"
+                                    <label class="small mb-1" for="due_date"><?php echo lang("Due Date"); ?></label>
+                                    <input class="form-control" id="due_date" name="due_date" type="date" placeholder="<?php echo lang("Due Date"); ?>"
                                         value="" required  />
                                 </div>
                                 <!-- Form Group (return_date)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="return_date">Return Date</label>
-                                    <input class="form-control" id="return_date" name="return_date" type="date" placeholder="Return Date"
+                                    <label class="small mb-1" for="return_date"><?php echo lang("Return Date"); ?></label>
+                                    <input class="form-control" id="return_date" name="return_date" type="date" placeholder="<?php echo lang("Return Date"); ?>"
                                         value=""   />
                                 </div>
                                 <!-- Form Group (fine_per_day)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="fine_per_day">Fine Per Day</label>
-                                    <input class="form-control" id="fine_per_day" name="fine_per_day" type="text" placeholder="Fine Per Day"
+                                    <label class="small mb-1" for="fine_per_day"><?php echo lang("Fine Per Day"); ?></label>
+                                    <input class="form-control" id="fine_per_day" name="fine_per_day" type="text" placeholder="<?php echo lang("Fine Per Day"); ?>"
                                         value="" required  />
                                 </div>
                                 <!-- Form Group (total_fine)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="total_fine">Total Fine</label>
-                                    <input class="form-control" id="total_fine" name="total_fine" type="text" placeholder="Total Fine"
+                                    <label class="small mb-1" for="total_fine"><?php echo lang("Total Fine"); ?></label>
+                                    <input class="form-control" id="total_fine" name="total_fine" type="text" placeholder="<?php echo lang("Total Fine"); ?>"
                                         value="" required  />
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addIssue" class="btn btn-success" type="submit">Save</button>
-                            <a href="index.php" class="btn btn-danger" type="button">Back To List</a>
+                            <button name="addIssue" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

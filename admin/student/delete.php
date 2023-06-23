@@ -6,7 +6,7 @@
 
   checkAdminSession();
 
-  $pageTitle = "Delete Student";
+  $pageTitle = lang("Delete Student");
   $row = new Student(null);
   include('../../template/header.php');
 
@@ -16,7 +16,7 @@
 
     if(isset($_GET['id']))
     {
-      $_SESSION["message"] = ' Are You Sure Want to Delete? ';
+      $_SESSION["message"] = lang('Are You Sure Want to Delete?');
       $id = $_GET['id'];
       $result = getStudentById($id);
 
@@ -25,15 +25,15 @@
 
       if($row == null)
       {
-          $_SESSION["message"] = 'There is No data for this id';
-          $_SESSION["fail"] = 'There is No data for this id';
+          $_SESSION["message"] = lang('There is No data for this id');
+          $_SESSION["fail"] = lang('There is No data for this id');
       }
 
     }
     else
     {
-      $_SESSION["message"] = 'No data for display';
-      $_SESSION["fail"] = 'No data for display';
+      $_SESSION["message"] = lang('No data for display');
+      $_SESSION["fail"] = lang('No data for display');
     }
 
   }
@@ -49,29 +49,29 @@
         if($delete ==  true)
         {
   
-          $_SESSION["message"] = "Student Deleted successfuly!";          
-          $_SESSION["success"] = "Student Deleted successfuly!";          
+          $_SESSION["message"] = lang("Student Deleted successfuly!");          
+          $_SESSION["success"] = lang("Student Deleted successfuly!");          
           header('Location:'. $PATH_ADMIN_STUDENT .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = "Error when Delete Data";
-          $_SESSION["fail"] = "Error when Delete Data";
+          $_SESSION["message"] = lang("Error when Delete Data");
+          $_SESSION["fail"] = lang("Error when Delete Data");
 
-          $errors[] = "Error when Delete Data";
+          $errors[] = lang("Error when Delete Data");
         }
       }
       else
       {
-        $_SESSION["message"] = 'No data for Delete';
-        $_SESSION["fail"] = 'No data for Delete';
+        $_SESSION["message"] = lang('No data for Delete');
+        $_SESSION["fail"] = lang('No data for Delete');
       }
     }
     else
     {
-      $_SESSION["message"] = 'No data for Delete';
-      $_SESSION["fail"] = 'No data for Delete';
+      $_SESSION["message"] = lang('No data for Delete');
+      $_SESSION["fail"] = lang('No data for Delete');
     }
 
   }
@@ -89,13 +89,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            Delete Student
+                            <?php echo lang("Delete Student"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            Back to Students List
+                            <?php echo lang("Back to Students List"); ?>
                         </a>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
             <div class="col-xl-12">
                 <!-- Student details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Student Details <span
+                    <div class="card-header"><?php echo lang("Student Details"); ?> <span
                             class="text-danger"><?php echo $_SESSION['message']; ?></span> </div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
@@ -117,57 +117,57 @@
                                 <input type="hidden" name="id" id="id" value="<?php echo $row['id'];?>" readonly />
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="name">Name</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Name"
+                                    <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
                                         value="<?php echo $row['name'];?>" readonly />
                                 </div>
                                 <!-- Form Group (phone)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="phone">Phone</label>
-                                    <input class="form-control" id="phone" name="phone" type="text" placeholder="Phone"
+                                    <label class="small mb-1" for="phone"><?php echo lang("Phone"); ?></label>
+                                    <input class="form-control" id="phone" name="phone" type="text" placeholder="<?php echo lang("Phone"); ?>"
                                         value="<?php echo $row['phone'];?>" readonly />
                                 </div>
                                 <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="email">Email</label>
-                                    <input class="form-control" id="email" name="email" type="text" placeholder="Email"
+                                    <label class="small mb-1" for="email"><?php echo lang("Email"); ?></label>
+                                    <input class="form-control" id="email" name="email" type="text" placeholder="<?php echo lang("Email"); ?>"
                                         value="<?php echo $row['email'];?>" readonly />
                                 </div>
                                 <!-- Form Group (password)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="password">Password</label>
-                                    <input class="form-control" id="password" name="password" type="text" placeholder="Password"
+                                    <label class="small mb-1" for="password"><?php echo lang("Password"); ?></label>
+                                    <input class="form-control" id="password" name="password" type="text" placeholder="<?php echo lang("Password"); ?>"
                                         value="<?php echo $row['password'];?>" readonly />
                                 </div>
                                 <!-- Form Group (department_id)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="department_id">Department</label>
-                                    <input class="form-control" id="department_id" name="department_id" type="text" placeholder="Department"
+                                    <label class="small mb-1" for="department_id"><?php echo lang("Department"); ?></label>
+                                    <input class="form-control" id="department_id" name="department_id" type="text" placeholder="<?php echo lang("Department"); ?>"
                                         value="<?php echo $row['department_id'];?>" readonly />
                                 </div>
                                 <!-- Form Group (level_id)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="level_id">Level</label>
-                                    <input class="form-control" id="level_id" name="level_id" type="text" placeholder="Level"
+                                    <label class="small mb-1" for="level_id"><?php echo lang("Level"); ?></label>
+                                    <input class="form-control" id="level_id" name="level_id" type="text" placeholder="<?php echo lang("Level"); ?>"
                                         value="<?php echo $row['level_id'];?>" readonly />
                                 </div>
                                 <!-- Form Group (state)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="state">State</label>
-                                    <input class="form-control" id="state" name="state" type="text" placeholder="State"
+                                    <label class="small mb-1" for="state"><?php echo lang("State"); ?></label>
+                                    <input class="form-control" id="state" name="state" type="text" placeholder="<?php echo lang("State"); ?>"
                                         value="<?php echo $row['state'];?>" readonly />
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" id="active" name="active"
                                         type="checkbox" disabled
                                         <?php if($row['active'] == 1) echo 'checked';?> />
-                                    <label class="form-check-label" for="active">Active</label>
+                                    <label class="form-check-label" for="active"><?php echo lang("Active"); ?></label>
                                 </div>
  
                             </div>
                             <!-- Submit button-->
-                            <button name="deleteStudent" class="btn btn-danger" type="submit">Delete</button>
-                            <a href="index.php" class="btn btn-primary" type="button">Back To List</a>
+                            <button name="deleteStudent" class="btn btn-danger" type="submit"><?php echo lang("Delete"); ?></button>
+                            <a href="index.php" class="btn btn-primary" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

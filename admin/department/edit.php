@@ -6,7 +6,7 @@
   include_once('../../includes/college.php');
   checkAdminSession();
 
-  $pageTitle = "Edit Department";
+  $pageTitle = lang("Edit Department");
   //$row = new Department(null);
    $id =  $college_id =  $name = "";
   //$id = $name = $manager = $managerPhone = $agent = $agentPhone = $kindergarten = $earlyChildhood = $elementary = $intermediate = $secondary = $active = "";
@@ -31,15 +31,15 @@
       }
       else
       {
-        $_SESSION["message"] = ' There is No data for this id';
-        $_SESSION["fail"] = ' There is No data for this id';
+        $_SESSION["message"] = lang('There is No data for this id');
+        $_SESSION["fail"] = lang('There is No data for this id');
       }
 
     }
     else
     {
-      $_SESSION["message"] = 'No data for display';
-      $_SESSION["fail"] = 'No data for display';
+      $_SESSION["message"] = lang('No data for display');
+      $_SESSION["fail"] = lang('No data for display');
       
     }
   }
@@ -52,12 +52,12 @@
         $college_id = $_POST['college_id'];
         $name = $_POST['name'];
       if( empty($college_id)){
-        $errors[] = "<li>College is requierd.</li>";
-        $_SESSION["fail"] .= "<li>College is requierd.</li>";
+        $errors[] = "<li>" . lang("College is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("College is requierd") . "</li>";
         }
       if( empty($name)){
-        $errors[] = "<li>Name is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Name is requierd.</li>";
+        $errors[] = "<li>" . lang("Name is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Name is requierd") . "</li>";
         }
       
       if(count($errors) == 0)
@@ -71,16 +71,16 @@
         if($update ==  true)
         {
   
-          $_SESSION["message"] = "Department Updated successfuly!";
-          $_SESSION["success"] = "Department Updated successfuly!";
+          $_SESSION["message"] = lang("Department Updated successfuly!");
+          $_SESSION["success"] = lang("Department Updated successfuly!");
           header('Location:'. $PATH_ADMIN_DEPARTMENT .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = "Error when Update Data";
-          $_SESSION["fail"] = "Error when Update Data";
-          $errors[] = "Error when Update Data";
+          $_SESSION["message"] = lang("Error when Update Data");
+          $_SESSION["fail"] = lang("Error when Update Data");
+          $errors[] = lang("Error when Update Data");
         }
         
       }
@@ -103,13 +103,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            Edit Department
+                            <?php echo lang("Edit Department"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            Back to Departments List
+                            <?php echo lang("Back to Departments List"); ?>
                         </a>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
             <div class="col-xl-12">
                 <!-- Department details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Department Details </div>
+                    <div class="card-header"><?php echo lang("Department Details"); ?></div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
@@ -130,9 +130,9 @@
                                 <input type="hidden" name="id" id="id" value="<?php echo $id;?>" />
                                 <!-- Form Group (college_id)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="college_id">College</label>
+                                    <label class="small mb-1" for="college_id"><?php echo lang("College"); ?></label>
                                     <select class="form-select" name="college_id" id="college_id" required>
-                                        <option disabled value="">Select a College:</option>
+                                        <option disabled value=""><?php echo lang("Select a College"); ?>:</option>
                                         <?php foreach(getAllColleges() as $College) { ?>
                                         <option <?php if($college_id == $College['id']) echo "selected" ?> value="<?php echo $College['id']; ?>"> <?php echo $College['name']; ?>
                                         </option>
@@ -141,15 +141,15 @@
                                 </div>
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="name">Name</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Name"
+                                    <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
                                         value="<?php echo $name;?>" required />
                                 </div>
  
                             </div>
                             <!-- Submit button-->
-                            <button name="updateDepartment" class="btn btn-success" type="submit">Save</button>
-                            <a href="index.php" class="btn btn-danger" type="button">Back To List</a>
+                            <button name="updateDepartment" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

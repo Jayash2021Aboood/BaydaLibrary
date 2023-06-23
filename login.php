@@ -1,6 +1,7 @@
 <?php
   session_start();
-  $pageTitle = "Login";
+  include('includes/lib.php');
+  $pageTitle =  lang("Login");
 
 if (isset($_SESSION['user'])) 
   {
@@ -16,9 +17,9 @@ if (isset($_SESSION['user']))
             header('Location: employee/index.php');
             exit();
         }
-        else if($_SESSION['userType'] == 'c')
+        else if($_SESSION['userType'] == 's')
         {
-            header('Location: customer/index.php');
+            header('Location: student/index.php');
             exit();
         }
     }
@@ -26,7 +27,6 @@ if (isset($_SESSION['user']))
     exit();
   }
   
-  include('includes/lib.php');
   $errors = array();
 
   $email = "";
@@ -37,12 +37,12 @@ if (isset($_SESSION['user']))
     $password = $_POST['password'];
 
     if( !(isset($_POST['email']) && !empty($_POST['email']) )){
-        $errors[] = "Email is requierd.";
+        $errors[] = lang("Email is requierd");
         //$_SESSION["fail"] = "Email is requierd.";
     }
 
     if( !(isset($_POST['password']) && !empty($_POST['password']) )){
-        $errors[] = "Passowrd is requierd.";
+        $errors[] = lang("Passowrd is requierd");
         //$_SESSION["fail"] = "Passowrd is requierd.";
     }
     
@@ -67,9 +67,9 @@ if (isset($_SESSION['user']))
             }
             else
             {
-                $_SESSION["message"] = "No Admin found with this data";
-                $_SESSION["fail"] = "No Admin found with this data";
-                $errors[] = "No Admin found with this data";
+                $_SESSION["message"] = lang("No Admin found with this data");
+                $_SESSION["fail"] = lang("No Admin found with this data");
+                $errors[] = lang("No Admin found with this data");
             }
         }
         else if($userType == 'e')
@@ -113,42 +113,42 @@ if (isset($_SESSION['user']))
             }
             else
             {
-                $_SESSION["message"] = "No Employee found with this data";
-                $_SESSION["fail"] = "No Employee found with this data";
-                $errors[] = "No Employee found with this data";
+                $_SESSION["message"] = lang("No Employee found with this data");
+                $_SESSION["fail"] = lang("No Employee found with this data");
+                $errors[] = lang("No Employee found with this data");
             }
         }
-        else if($userType == 'c')
+        else if($userType == 's')
         {
-            $customers = select("select * from customer where email like '$email' and password like '$password';");
-            if(count($customers) > 0)
+            $students = select("select * from student where email like '$email' and password like '$password';");
+            if(count($students) > 0)
             {
-                    $_SESSION["userID"] = $customers[0]['id'];
+                    $_SESSION["userID"] = $students[0]['id'];
                     $_SESSION["user"] = $email;
-                    $_SESSION["userType"] = 'c';
-                    $_SESSION['success'] = "Welcome ".$customers[0]['first_name'] ." ". $customers[0]['last_name'] ;
-                    header('Location: customer/index.php');
+                    $_SESSION["userType"] = 's';
+                    $_SESSION['success'] = lang("Welcome") . $students[0]['name'] ;
+                    header('Location: student/index.php');
                     exit();
             }
             else
             {
-                $_SESSION["message"] = "No Customer found with this data";
-                $_SESSION["fail"] = "No Customer found with this data";
-                $errors[] = "No Customer found with this data";
+                $_SESSION["message"] = lang("No Student found with this data");
+                $_SESSION["fail"] = lang("No Student found with this data");
+                $errors[] = lang("No Student found with this data");
             }
         }
         else
         {
-            $_SESSION["message"] = "UnKnow user state ... contact admininstrator";
-            $_SESSION["fail"] = "UnKnow user state ... contact admininstrator";
-            $errors[] = "UnKnow user state ... contact admininstrator";
+            $_SESSION["message"] = lang("UnKnow user state ... contact admininstrator");
+            $_SESSION["fail"] = lang("UnKnow user state ... contact admininstrator");
+            $errors[] = lang("UnKnow user state ... contact admininstrator");
         }
       }
       else
       {
-        $_SESSION["message"] = "Email or password not correct!";
-        $_SESSION["fail"] = "Email or password not correct!";
-        $errors[] = "Email or password not correct!";
+        $_SESSION["message"] = lang("Email or password not correct!");
+        $_SESSION["fail"] = lang("Email or password not correct!");
+        $errors[] = lang("Email or password not correct!");
       }
       
     }
@@ -189,41 +189,43 @@ if (isset($_SESSION['user']))
                 <!-- Basic login form-->
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                     <div class="card-header justify-content-center">
-                        <h3 class="fw-light my-4">Login</h3>
+                        <h3 class="fw-light my-4"><?php echo lang("Login"); ?></h3>
                     </div>
                     <div class="card-body">
                         <!-- Login form-->
                         <form action="" method="POST">
                             <!-- Form Group (email address)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="email">Email</label>
+                                <label class="small mb-1" for="email"><?php echo lang("Email"); ?></label>
                                 <input class="form-control" id="email" name="email" type="email"
-                                    placeholder="Enter Email " />
+                                    placeholder="<?php echo lang("Enter Email "); ?>" />
                             </div>
                             <!-- Form Group (password)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="password">Password</label>
+                                <label class="small mb-1" for="password"><?php echo lang("Password"); ?></label>
                                 <input class="form-control" id="password" name="password" type="password"
-                                    placeholder="Enter password" />
+                                    placeholder="<?php echo lang("Enter password"); ?>" />
                             </div>
                             <!-- Form Group (remember password checkbox)-->
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" id="rememberPasswordCheck" type="checkbox"
                                         value="" />
-                                    <label class="form-check-label" for="rememberPasswordCheck">Remember
-                                        password</label>
+                                    <label class="form-check-label"
+                                        for="rememberPasswordCheck"><?php echo lang("Remember password"); ?></label>
                                 </div>
                             </div>
                             <!-- Form Group (login box)-->
                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                <a class="small" href="auth-password-basic.html">Forgot Password?</a>
-                                <button class="btn btn-primary" name="login" type="submit">Login</button>
+                                <a class="small"
+                                    href="auth-password-basic.html"><?php echo lang("Forgot Password?"); ?></a>
+                                <button class="btn btn-primary" name="login"
+                                    type="submit"><?php echo lang("Login"); ?></button>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer text-center">
-                        <div class="small"><a href="index.php">Need an account? Sign up!</a>
+                        <div class="small"><a href="index.php"><?php echo lang("Need an account? Sign up!"); ?></a>
                         </div>
                     </div>
                 </div>

@@ -82,6 +82,7 @@
 	define('DIR_ADMIN_TEMPLATE', 'C:/xampp/htdocs/BaydaLibrary/admin/template/');
 	define('DIR_ADMIN_PHOTOES', 'C:/xampp/htdocs/BaydaLibrary/admin/photoes/');
 	define('DIR_PHOTOES', 'C:/xampp/htdocs/BaydaLibrary/photoes/');
+	define('DIR_LANG', 'C:/xampp/htdocs/BaydaLibrary/lang/');
 	define('DIR_ATTACHMENTS', 'C:/xampp/htdocs/BaydaLibrary/attachments/');
 
 

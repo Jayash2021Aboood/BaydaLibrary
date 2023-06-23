@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo(getCurrentLanguage()); ?>">
 
 <head>
     <meta charset="utf-8" />
@@ -19,6 +19,10 @@
     <link rel="icon" type="image/x-icon" href="<?php echo $PATH_SERVER ?>assets/img/favicon.png" />
     <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
 
+    <?php if(getCurrentLanguage() == "ar"){ ?>
+    <!-- adding Arabic style if the current language is Arabic  -->
+    <link href="<?php echo $PATH_SERVER ?>css/ar_custom.css" rel="stylesheet" />
+    <?php } ?>
 
     <!-- <script data-search-pseudo-elements="" defer="" src="<?php //echo $PATH_SERVER ?>js/font-awesome-6.1.1/all.min.js" -->
     <!-- crossorigin="anonymous"></script> -->
@@ -31,5 +35,10 @@
 </head>
 
 <!-- <body dir="rtl" class="nav-fixed bg-white"> -->
+<?php if(isset($_SESSION['lang']) && !is_null($_SESSION['lang']) && $_SESSION['lang'] == "ar"){ ?>
 
-<body dir="ltr" class="nav-fixed bg-white">
+<body dir="rtl" class="layout-rtl nav-fixed bg-white">
+    <?php } else{ ?>
+
+    <body dir="ltr" class="nav-fixed bg-white">
+        <?php }  ?>

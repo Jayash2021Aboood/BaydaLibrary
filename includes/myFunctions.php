@@ -81,11 +81,73 @@
     }
 
     if(is_null($_SESSION['words'])) {
+      var_dump($_SESSION);
+      exit;
       lang($word);
     }
-    // var_dump($_SESSION);
-    // exit;
     $translations = $_SESSION['words'];
+    if(!array_key_exists($word, $translations)){
+      if($_SESSION['lang'] == "ar"){
+
+        // print('"'.$word.'" : "'.$word.'",');
+        // print('</br>');
+        // var_dump($translations);
+        $filename = DIR_LANG . 'ar_noneTranslated.txt';
+        $text = '"'.$word.'" : "'.$word.'",';
+        $word_exists = false;
+
+        // Read the contents of the file
+        $file_contents = file_get_contents($filename);
+
+        // Check if the word already exists in the file
+        if(strpos($file_contents, $text)!== false){
+          $word_exists = true;
+        }
+
+        if(!$word_exists){
+          // // Append the new text to the end of the file
+          // $file_contents.= "\n". $text;
+
+          // // Write the modified contents back to the file
+          // file_put_contents($filename, $file_contents, FILE_APPEND);
+
+
+
+          // Open the file in read-write mode
+          $file = fopen($filename, "r+");
+
+          // Move the cursor to the end of the file
+          fseek($file, 0, SEEK_END);
+
+          // Write the new line to the end of the file
+          fwrite($file, $text . "\n");
+
+          // Close the file
+          fclose($file);
+
+
+        }
+        
+        // exit();
+      }
+    }
+
+    // this code for adding non translated word to seprate file 
+    //to let us found it and  translated quickly
+    //$result = $translations[$word];
+    // if($_SESSION['lang'] == "ar" && !isset($translations[$word])){
+    //     $filename = 'lang/ar_noneTranslated.txt';
+    //     $text = '"'.$word.'" : "'.$word.'",';
+
+    //     // Read the contents of the file
+    //     $file_contents = file_get_contents($filename);
+
+    //     // Append the new text to the end of the file
+    //     $file_contents.= "\n". $text;
+
+    //     // Write the modified contents back to the file
+    //     file_put_contents($filename, $file_contents, FILE_APPEND);
+    // }
     return isset($translations[$word])? $translations[$word] : $word;
   }
   
@@ -104,6 +166,18 @@
       exit();
     }
   }
+
+  function getCurrentLanguage() 
+  {
+    try {
+       return $_SESSION['lang'] ?? 'en';
+    } catch (\Throwable $th) {
+      //throw $th;
+      var_dump($th);
+      exit();
+    }
+  }
+
 
 
 

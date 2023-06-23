@@ -10,3 +10,30 @@
     - the Pages that display all library content with logic.
 4- Create Visitor Website
     - display books and another information.
+
+
+
+
+Final Tasks:
+1- Delete Un Wanted Links
+2- Adding Main Page Content
+3- Adding Department Page as dewai algorithm
+4- Adding Department Details Page That contain Depatrment And Its Books
+
+5- Adding Issue Manager In Admin And Employee Sites
+6- Adding Fine Manager In Admin And Employee Sites
+
+7- Adding Validation On add,Update Section as Dewai Method.
+8- in Admin,Employee Site Adding Students Issues Page.
+9- in Admin,Employee Site Adding Students Fine Page.
+10- in Student Site, adding My Issue Page
+11- in Student Site, adding My Fines Page
+12- Write Right Logic for GetAvailibleBooks() Method
+13- Adding Validation To Revoke to Create Two Rows in Setting Table
+14- Adding Method That Calculate How Many Left Issues For The Student.
+15- Adding Translation For Employee Site
+16-
+17-
+18-
+19- 
+20-

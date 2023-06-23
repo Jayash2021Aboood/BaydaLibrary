@@ -51,7 +51,7 @@
                         // var_dump($row);
                         // exit();
             ?>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <!-- Blog post-->
                 <div class="card mb-4">
                     <a href="book.php?id=<?php echo $row['id'] ?>"><img class="card-img-top"
@@ -62,12 +62,14 @@
                         <h2 class="card-title h4"><?php echo $row['name']; ?></h2>
                         <p class="card-text"><?php echo $row['detail']; ?></p>
                         <p class="card-text"><?php echo displayAvailableCount($row['available_copies_count']); ?></p>
-                        <a class="btn btn-primary"
-                            href="book.php?id=<?php echo $row['id'] ?>"><?php echo lang('Read more'); ?> →</a>
-                        <?php if ( isset($row['book_file']) && !empty($row['book_file'])) { ?>
-                        <a class="btn btn-success"
-                            href="<?php echo $PATH_PHOTOES . $row['book_file'] ; ?>"><?php echo lang('Download'); ?>
-                        </a>
+                        <div class="text-end">
+                            <a class="btn btn-success btn-sm"
+                                href="<?php echo $PATH_PHOTOES . $row['book_file'] ; ?>"><?php echo lang('Download'); ?>
+                            </a>
+                            <a class="btn btn-primary btn-sm"
+                                href="book.php?id=<?php echo $row['id'] ?>"><?php echo lang('Read more'); ?> →</a>
+                            <?php if ( isset($row['book_file']) && !empty($row['book_file'])) { ?>
+                        </div>
                         <?php } ?>
                     </div>
                 </div>

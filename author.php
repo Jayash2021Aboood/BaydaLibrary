@@ -27,8 +27,8 @@
       else
       {
         // في حال عدم وجود المهندس تحويلة لصفحة غير موجود
-        $_SESSION["message"] = 'There is No data for this id';
-        $_SESSION["fail"] = 'There is No data for this id';
+        $_SESSION["message"] = lang('There is No data for this id');
+        $_SESSION["fail"] = lang('There is No data for this id');
         //echo ' <script> location.replace("index.php"); </script>';
         header('Location: index.php');
         exit();
@@ -39,8 +39,8 @@
     }
     else
     {
-      $_SESSION["message"] = 'No data for display';
-      $_SESSION["fail"] = 'No data for display';
+      $_SESSION["message"] = lang('No data for display');
+      $_SESSION["fail"] = lang('No data for display');
       header('Location: index.php');
       exit();
     }

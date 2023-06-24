@@ -49,7 +49,7 @@
                     foreach($all as  $row)
                     {
             ?>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <!-- Blog post-->
                 <div class="card mb-4">
                     <div class="card-body">

@@ -13,8 +13,9 @@
                 $mainPage = $PATH_ADMIN;
             if(isEmployee())
                 $mainPage = $PATH_EMPLOYEE;
-            if(isCustomer())
-                $mainPage = $PATH_CUSTOMER;
+            if(isStudent())
+                $mainPage = $PATH_STUDENT
+;
          ?>
         <a class="navbar-brand pe-3 ps-4 ps-lg-2"
             href="<?php echo $mainPage; ?>"><?php echo lang("Bayda Library");?></a>
@@ -125,8 +126,9 @@
                     </a>
                     <?php } ?>
 
-                    <?php if(isCustomer()){ ?>
-                    <a class="dropdown-item" href="<?php echo $PATH_CUSTOMER; ?>my_bookings.php">
+                    <?php if(isStudent()){ ?>
+                    <a class="dropdown-item" href="<?php echo $PATH_STUDENT
+; ?>my_bookings.php">
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                         My Bookings
                     </a>
@@ -365,57 +367,23 @@
                         <!-- ==============   Customer Pages Link      ==================  -->
                         <!-- ============================================================  -->
 
-                        <?php }else if(isCustomer()){ ?>
-                        <!-- Sidenav Menu Heading (Account)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                        <!-- <div class="sidenav-menu-heading d-sm-none">Account</div> -->
-                        <!-- Sidenav Link (Alerts)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                        <!-- <a class="nav-link d-sm-none" href="#!">
-                            <div class="nav-link-icon"><i data-feather="bell"></i></div>
-                            Alerts
-                            <span class="badge bg-warning-soft text-warning ms-auto">4 New!</span>
-                        </a> -->
-                        <!-- Sidenav Link (Messages)-->
-                        <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-                        <!-- <a class="nav-link d-sm-none" href="#!">
-                            <div class="nav-link-icon"><i data-feather="mail"></i></div>
-                            Messages
-                            <span class="badge bg-success-soft text-success ms-auto">2 New!</span>
-                        </a> -->
+                        <?php }else if(isStudent()){ ?>
+
                         <div class="sidenav-menu-heading"><?php echo lang("Control Panel");?></div>
 
-                        <a class="nav-link" href="<?php echo $PATH_CUSTOMER;?>index.php">
+                        <a class="nav-link" href="<?php echo $PATH_STUDENT;?>index.php">
                             <div class="nav-link-icon"><i class="fa fa-home fa-lg"></i>
                             </div>
-                            <?php echo lang("Home");?>
+                            <?php echo lang("Dashboard");?>
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>service_type.php">
-                            <div class="nav-link-icon"> <i class="fa fa-list"></i>
-                            </div>
-                            Categories
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>service_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
-                            Services
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>employee_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
-                            Engineer
-                        </a>
-                        <a class="nav-link" href="<?php echo $mainPage; ?>my_bookings.php">
+                        <a class="nav-link" href="<?php echo $mainPage; ?>my_issues.php">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            My Booking
+                            <?PHP echo lang("My Issues");?>
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER; ?>faq.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-question"></i></div>
-                            <?PHP ECHO LANG("FAQ");?>
+                        <a class="nav-link" href="<?php echo $mainPage; ?>my_fines.php">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <?PHP echo lang("My Fines");?>
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER; ?>about_us.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
-                            <?php echo lang("About Us");?>
-                        </a>
-
                         <?php } ?>
 
 
@@ -424,22 +392,15 @@
                         <!-- ============================================================  -->
                         <!-- ==============   Visitor Pages Link      ==================  -->
                         <!-- ============================================================  -->
-                        <?php }else{ ?>
+                        <?php }
+                        //else{ 
+                            ?>
                         <div class="sidenav-menu-heading">Fast Access</div>
 
                         <a class="nav-link" href="<?php echo $PATH_SERVER;?>index.php">
                             <div class="nav-link-icon"><i class="fa fa-home fa-lg"></i>
                             </div>
                             <?php echo lang("Home");?>
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>service_type.php">
-                            <div class="nav-link-icon"> <i class="fa fa-list"></i>
-                            </div>
-                            Categories
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>service_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
-                            Services
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_SERVER;?>author_list.php">
                             <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
@@ -457,23 +418,21 @@
                             <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
                             <?php echo lang("Sections");?>
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>engineer_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
-                            Engineer
-                        </a>
                         <a class="nav-link" href="<?php echo $PATH_SERVER; ?>faq.php">
                             <div class="nav-link-icon"><i class="fa-solid fa-question"></i></div>
-                            <?PHP ECHO LANG("FAQ");?>
+                            <?PHP echo lang("FAQ");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_SERVER; ?>about_us.php">
                             <div class="nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
                             <?php echo lang("About Us");?>
                         </a>
+                        <?php if(!isLogin()) {?>
                         <a class="nav-link" href="<?php echo $PATH_SERVER; ?>login.php">
                             <div class="nav-link-icon"><i class="fa-solid fa-right-to-bracket"></i></div>
                             <?php echo lang("Login");?>
                         </a>
-                        <?php } ?>
+                        <?php }?>
+                        <?php //} ?>
 
 
 

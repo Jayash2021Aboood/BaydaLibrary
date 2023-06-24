@@ -7,7 +7,7 @@
 
   $pageTitle = "My Profile";
   
-   $id =  $name  =  $phone =  $email =  $password = "" = $department_id =  $level_id  = $state = $active;
+   $id =  $name  =  $phone =  $email =  $password = $department_id =  $level_id  = $state = $active = "";
   
   include('../template/header.php'); 
   $errors = array();
@@ -78,7 +78,7 @@
           $row = $result[0];
           $email = $row['email'];
         
-        $update = updateCustomer($id, $name, $phone, $email, $password, $department_id, $level_id, $state, $active);
+        $update = updateStudent($id, $name, $phone, $email, $password, $department_id, $level_id, $state, $active);
         if($update ==  true)
         {
   
@@ -132,7 +132,7 @@
     <div class="container-xl px-4 mt-4">
         <div class="row">
             <div class="col-xl-12">
-                <!-- Customer details card-->
+                <!-- Student details card-->
                 <div class="card mb-4">
                     <div class="card-header">My Profile Details </div>
                     <div class="card-body">
@@ -165,14 +165,14 @@
                                         placeholder="Password" value="<?php echo $password;?>" required />
                                 </div>
 
-                                 <!-- Form Group (department_id)-->
-                                 <div class="col-md-4 mb-3">
+                                <!-- Form Group (department_id)-->
+                                <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="department_id">department_id</label>
                                     <input class="form-control" id="password" name="department_id" type="text"
                                         placeholder="department_id" value="<?php echo $department_id;?>" required />
                                 </div>
-                                 <!-- Form Group (level_id)-->
-                                 <div class="col-md-4 mb-3">
+                                <!-- Form Group (level_id)-->
+                                <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="level_id">level_id</label>
                                     <input class="form-control" id="level_id" name="level_id" type="text"
                                         placeholder="level_id" value="<?php echo $level_id;?>" required />
@@ -185,8 +185,8 @@
                                         placeholder="state" value="<?php echo $state;?>" required />
                                 </div>
 
-                                 <!-- Form Group (active)-->
-                                 <div class="col-md-4 mb-3">
+                                <!-- Form Group (active)-->
+                                <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="active">active</label>
                                     <input class="form-control" id="active" name="active" type="text"
                                         placeholder="active" value="<?php echo $active;?>" required />

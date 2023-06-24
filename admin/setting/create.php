@@ -1,5 +1,3 @@
-
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -18,7 +16,12 @@
     if(isset($_POST['addSetting']))
     {
 
-
+      // Not Allow To Adding Two Rows Setting and Setting Table 
+      $exsitRowInTable = select("select count(id) as result from setting;")[0]['result'];
+      if($exsitRowInTable > 0){
+        redirectToReferer(lang("not allowed to add setting many Times"));
+      }
+      
       $return_days = $_POST['return_days'];
 
       $fine_amount = $_POST['fine_amount'];
@@ -78,7 +81,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                           <?php echo lang("Add Setting"); ?>
+                            <?php echo lang("Add Setting"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
@@ -104,26 +107,32 @@
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (return_days)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="return_days"><?php echo lang("Return Days"); ?></label>
-                                    <input class="form-control" id="return_days" name="return_days" type="text" placeholder="<?php echo lang("Return Days"); ?>"
-                                        value="" required  />
+                                    <label class="small mb-1"
+                                        for="return_days"><?php echo lang("Return Days"); ?></label>
+                                    <input class="form-control" id="return_days" name="return_days" type="text"
+                                        placeholder="<?php echo lang("Return Days"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (fine_amount)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="fine_amount"><?php echo lang("Fine Amount"); ?></label>
-                                    <input class="form-control" id="fine_amount" name="fine_amount" type="text" placeholder="<?php echo lang("Fine Amount"); ?>"
-                                        value="" required  />
+                                    <label class="small mb-1"
+                                        for="fine_amount"><?php echo lang("Fine Amount"); ?></label>
+                                    <input class="form-control" id="fine_amount" name="fine_amount" type="text"
+                                        placeholder="<?php echo lang("Fine Amount"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (student_max_issue)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="student_max_issue"><?php echo lang("Student Max Issues"); ?></label>
-                                    <input class="form-control" id="student_max_issue" name="student_max_issue" type="text" placeholder="<?php echo lang("Student Max Issues"); ?>"
-                                        value="" required  />
+                                    <label class="small mb-1"
+                                        for="student_max_issue"><?php echo lang("Student Max Issues"); ?></label>
+                                    <input class="form-control" id="student_max_issue" name="student_max_issue"
+                                        type="text" placeholder="<?php echo lang("Student Max Issues"); ?>" value=""
+                                        required />
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addSetting" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
-                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
+                            <button name="addSetting" class="btn btn-success"
+                                type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger"
+                                type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>
@@ -134,6 +143,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-
-

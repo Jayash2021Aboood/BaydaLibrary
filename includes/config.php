@@ -22,7 +22,8 @@
 	$PATH_ATTACHMENTS 		= $PATH_SERVER . 'attachments/';
 
 	$PATH_ADMIN 			= $PATH_SERVER . 'admin/';
-	$PATH_CUSTOMER 			= $PATH_SERVER . 'customer/';
+	// $PATH_CUSTOMER 			= $PATH_SERVER . 'customer/';
+	$PATH_STUDENT 			= $PATH_SERVER . 'student/';
 	$PATH_EMPLOYEE 			= $PATH_SERVER . 'employee/';
 
 	$PATH_EMPLOYEE_AUTHOR = $PATH_EMPLOYEE . 'author/';
@@ -125,22 +126,6 @@
 			}
   }
 
-  function checkEngineerSession($path = "http://localhost:90/BaydaLibrary/" , $page = "login.php")
-  {
-            if (!isset($_SESSION['user']))
-            {
-				header('Location:'. $path . $page);
-            }
-			if (!(isset($_SESSION['userType'])))
-			{
-				header('Location:'. $path . $page);
-			} 
-			if($_SESSION['userType'] != 'e')
-			{
-				header('Location:'. $path . $page);
-			}
-  }
-
   function checkEmployeeSession($path = "http://localhost:90/BaydaLibrary/" , $page = "login.php")
   {
             if (!isset($_SESSION['user']))
@@ -157,7 +142,7 @@
 			}
   }
 
-  function checkCustomerSession($path = "http://localhost:90/BaydaLibrary/" , $page = "login.php")
+  function checkStudentSession($path = "http://localhost:90/BaydaLibrary/" , $page = "login.php")
   {
             if (!isset($_SESSION['user']))
             {
@@ -167,7 +152,7 @@
 			{
 				header('Location:'. $path . $page);
 			} 
-			if($_SESSION['userType'] != 'c')
+			if($_SESSION['userType'] != 's')
 			{
 				header('Location:'. $path . $page);
 			}
@@ -179,7 +164,7 @@
 	{
 		if(isset($_SESSION['userType']))
 		{
-			if($_SESSION['userType'] == 'a' || $_SESSION['userType'] == 'c' || $_SESSION['userType'] == 'e')
+			if($_SESSION['userType'] == 'a' || $_SESSION['userType'] == 's' || $_SESSION['userType'] == 'e')
 			{
 				return true;
 			}
@@ -201,9 +186,10 @@
   }
 
   function isAdmin() { if(getLoginType() == 'a') return true; }
-  function isEngineer() { if(getLoginType() == 'e') return true; }
+//   function isEngineer() { if(getLoginType() == 'e') return true; }
   function isEmployee() { if(getLoginType() == 'e') return true; }
-  function isCustomer() { if(getLoginType() == 'c') return true; }
+//   function isCustomer() { if(getLoginType() == 'c') return true; }
+  function isStudent() { if(getLoginType() == 's') return true; }
   function getLoginEmail() { return $_SESSION['user'] ;}
 
 //   function checkAdminSession($path = "http://localhost:90/BaydaLibrary/" , $page = "login.php")

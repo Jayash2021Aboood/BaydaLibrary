@@ -83,6 +83,7 @@ if (isset($_SESSION['user']))
                 $_SESSION["userType"] = 'e';
                 $_SESSION['success'] = "Welcome ".$employees[0]['name'] ;
                 header('Location: employee/index.php');
+                exit();
 
                 // if($employees[0]['state'] == 'reject'){
                 //     $_SESSION["message"] = "your account has been rejected ... contact to adminstrator";
@@ -126,7 +127,7 @@ if (isset($_SESSION['user']))
                     $_SESSION["userID"] = $students[0]['id'];
                     $_SESSION["user"] = $email;
                     $_SESSION["userType"] = 's';
-                    $_SESSION['success'] = lang("Welcome") . $students[0]['name'] ;
+                    $_SESSION['success'] = lang("Welcome ") . $students[0]['name'] ;
                     header('Location: student/index.php');
                     exit();
             }

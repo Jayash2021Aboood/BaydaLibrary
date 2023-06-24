@@ -201,6 +201,17 @@ function getAllAuthorsBySearch($search_term)
                     ;");
 }
 
+function getAllSectionsBySearch($search_term)
+{
+    if(empty($search_term))
+        return select("SELECT * From section WHERE parent_id is NULL;");
+    else
+        return select(" SELECT *
+                        FROM section
+                        WHERE CONCAT(id, name, number) LIKE '%$search_term%'
+                        ;");
+}
+
 function getAllPublishersBySearch($search_term)
 {
     return select(" SELECT *
@@ -212,6 +223,11 @@ function getAllPublishersBySearch($search_term)
 function getAvailableBooksToIssue($book_id)
 {
     return select("SELECT 13 AS available_copies_count;");
+}
+
+function getAllIssuesByStudentId($student_id)
+{
+    return select("SELECT * FROM issue WHERE student_id = $student_id ;");
 }
 //Publisher
 

@@ -87,7 +87,7 @@
                         <p class="card-text">
                             <?php
                                 $availeible = getAvailableBooksToIssue($row['id']);
-                                echo displayAvailableCount($availeible[0][0]); 
+                                echo displayAvailableCount($availeible); 
                              ?>
                         </p>
                         <?php if ( isset($row['book_file']) && !empty($row['book_file'])) { ?>

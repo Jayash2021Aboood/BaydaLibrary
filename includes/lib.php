@@ -222,7 +222,35 @@ function getAllPublishersBySearch($search_term)
 
 function getAvailableBooksToIssue($book_id)
 {
-    return select("SELECT 13 AS available_copies_count;");
+    // Code to check if book is available for issue
+    $book = getBookById($book_id);
+    if(is_null($book)){
+        throw new Exception(lang("book not found"));
+    }
+
+    $result = select("SELECT COUNT(*) FROM issue AS issues_count
+    WHERE book_id = $book_id AND return_date LIKE '0000-00-00'
+    ;");
+
+    if(is_null($result)){
+        throw new Exception(lang("can not calcualte available copies for book"));
+    }
+
+    return $book[0]['number_copies'] - $result[0][0];
+}
+
+function getStudentIssuesTimes($student_id){
+    // Code to check if book is available for issue
+
+    $result = select("SELECT COUNT(*) FROM issue AS issues_count
+    WHERE student_id = $student_id AND return_date LIKE '0000-00-00'
+    ;");
+
+    if(is_null($result)){
+        throw new Exception(lang("can not calcualte student issues times"));
+    }
+
+    return $result[0][0];
 }
 
 function getAllIssuesByStudentId($student_id)

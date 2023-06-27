@@ -59,7 +59,8 @@
                         <div class="small text-muted"><?php echo $row['author_name']; ?></div>
                         <h2 class="card-title h4"><?php echo $row['name']; ?></h2>
                         <p class="card-text"><?php echo $row['detail']; ?></p>
-                        <p class="card-text"><?php echo displayAvailableCount($row['available_copies_count']); ?></p>
+                        <p class="card-text"><?php echo displayAvailableCount(getAvailableBooksToIssue($row['id'])); ?>
+                        </p>
                         <div class="small text-muted"><?php echo $row['section_name']; ?></div>
                         <div class="text-end">
                             <?php if ( isset($row['book_file']) && !empty($row['book_file'])) { ?>

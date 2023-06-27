@@ -1,10 +1,11 @@
+
 <?php
   session_start();
   include('../../includes/lib.php');
   include_once('../../includes/author.php');
   checkEmployeeSession();
 
-  $pageTitle = "Authors";
+  $pageTitle = lang("Authors");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -19,22 +20,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            Author List
+                            <?php echo lang("Author List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
-                            <i class="me-1" data-feather="user"></i>
-                            Manage Users
-                        </a>
-                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#createAuthorModal">
-                            <i class="me-1" data-feather="plus"></i>
-                            Create New Author
-                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            Create New Author
+                            <?php echo lang("Create New"); ?>
                         </a>
                     </div>
                 </div>
@@ -49,13 +41,13 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Nationality</th>
-                            <th>Actions</th>
+                            <th><?php echo lang("ID"); ?></th>
+                            <th><?php echo lang("Name"); ?></th>
+                            <th><?php echo lang("Phone"); ?></th>
+                            <th><?php echo lang("Email"); ?></th>
+                            <th><?php echo lang("Address"); ?></th>
+                            <th><?php echo lang("Nationality"); ?></th>
+                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
@@ -94,13 +86,13 @@
                                         ?>
 
                         <tr>
-                            <td> <?php echo($row['id']); ?> </td>
-                            <td> <?php echo($row['name']); ?> </td>
-                            <td> <?php echo($row['phone']); ?> </td>
-                            <td> <?php echo($row['email']); ?> </td>
-                            <td> <?php echo($row['address']); ?> </td>
-                            <td> <?php echo($row['nationality']); ?> </td>
-
+                                <td> <?php echo($row['id']); ?> </td>
+                                  <td> <?php echo($row['name']); ?> </td>
+                                  <td> <?php echo($row['phone']); ?> </td>
+                                  <td> <?php echo($row['email']); ?> </td>
+                                  <td> <?php echo($row['address']); ?> </td>
+                                  <td> <?php echo($row['nationality']); ?> </td>
+  
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                     href="edit.php?id=<?php echo($row['id']); ?>">
@@ -186,3 +178,5 @@
 
 
 <?php include('../../template/footer.php'); ?>
+
+

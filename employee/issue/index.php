@@ -7,7 +7,7 @@
   include_once('../../includes/student.php');
   checkEmployeeSession();
 
-  $pageTitle = "Issues";
+  $pageTitle = lang("Issues");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -22,22 +22,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            Issue List
+                            <?php echo lang("Issue List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
-                            <i class="me-1" data-feather="user"></i>
-                            Manage Users
-                        </a>
-                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#createIssueModal">
-                            <i class="me-1" data-feather="plus"></i>
-                            Create New Issue
-                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            Create New Issue
+                            <?php echo lang("Create New"); ?>
                         </a>
                     </div>
                 </div>
@@ -52,15 +43,15 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Book</th>
-                            <th>Student</th>
-                            <th>Issue Date</th>
-                            <th>Due Date</th>
-                            <th>Return Date</th>
-                            <th>Fine Per Day</th>
-                            <th>Total Fine</th>
-                            <th>Actions</th>
+                            <th><?php echo lang("ID"); ?></th>
+                            <th><?php echo lang("Book"); ?></th>
+                            <th><?php echo lang("Student"); ?></th>
+                            <th><?php echo lang("Issue Date"); ?></th>
+                            <th><?php echo lang("Due Date"); ?></th>
+                            <th><?php echo lang("Return Date"); ?></th>
+                            <th><?php echo lang("Fine Per Day"); ?></th>
+                            <th><?php echo lang("Total Fine"); ?></th>
+                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>

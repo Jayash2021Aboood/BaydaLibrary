@@ -8,7 +8,7 @@
 
 
   
-  $pageTitle = "Add College";
+  $pageTitle = lang("Add College");
   include('../../template/header.php'); 
   $errors = array();
 
@@ -22,8 +22,8 @@
       $name = $_POST['name'];
 
       if( empty($name)){
-        $errors[] = "<li>Name is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Name is requierd.</li>";
+        $errors[] = "<li>" . lang("Name is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Name is requierd") . "</li>";
         }
   
       if(count($errors) == 0)
@@ -33,16 +33,16 @@
                                     );
         if($add ==  true)
         {
-          $_SESSION["message"] = "College Added successfuly!";
-          $_SESSION["success"] = "College Added successfuly!";
+          $_SESSION["message"] = lang("College Added successfuly!");
+          $_SESSION["success"] = lang("College Added successfuly!");
           header('Location:'. $PATH_ADMIN_COLLEGE .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = "Error when Adding Data";
-          $_SESSION["fail"] = "Error when Adding Data";
-          $errors[] = "Error when Adding Data";
+          $_SESSION["message"] = lang("Error when Adding Data");
+          $_SESSION["fail"] = lang("Error when Adding Data");
+          $errors[] = lang("Error when Adding Data");
         }
         
       }
@@ -64,13 +64,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            Add College
+                           <?php echo lang("Add College"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            Back to Colleges List
+                            <?php echo lang("Back to Colleges List"); ?>
                         </a>
                     </div>
                 </div>
@@ -83,21 +83,21 @@
             <div class="col-xl-12">
                 <!-- College details card-->
                 <div class="card mb-4">
-                    <div class="card-header">College Details</div>
+                    <div class="card-header"><?php echo lang("College Details"); ?></div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="name">Name</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Name"
+                                    <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
                                         value="" required  />
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addCollege" class="btn btn-success" type="submit">Save</button>
-                            <a href="index.php" class="btn btn-danger" type="button">Back To List</a>
+                            <button name="addCollege" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

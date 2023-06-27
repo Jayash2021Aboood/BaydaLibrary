@@ -8,7 +8,7 @@
 
 
   
-  $pageTitle = "Add Setting";
+  $pageTitle = lang("Add Setting");
   include('../../template/header.php'); 
   $errors = array();
 
@@ -26,16 +26,16 @@
       $student_max_issue = $_POST['student_max_issue'];
 
       if( empty($return_days)){
-        $errors[] = "<li>Return Days is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Return Days is requierd.</li>";
+        $errors[] = "<li>" . lang("Return Days is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Return Days is requierd") . "</li>";
         }
       if( empty($fine_amount)){
-        $errors[] = "<li>Fine Amount is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Fine Amount is requierd.</li>";
+        $errors[] = "<li>" . lang("Fine Amount is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Fine Amount is requierd") . "</li>";
         }
       if( empty($student_max_issue)){
-        $errors[] = "<li>Student Max Issues is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Student Max Issues is requierd.</li>";
+        $errors[] = "<li>" . lang("Student Max Issues is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Student Max Issues is requierd") . "</li>";
         }
   
       if(count($errors) == 0)
@@ -47,16 +47,16 @@
                                     );
         if($add ==  true)
         {
-          $_SESSION["message"] = "Setting Added successfuly!";
-          $_SESSION["success"] = "Setting Added successfuly!";
+          $_SESSION["message"] = lang("Setting Added successfuly!");
+          $_SESSION["success"] = lang("Setting Added successfuly!");
           header('Location:'. $PATH_ADMIN_SETTING .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = "Error when Adding Data";
-          $_SESSION["fail"] = "Error when Adding Data";
-          $errors[] = "Error when Adding Data";
+          $_SESSION["message"] = lang("Error when Adding Data");
+          $_SESSION["fail"] = lang("Error when Adding Data");
+          $errors[] = lang("Error when Adding Data");
         }
         
       }
@@ -78,13 +78,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            Add Setting
+                           <?php echo lang("Add Setting"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            Back to Settings List
+                            <?php echo lang("Back to Settings List"); ?>
                         </a>
                     </div>
                 </div>
@@ -97,33 +97,33 @@
             <div class="col-xl-12">
                 <!-- Setting details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Setting Details</div>
+                    <div class="card-header"><?php echo lang("Setting Details"); ?></div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (return_days)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="return_days">Return Days</label>
-                                    <input class="form-control" id="return_days" name="return_days" type="text" placeholder="Return Days"
+                                    <label class="small mb-1" for="return_days"><?php echo lang("Return Days"); ?></label>
+                                    <input class="form-control" id="return_days" name="return_days" type="text" placeholder="<?php echo lang("Return Days"); ?>"
                                         value="" required  />
                                 </div>
                                 <!-- Form Group (fine_amount)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="fine_amount">Fine Amount</label>
-                                    <input class="form-control" id="fine_amount" name="fine_amount" type="text" placeholder="Fine Amount"
+                                    <label class="small mb-1" for="fine_amount"><?php echo lang("Fine Amount"); ?></label>
+                                    <input class="form-control" id="fine_amount" name="fine_amount" type="text" placeholder="<?php echo lang("Fine Amount"); ?>"
                                         value="" required  />
                                 </div>
                                 <!-- Form Group (student_max_issue)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="student_max_issue">Student Max Issues</label>
-                                    <input class="form-control" id="student_max_issue" name="student_max_issue" type="text" placeholder="Student Max Issues"
+                                    <label class="small mb-1" for="student_max_issue"><?php echo lang("Student Max Issues"); ?></label>
+                                    <input class="form-control" id="student_max_issue" name="student_max_issue" type="text" placeholder="<?php echo lang("Student Max Issues"); ?>"
                                         value="" required  />
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addSetting" class="btn btn-success" type="submit">Save</button>
-                            <a href="index.php" class="btn btn-danger" type="button">Back To List</a>
+                            <button name="addSetting" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

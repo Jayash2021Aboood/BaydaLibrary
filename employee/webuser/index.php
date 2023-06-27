@@ -2,10 +2,10 @@
 <?php
   session_start();
   include('../../includes/lib.php');
-  include_once('../../includes/level.php');
+  include_once('../../includes/webuser.php');
   checkEmployeeSession();
 
-  $pageTitle = lang("Levels");
+  $pageTitle = lang("WebUsers");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -20,7 +20,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            <?php echo lang("Level List"); ?>
+                            <?php echo lang("WebUser List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
@@ -34,7 +34,7 @@
         </div>
     </header>
     <!-- Main page content-->
-    <?php $all = getAllLevels(); ?>
+    <?php $all = getAllWebUsers(); ?>
     <div class="container-fluid px-4">
         <div class="card">
             <div class="card-body">
@@ -42,14 +42,16 @@
                     <thead>
                         <tr>
                             <th><?php echo lang("ID"); ?></th>
-                            <th><?php echo lang("Name"); ?></th>
+                            <th><?php echo lang("Email"); ?></th>
+                            <th><?php echo lang("User Type "); ?></th>
                             <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>User Type </th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot> -->
@@ -65,7 +67,7 @@
                                             <td>
                                                 <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                     type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#editLevelModal"><i
+                                                    data-bs-target="#editWebUserModal"><i
                                                         data-feather="edit"></i></button>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i
                                                         data-feather="trash-2"></i></a>
@@ -79,7 +81,8 @@
 
                         <tr>
                                 <td> <?php echo($row['id']); ?> </td>
-                                  <td> <?php echo($row['name']); ?> </td>
+                                  <td> <?php echo($row['email']); ?> </td>
+                                  <td> <?php echo($row['usertype']); ?> </td>
   
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
@@ -104,22 +107,22 @@
             </div>
         </div>
     </div>
-    <!-- Create Level modal-->
-    <div class="modal fade" id="createLevelModal" tabindex="-1" role="dialog" aria-labelledby="createLevelModalLabel"
+    <!-- Create WebUser modal-->
+    <div class="modal fade" id="createWebUserModal" tabindex="-1" role="dialog" aria-labelledby="createWebUserModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createLevelModalLabel">Create New Level</h5>
+                    <h5 class="modal-title" id="createWebUserModalLabel">Create New WebUser</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-0">
-                            <label class="mb-1 small text-muted" for="formLevelName">Level
+                            <label class="mb-1 small text-muted" for="formWebUserName">WebUser
                                 Name</label>
-                            <input class="form-control" id="formLevelName" type="text"
-                                placeholder="Enter Level name..." />
+                            <input class="form-control" id="formWebUserName" type="text"
+                                placeholder="Enter WebUser name..." />
                         </div>
                     </form>
                 </div>
@@ -127,27 +130,27 @@
                     <button class="btn btn-danger-soft text-danger" type="button"
                         data-bs-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary-soft text-primary" type="button">Create New
-                        Level</button>
+                        WebUser</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Edit Level modal-->
-    <div class="modal fade" id="editLevelModal" tabindex="-1" role="dialog" aria-labelledby="editLevelModalLabel"
+    <!-- Edit WebUser modal-->
+    <div class="modal fade" id="editWebUserModal" tabindex="-1" role="dialog" aria-labelledby="editWebUserModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editLevelModalLabel">Edit Level</h5>
+                    <h5 class="modal-title" id="editWebUserModalLabel">Edit WebUser</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-0">
-                            <label class="mb-1 small text-muted" for="formLevelName">Level
+                            <label class="mb-1 small text-muted" for="formWebUserName">WebUser
                                 Name</label>
-                            <input class="form-control" id="formLevelName" type="text"
-                                placeholder="Enter Level name..." value="Sales" />
+                            <input class="form-control" id="formWebUserName" type="text"
+                                placeholder="Enter WebUser name..." value="Sales" />
                         </div>
                     </form>
                 </div>

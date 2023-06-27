@@ -1,3 +1,4 @@
+
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -8,7 +9,7 @@
   include_once('../../includes/language.php');
   checkEmployeeSession();
 
-  $pageTitle = "Books";
+  $pageTitle = lang("Books");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -23,22 +24,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            Book List
+                            <?php echo lang("Book List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="user-management-list.html">
-                            <i class="me-1" data-feather="user"></i>
-                            Manage Users
-                        </a>
-                        <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#createBookModal">
-                            <i class="me-1" data-feather="plus"></i>
-                            Create New Book
-                        </button>
                         <a class="btn btn-sm btn-light text-primary" href="create.php">
                             <i class="me-1" data-feather="plus"></i>
-                            Create New Book
+                            <?php echo lang("Create New"); ?>
                         </a>
                     </div>
                 </div>
@@ -53,18 +45,18 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Number Copies</th>
-                            <th>Publish Date</th>
-                            <th>Detail</th>
-                            <th>Book Image</th>
-                            <th>Book File</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
-                            <th>Section</th>
-                            <th>Language</th>
-                            <th>Actions</th>
+                            <th><?php echo lang("ID"); ?></th>
+                            <th><?php echo lang("Name"); ?></th>
+                            <th><?php echo lang("Number Copies"); ?></th>
+                            <th><?php echo lang("Publish Date"); ?></th>
+                            <th><?php echo lang("Detail"); ?></th>
+                            <th><?php echo lang("Book Image"); ?></th>
+                            <th><?php echo lang("Book File"); ?></th>
+                            <th><?php echo lang("Author"); ?></th>
+                            <th><?php echo lang("Publisher"); ?></th>
+                            <th><?php echo lang("Section"); ?></th>
+                            <th><?php echo lang("Language"); ?></th>
+                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
@@ -108,35 +100,35 @@
                                         ?>
 
                         <tr>
-                            <td> <?php echo($row['id']); ?> </td>
-                            <td> <?php echo($row['name']); ?> </td>
-                            <td> <?php echo($row['number_copies']); ?> </td>
-                            <td> <?php echo($row['publish_date']); ?> </td>
-                            <td> <?php echo($row['detail']); ?> </td>
-                            <td> <?php if(!empty($row['book_image'])){ ?> <a
-                                    href="<?php echo($PATH_PHOTOES  . $row['book_image']); ?>" target="_blank">View</a>
-                                <?php }?>
+                                <td> <?php echo($row['id']); ?> </td>
+                                  <td> <?php echo($row['name']); ?> </td>
+                                  <td> <?php echo($row['number_copies']); ?> </td>
+                                  <td> <?php echo($row['publish_date']); ?> </td>
+                                  <td> <?php echo($row['detail']); ?> </td>
+                                  <td> <?php if(!empty($row['book_image'])){ ?> <a href="<?php echo($PATH_PHOTOES  . $row['book_image']); ?>"
+                                    target="_blank">View</a>
+                                 <?php }?>
                             </td>
-                            <td> <?php if(!empty($row['book_file'])){ ?> <a
-                                    href="<?php echo($PATH_PHOTOES  . $row['book_file']); ?>" target="_blank">View</a>
-                                <?php }?>
+                                <td> <?php if(!empty($row['book_file'])){ ?> <a href="<?php echo($PATH_PHOTOES  . $row['book_file']); ?>"
+                                    target="_blank">View</a>
+                                 <?php }?>
                             </td>
-                            <td> <?php
+                                <td> <?php
                                     $Author = getAuthorById($row['author_id']) [0];
                                     echo$Author['name']; 
                                     ?>
                             </td>
-                            <td> <?php
+                                <td> <?php
                                     $Publisher = getPublisherById($row['publisher_id']) [0];
                                     echo$Publisher['name']; 
                                     ?>
                             </td>
-                            <td> <?php
+                                <td> <?php
                                     $Section = getSectionById($row['section_id']) [0];
                                     echo$Section['name']; 
                                     ?>
                             </td>
-                            <td> <?php
+                                <td> <?php
                                     $Language = getLanguageById($row['language_id']) [0];
                                     echo$Language['name']; 
                                     ?>
@@ -207,8 +199,8 @@
                         <div class="mb-0">
                             <label class="mb-1 small text-muted" for="formBookName">Book
                                 Name</label>
-                            <input class="form-control" id="formBookName" type="text" placeholder="Enter Book name..."
-                                value="Sales" />
+                            <input class="form-control" id="formBookName" type="text"
+                                placeholder="Enter Book name..." value="Sales" />
                         </div>
                     </form>
                 </div>
@@ -227,3 +219,5 @@
 
 
 <?php include('../../template/footer.php'); ?>
+
+

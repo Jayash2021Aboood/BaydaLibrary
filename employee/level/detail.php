@@ -6,7 +6,7 @@
 
   checkEmployeeSession();
 
-  $pageTitle = "Detail Level";
+  $pageTitle = lang("Level Details");
   $row = new Level(null);
   include('../../template/header.php');
 
@@ -24,15 +24,15 @@
 
       if($row == null)
       {
-          $_SESSION["message"] = 'There is No data for this id';
-          $_SESSION["fail"] = 'There is No data for this id';
+          $_SESSION["message"] = lang('There is No data for this id');
+          $_SESSION["fail"] = lang('There is No data for this id');
       }
 
     }
     else
     {
-      $_SESSION["message"] = 'No data for display';
-      $_SESSION["fail"] = 'No data for display';
+      $_SESSION["message"] = lang('No data for display');
+      $_SESSION["fail"] = lang('No data for display');
     }
 
   }
@@ -48,29 +48,29 @@
         if($delete ==  true)
         {
   
-          $_SESSION["message"] = "Level Detaild successfuly!";          
-          $_SESSION["success"] = "Level Detaild successfuly!";          
+          $_SESSION["message"] = lang("Level Deleted successfuly!");          
+          $_SESSION["success"] = lang("Level Deleted successfuly!");          
           header('Location:'. $PATH_ADMIN_LEVEL .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = "Error when Detail Data";
-          $_SESSION["fail"] = "Error when Detail Data";
+          $_SESSION["message"] = lang("Error when Delete Data");
+          $_SESSION["fail"] = lang("Error when Delete Data");
 
-          $errors[] = "Error when Detail Data";
+          $errors[] = lang("Error when Delete Data");
         }
       }
       else
       {
-        $_SESSION["message"] = 'No data for Detail';
-        $_SESSION["fail"] = 'No data for Detail';
+        $_SESSION["message"] = lang('No data for Delete');
+        $_SESSION["fail"] = lang('No data for Delete');
       }
     }
     else
     {
-      $_SESSION["message"] = 'No data for Detail';
-      $_SESSION["fail"] = 'No data for Detail';
+      $_SESSION["message"] = lang('No data for Delete');
+      $_SESSION["fail"] = lang('No data for Delete');
     }
 
   }
@@ -88,13 +88,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            Detail Level
+                            <?php echo lang("Level Details"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            Back to Levels List
+                            <?php echo lang("Back to Levels List"); ?>
                         </a>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
             <div class="col-xl-12">
                 <!-- Level details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Level Details </div>
+                    <div class="card-header"><?php echo lang("Level Details"); ?></div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
@@ -115,15 +115,15 @@
                                 <input type="hidden" name="id" id="id" value="<?php echo $row['id'];?>" readonly />
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="name">Name</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Name"
+                                    <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
                                         value="<?php echo $row['name'];?>" readonly />
                                 </div>
  
                             </div>
                             <!-- Submit button-->
-                            <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-success" type="button">Edit</a>
-                            <a href="index.php" class="btn btn-primary" type="button">Back To List</a>
+                            <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-success" type="button"><?php echo lang("Edit"); ?></a>
+                            <a href="index.php" class="btn btn-primary" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

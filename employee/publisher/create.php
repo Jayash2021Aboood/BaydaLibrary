@@ -8,7 +8,7 @@
 
 
   
-  $pageTitle = "Add Publisher";
+  $pageTitle = lang("Add Publisher");
   include('../../template/header.php'); 
   $errors = array();
 
@@ -28,8 +28,8 @@
       $address = $_POST['address'];
 
       if( empty($name)){
-        $errors[] = "<li>Name is requierd.</li>";
-        $_SESSION["fail"] .= "<li>Name is requierd.</li>";
+        $errors[] = "<li>" . lang("Name is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Name is requierd") . "</li>";
         }
   
       if(count($errors) == 0)
@@ -42,16 +42,16 @@
                                     );
         if($add ==  true)
         {
-          $_SESSION["message"] = "Publisher Added successfuly!";
-          $_SESSION["success"] = "Publisher Added successfuly!";
+          $_SESSION["message"] = lang("Publisher Added successfuly!");
+          $_SESSION["success"] = lang("Publisher Added successfuly!");
           header('Location:'. $PATH_ADMIN_PUBLISHER .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = "Error when Adding Data";
-          $_SESSION["fail"] = "Error when Adding Data";
-          $errors[] = "Error when Adding Data";
+          $_SESSION["message"] = lang("Error when Adding Data");
+          $_SESSION["fail"] = lang("Error when Adding Data");
+          $errors[] = lang("Error when Adding Data");
         }
         
       }
@@ -73,13 +73,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            Add Publisher
+                           <?php echo lang("Add Publisher"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            Back to Publishers List
+                            <?php echo lang("Back to Publishers List"); ?>
                         </a>
                     </div>
                 </div>
@@ -92,39 +92,39 @@
             <div class="col-xl-12">
                 <!-- Publisher details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Publisher Details</div>
+                    <div class="card-header"><?php echo lang("Publisher Details"); ?></div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="name">Name</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Name"
+                                    <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
                                         value="" required  />
                                 </div>
                                 <!-- Form Group (phone)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="phone">Phone</label>
-                                    <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone"
+                                    <label class="small mb-1" for="phone"><?php echo lang("Phone"); ?></label>
+                                    <input class="form-control" id="phone" name="phone" type="tel" placeholder="<?php echo lang("Phone"); ?>"
                                         value=""   />
                                 </div>
                                 <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="email">Email</label>
-                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email"
+                                    <label class="small mb-1" for="email"><?php echo lang("Email"); ?></label>
+                                    <input class="form-control" id="email" name="email" type="email" placeholder="<?php echo lang("Email"); ?>"
                                         value=""   />
                                 </div>
                                 <!-- Form Group (address)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="address">Address</label>
-                                    <input class="form-control" id="address" name="address" type="text" placeholder="Address"
+                                    <label class="small mb-1" for="address"><?php echo lang("Address"); ?></label>
+                                    <input class="form-control" id="address" name="address" type="text" placeholder="<?php echo lang("Address"); ?>"
                                         value=""   />
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addPublisher" class="btn btn-success" type="submit">Save</button>
-                            <a href="index.php" class="btn btn-danger" type="button">Back To List</a>
+                            <button name="addPublisher" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

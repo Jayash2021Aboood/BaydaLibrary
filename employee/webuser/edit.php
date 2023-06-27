@@ -2,12 +2,12 @@
   session_start();
 
   include('../../includes/lib.php');
-  include_once('../../includes/setting.php');
+  include_once('../../includes/webuser.php');
   checkEmployeeSession();
 
-  $pageTitle = lang("Edit Setting");
-  //$row = new Setting(null);
-   $id =  $return_days =  $fine_amount =  $student_max_issue = "";
+  $pageTitle = lang("Edit WebUser");
+  //$row = new WebUser(null);
+   $id =  $email =  $usertype = "";
   //$id = $name = $manager = $managerPhone = $agent = $agentPhone = $kindergarten = $earlyChildhood = $elementary = $intermediate = $secondary = $active = "";
   include('../../template/header.php'); 
   $errors = array();
@@ -19,15 +19,14 @@
     {
       $_SESSION["message"] = '';
       $id = $_GET['id'];
-      $result = getSettingById($id);
+      $result = getWebUserById($id);
 
       if( count( $result ) > 0)
       {
         $row = $result[0];
         $id = $row['id'];
-        $return_days = $row['return_days'];
-        $fine_amount = $row['fine_amount'];
-        $student_max_issue = $row['student_max_issue'];
+        $email = $row['email'];
+        $usertype = $row['usertype'];
       }
       else
       {
@@ -46,39 +45,34 @@
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') 
   {
-    if(isset($_POST['updateSetting']))
+    if(isset($_POST['updateWebUser']))
     {
         $id = $_POST['id'];
-        $return_days = $_POST['return_days'];
-        $fine_amount = $_POST['fine_amount'];
-        $student_max_issue = $_POST['student_max_issue'];
-      if( empty($return_days)){
-        $errors[] = "<li>" . lang("Return Days is requierd") . "</li>";
-        $_SESSION["fail"] .= "<li>" . lang("Return Days is requierd") . "</li>";
+        $email = $_POST['email'];
+        $usertype = $_POST['usertype'];
+      if( empty($email)){
+        $errors[] = "<li>" . lang("Email is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("Email is requierd") . "</li>";
         }
-      if( empty($fine_amount)){
-        $errors[] = "<li>" . lang("Fine Amount is requierd") . "</li>";
-        $_SESSION["fail"] .= "<li>" . lang("Fine Amount is requierd") . "</li>";
-        }
-      if( empty($student_max_issue)){
-        $errors[] = "<li>" . lang("Student Max Issues is requierd") . "</li>";
-        $_SESSION["fail"] .= "<li>" . lang("Student Max Issues is requierd") . "</li>";
+      if( empty($usertype)){
+        $errors[] = "<li>" . lang("User Type  is requierd") . "</li>";
+        $_SESSION["fail"] .= "<li>" . lang("User Type  is requierd") . "</li>";
         }
       
       if(count($errors) == 0)
       {
 
-        $result = getSettingById($id);
+        $result = getWebUserById($id);
         if( count( $result ) > 0)
           $row = $result[0];
         
-        $update = updateSetting( $id,  $return_days,  $fine_amount,  $student_max_issue, );
+        $update = updateWebUser( $id,  $email,  $usertype, );
         if($update ==  true)
         {
   
-          $_SESSION["message"] = lang("Setting Updated successfuly!");
-          $_SESSION["success"] = lang("Setting Updated successfuly!");
-          header('Location:'. $PATH_ADMIN_SETTING .'index.php');
+          $_SESSION["message"] = lang("WebUser Updated successfuly!");
+          $_SESSION["success"] = lang("WebUser Updated successfuly!");
+          header('Location:'. $PATH_ADMIN_WEBUSER .'index.php');
           exit();
         }
         else
@@ -108,13 +102,13 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            <?php echo lang("Edit Setting"); ?>
+                            <?php echo lang("Edit WebUser"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <a class="btn btn-sm btn-light text-primary" href="index.php">
                             <i class="me-1" data-feather="arrow-left"></i>
-                            <?php echo lang("Back to Settings List"); ?>
+                            <?php echo lang("Back to WebUsers List"); ?>
                         </a>
                     </div>
                 </div>
@@ -125,36 +119,30 @@
     <div class="container-xl px-4 mt-4">
         <div class="row">
             <div class="col-xl-12">
-                <!-- Setting details card-->
+                <!-- WebUser details card-->
                 <div class="card mb-4">
-                    <div class="card-header"><?php echo lang("Setting Details"); ?></div>
+                    <div class="card-header"><?php echo lang("WebUser Details"); ?></div>
                     <div class="card-body">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <input type="hidden" name="id" id="id" value="<?php echo $id;?>" />
-                                <!-- Form Group (return_days)-->
+                                <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="return_days"><?php echo lang("Return Days"); ?></label>
-                                    <input class="form-control" id="return_days" name="return_days" type="text" placeholder="<?php echo lang("Return Days"); ?>"
-                                        value="<?php echo $return_days;?>" required />
+                                    <label class="small mb-1" for="email"><?php echo lang("Email"); ?></label>
+                                    <input class="form-control" id="email" name="email" type="email" placeholder="<?php echo lang("Email"); ?>"
+                                        value="<?php echo $email;?>" required />
                                 </div>
-                                <!-- Form Group (fine_amount)-->
+                                <!-- Form Group (usertype)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="fine_amount"><?php echo lang("Fine Amount"); ?></label>
-                                    <input class="form-control" id="fine_amount" name="fine_amount" type="text" placeholder="<?php echo lang("Fine Amount"); ?>"
-                                        value="<?php echo $fine_amount;?>" required />
-                                </div>
-                                <!-- Form Group (student_max_issue)-->
-                                <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="student_max_issue"><?php echo lang("Student Max Issues"); ?></label>
-                                    <input class="form-control" id="student_max_issue" name="student_max_issue" type="text" placeholder="<?php echo lang("Student Max Issues"); ?>"
-                                        value="<?php echo $student_max_issue;?>" required />
+                                    <label class="small mb-1" for="usertype"><?php echo lang("User Type "); ?></label>
+                                    <input class="form-control" id="usertype" name="usertype" type="text" placeholder="<?php echo lang("User Type "); ?>"
+                                        value="<?php echo $usertype;?>" required />
                                 </div>
  
                             </div>
                             <!-- Submit button-->
-                            <button name="updateSetting" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
+                            <button name="updateWebUser" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
                             <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>

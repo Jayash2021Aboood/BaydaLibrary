@@ -2,10 +2,10 @@
 <?php
   session_start();
   include('../../includes/lib.php');
-  include_once('../../includes/level.php');
+  include_once('../../includes/admin.php');
   checkEmployeeSession();
 
-  $pageTitle = lang("Levels");
+  $pageTitle = lang("Admins");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -20,7 +20,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="users"></i></div>
-                            <?php echo lang("Level List"); ?>
+                            <?php echo lang("Admin List"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
@@ -34,7 +34,7 @@
         </div>
     </header>
     <!-- Main page content-->
-    <?php $all = getAllLevels(); ?>
+    <?php $all = getAllAdmins(); ?>
     <div class="container-fluid px-4">
         <div class="card">
             <div class="card-body">
@@ -42,14 +42,16 @@
                     <thead>
                         <tr>
                             <th><?php echo lang("ID"); ?></th>
-                            <th><?php echo lang("Name"); ?></th>
+                            <th><?php echo lang("Email"); ?></th>
+                            <th><?php echo lang("Password"); ?></th>
                             <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot> -->
@@ -65,7 +67,7 @@
                                             <td>
                                                 <button class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                     type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#editLevelModal"><i
+                                                    data-bs-target="#editAdminModal"><i
                                                         data-feather="edit"></i></button>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i
                                                         data-feather="trash-2"></i></a>
@@ -79,7 +81,8 @@
 
                         <tr>
                                 <td> <?php echo($row['id']); ?> </td>
-                                  <td> <?php echo($row['name']); ?> </td>
+                                  <td> <?php echo($row['email']); ?> </td>
+                                  <td> <?php echo($row['password']); ?> </td>
   
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
@@ -104,22 +107,22 @@
             </div>
         </div>
     </div>
-    <!-- Create Level modal-->
-    <div class="modal fade" id="createLevelModal" tabindex="-1" role="dialog" aria-labelledby="createLevelModalLabel"
+    <!-- Create Admin modal-->
+    <div class="modal fade" id="createAdminModal" tabindex="-1" role="dialog" aria-labelledby="createAdminModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createLevelModalLabel">Create New Level</h5>
+                    <h5 class="modal-title" id="createAdminModalLabel">Create New Admin</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-0">
-                            <label class="mb-1 small text-muted" for="formLevelName">Level
+                            <label class="mb-1 small text-muted" for="formAdminName">Admin
                                 Name</label>
-                            <input class="form-control" id="formLevelName" type="text"
-                                placeholder="Enter Level name..." />
+                            <input class="form-control" id="formAdminName" type="text"
+                                placeholder="Enter Admin name..." />
                         </div>
                     </form>
                 </div>
@@ -127,27 +130,27 @@
                     <button class="btn btn-danger-soft text-danger" type="button"
                         data-bs-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary-soft text-primary" type="button">Create New
-                        Level</button>
+                        Admin</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Edit Level modal-->
-    <div class="modal fade" id="editLevelModal" tabindex="-1" role="dialog" aria-labelledby="editLevelModalLabel"
+    <!-- Edit Admin modal-->
+    <div class="modal fade" id="editAdminModal" tabindex="-1" role="dialog" aria-labelledby="editAdminModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editLevelModalLabel">Edit Level</h5>
+                    <h5 class="modal-title" id="editAdminModalLabel">Edit Admin</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-0">
-                            <label class="mb-1 small text-muted" for="formLevelName">Level
+                            <label class="mb-1 small text-muted" for="formAdminName">Admin
                                 Name</label>
-                            <input class="form-control" id="formLevelName" type="text"
-                                placeholder="Enter Level name..." value="Sales" />
+                            <input class="form-control" id="formAdminName" type="text"
+                                placeholder="Enter Admin name..." value="Sales" />
                         </div>
                     </form>
                 </div>

@@ -43,7 +43,7 @@
         {
           $_SESSION["message"] = lang("Department Added successfuly!");
           $_SESSION["success"] = lang("Department Added successfuly!");
-          header('Location:'. $PATH_ADMIN_DEPARTMENT .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_DEPARTMENT .'index.php');
           exit();
         }
         else

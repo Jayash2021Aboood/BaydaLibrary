@@ -42,7 +42,7 @@
         {
           $_SESSION["message"] = lang("WebUser Added successfuly!");
           $_SESSION["success"] = lang("WebUser Added successfuly!");
-          header('Location:'. $PATH_ADMIN_WEBUSER .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_WEBUSER .'index.php');
           exit();
         }
         else

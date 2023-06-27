@@ -47,7 +47,7 @@
         {
           $_SESSION["message"] = lang("Author Added successfuly!");
           $_SESSION["success"] = lang("Author Added successfuly!");
-          header('Location:'. $PATH_ADMIN_AUTHOR .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_AUTHOR .'index.php');
           exit();
         }
         else

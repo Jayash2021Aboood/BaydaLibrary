@@ -66,7 +66,7 @@
   
           $_SESSION["message"] = lang("Library Updated successfuly!");
           $_SESSION["success"] = lang("Library Updated successfuly!");
-          header('Location:'. $PATH_ADMIN_LIBRARY .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_LIBRARY .'index.php');
           exit();
         }
         else

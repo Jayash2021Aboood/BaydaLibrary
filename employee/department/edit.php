@@ -73,7 +73,7 @@
   
           $_SESSION["message"] = lang("Department Updated successfuly!");
           $_SESSION["success"] = lang("Department Updated successfuly!");
-          header('Location:'. $PATH_ADMIN_DEPARTMENT .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_DEPARTMENT .'index.php');
           exit();
         }
         else

@@ -52,7 +52,7 @@
   
           $_SESSION["message"] = lang("Issue Deleted successfuly!");          
           $_SESSION["success"] = lang("Issue Deleted successfuly!");          
-          header('Location:'. $PATH_ADMIN_ISSUE .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_ISSUE .'index.php');
           exit();
         }
         else

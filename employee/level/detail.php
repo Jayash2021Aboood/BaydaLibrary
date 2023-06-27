@@ -50,7 +50,7 @@
   
           $_SESSION["message"] = lang("Level Deleted successfuly!");          
           $_SESSION["success"] = lang("Level Deleted successfuly!");          
-          header('Location:'. $PATH_ADMIN_LEVEL .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_LEVEL .'index.php');
           exit();
         }
         else

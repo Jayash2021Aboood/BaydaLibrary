@@ -51,7 +51,7 @@
   
           $_SESSION["message"] = lang("WebUser Deleted successfuly!");          
           $_SESSION["success"] = lang("WebUser Deleted successfuly!");          
-          header('Location:'. $PATH_ADMIN_WEBUSER .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_WEBUSER .'index.php');
           exit();
         }
         else

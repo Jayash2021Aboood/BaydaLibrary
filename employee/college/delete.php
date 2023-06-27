@@ -51,7 +51,7 @@
   
           $_SESSION["message"] = lang("College Deleted successfuly!");          
           $_SESSION["success"] = lang("College Deleted successfuly!");          
-          header('Location:'. $PATH_ADMIN_COLLEGE .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_COLLEGE .'index.php');
           exit();
         }
         else

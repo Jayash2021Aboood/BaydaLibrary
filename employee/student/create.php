@@ -74,7 +74,7 @@
         {
           $_SESSION["message"] = lang("Student Added successfuly!");
           $_SESSION["success"] = lang("Student Added successfuly!");
-          header('Location:'. $PATH_ADMIN_STUDENT .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_STUDENT .'index.php');
           exit();
         }
         else

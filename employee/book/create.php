@@ -90,7 +90,7 @@
         {
           $_SESSION["message"] = lang("Book Added successfuly!");
           $_SESSION["success"] = lang("Book Added successfuly!");
-          header('Location:'. $PATH_ADMIN_BOOK .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_BOOK .'index.php');
           exit();
         }
         else

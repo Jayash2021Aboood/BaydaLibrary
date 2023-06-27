@@ -100,7 +100,7 @@
   
           $_SESSION["message"] = lang("Issue Updated successfuly!");
           $_SESSION["success"] = lang("Issue Updated successfuly!");
-          header('Location:'. $PATH_ADMIN_ISSUE .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_ISSUE .'index.php');
           exit();
         }
         else

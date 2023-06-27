@@ -114,7 +114,7 @@
   
           $_SESSION["message"] = lang("Book Updated successfuly!");
           $_SESSION["success"] = lang("Book Updated successfuly!");
-          header('Location:'. $PATH_ADMIN_BOOK .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_BOOK .'index.php');
           exit();
         }
         else

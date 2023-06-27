@@ -42,7 +42,7 @@
         {
           $_SESSION["message"] = lang("Admin Added successfuly!");
           $_SESSION["success"] = lang("Admin Added successfuly!");
-          header('Location:'. $PATH_ADMIN_ADMIN .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_ADMIN .'index.php');
           exit();
         }
         else

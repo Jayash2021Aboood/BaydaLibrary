@@ -51,7 +51,7 @@
   
           $_SESSION["message"] = lang("Book Deleted successfuly!");          
           $_SESSION["success"] = lang("Book Deleted successfuly!");          
-          header('Location:'. $PATH_ADMIN_BOOK .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_BOOK .'index.php');
           exit();
         }
         else

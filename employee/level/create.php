@@ -35,7 +35,7 @@
         {
           $_SESSION["message"] = lang("Level Added successfuly!");
           $_SESSION["success"] = lang("Level Added successfuly!");
-          header('Location:'. $PATH_ADMIN_LEVEL .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_LEVEL .'index.php');
           exit();
         }
         else

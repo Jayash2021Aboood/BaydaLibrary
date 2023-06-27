@@ -72,7 +72,7 @@
   
           $_SESSION["message"] = lang("WebUser Updated successfuly!");
           $_SESSION["success"] = lang("WebUser Updated successfuly!");
-          header('Location:'. $PATH_ADMIN_WEBUSER .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_WEBUSER .'index.php');
           exit();
         }
         else

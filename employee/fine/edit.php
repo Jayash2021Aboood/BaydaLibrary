@@ -86,7 +86,7 @@
   
           $_SESSION["message"] = lang("Fine Updated successfuly!");
           $_SESSION["success"] = lang("Fine Updated successfuly!");
-          header('Location:'. $PATH_ADMIN_FINE .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_FINE .'index.php');
           exit();
         }
         else

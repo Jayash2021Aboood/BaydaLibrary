@@ -51,7 +51,7 @@
   
           $_SESSION["message"] = lang("Author Deleted successfuly!");          
           $_SESSION["success"] = lang("Author Deleted successfuly!");          
-          header('Location:'. $PATH_ADMIN_AUTHOR .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_AUTHOR .'index.php');
           exit();
         }
         else

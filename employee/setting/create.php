@@ -49,7 +49,7 @@
         {
           $_SESSION["message"] = lang("Setting Added successfuly!");
           $_SESSION["success"] = lang("Setting Added successfuly!");
-          header('Location:'. $PATH_ADMIN_SETTING .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_SETTING .'index.php');
           exit();
         }
         else

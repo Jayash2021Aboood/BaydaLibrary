@@ -46,7 +46,7 @@
         {
           $_SESSION["message"] = lang("Section Added successfuly!");
           $_SESSION["success"] = lang("Section Added successfuly!");
-          header('Location:'. $PATH_ADMIN_SECTION .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_SECTION .'index.php');
           exit();
         }
         else

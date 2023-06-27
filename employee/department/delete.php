@@ -51,7 +51,7 @@
   
           $_SESSION["message"] = lang("Department Deleted successfuly!");          
           $_SESSION["success"] = lang("Department Deleted successfuly!");          
-          header('Location:'. $PATH_ADMIN_DEPARTMENT .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_DEPARTMENT .'index.php');
           exit();
         }
         else

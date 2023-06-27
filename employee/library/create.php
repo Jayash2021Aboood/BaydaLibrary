@@ -35,7 +35,7 @@
         {
           $_SESSION["message"] = lang("Library Added successfuly!");
           $_SESSION["success"] = lang("Library Added successfuly!");
-          header('Location:'. $PATH_ADMIN_LIBRARY .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_LIBRARY .'index.php');
           exit();
         }
         else

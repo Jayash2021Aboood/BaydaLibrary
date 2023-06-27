@@ -44,7 +44,7 @@
         {
           $_SESSION["message"] = lang("Publisher Added successfuly!");
           $_SESSION["success"] = lang("Publisher Added successfuly!");
-          header('Location:'. $PATH_ADMIN_PUBLISHER .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_PUBLISHER .'index.php');
           exit();
         }
         else

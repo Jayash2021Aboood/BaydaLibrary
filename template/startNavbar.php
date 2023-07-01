@@ -219,7 +219,7 @@
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_DEPARTMENT; ?>">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            Department
+                            <?php echo lang("Departments");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_EMPLOYEE; ?>">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
@@ -308,11 +308,15 @@
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_DEPARTMENT; ?>">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            Department
+                            <?php echo lang("Departments");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_EMPLOYEE; ?>">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                             <?php echo lang("Employees");?>
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_FINE; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <?php echo lang("Fines");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_ISSUE; ?>">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>

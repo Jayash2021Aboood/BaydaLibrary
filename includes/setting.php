@@ -61,10 +61,28 @@ function updateSetting( $id, $return_days, $fine_amount, $student_max_issue)
     return query($sql);
 }
 
-function deleteSetting($id)
-{   
-     return query("DELETE FROM setting WHERE id = $id");
+
+function AddOrUpdateSetting($return_days, $fine_amount, $student_max_issue)
+{
+	$setting = GetSetting();
+	if(is_null($setting) || empty($setting) || count($setting) == 0){
+		$sql = 
+			"INSERT INTO setting VALUES(null,
+			$return_days,$fine_amount,$student_max_issue)";
+	}
+	else{
+		$sql = "UPDATE setting 
+			SET return_days = $return_days, 
+			fine_amount = $fine_amount, 
+			student_max_issue = $student_max_issue 
+			WHERE id = " . $setting[0]['id'] . ";";
+	}
+    return query($sql);
 }
+
+function GetSetting() 
+{
+    return select("SELECT * From setting LIMIT 1;");
+}
+
 ?>
-
-

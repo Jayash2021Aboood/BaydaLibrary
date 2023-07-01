@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -92,35 +91,36 @@
                                         ?>
 
                         <tr>
-                                <td> <?php echo($row['id']); ?> </td>
-                                  <td> <?php
+                            <td> <?php echo($row['id']); ?> </td>
+                            <td> <?php
                                     $Book = getBookById($row['book_id']) [0];
                                     echo$Book['name']; 
                                     ?>
                             </td>
-                                <td> <?php
+                            <td> <?php
                                     $Student = getStudentById($row['student_id']) [0];
-                                    echo$Student['name']; 
+                                    echo $Student['name']; 
                                     ?>
                             </td>
-                                <td> <?php echo($row['issue_date']); ?> </td>
-                                  <td> <?php echo($row['due_date']); ?> </td>
-                                  <td> <?php echo($row['return_date']); ?> </td>
-                                  <td> <?php echo($row['fine_per_day']); ?> </td>
-                                  <td> <?php echo($row['total_fine']); ?> </td>
-  
+                            <td> <?php echo($row['issue_date']); ?> </td>
+                            <td> <?php echo($row['due_date']); ?> </td>
+                            <td> <?php echo($row['return_date']); ?> </td>
+                            <td> <?php echo($row['fine_per_day']); ?> </td>
+                            <td> <?php echo($row['total_fine']); ?> </td>
+
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                     href="edit.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="edit"></i>
-                                </a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark"
-                                    href="delete.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="trash-2"></i>
+                                    <i class="text-primary" data-feather="edit"></i>
                                 </a>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="detail.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="eye"></i>
+                                    <i class="text-success" data-feather="eye"></i>
+                                </a>
+                                <a class="btn btn-datatable btn-icon btn-transparent-dark"
+                                    href="return.php?id=<?php echo($row['id']); ?>">
+                                    <i class="text-info" data-feather="refresh-ccw"></i>
+
                                 </a>
                             </td>
                         </tr>
@@ -174,8 +174,8 @@
                         <div class="mb-0">
                             <label class="mb-1 small text-muted" for="formIssueName">Issue
                                 Name</label>
-                            <input class="form-control" id="formIssueName" type="text"
-                                placeholder="Enter Issue name..." value="Sales" />
+                            <input class="form-control" id="formIssueName" type="text" placeholder="Enter Issue name..."
+                                value="Sales" />
                         </div>
                     </form>
                 </div>
@@ -194,5 +194,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-

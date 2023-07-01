@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -86,32 +85,32 @@
                                         ?>
 
                         <tr>
-                                <td> <?php echo($row['id']); ?> </td>
-                                  <td> <?php
+                            <td> <?php echo($row['id']); ?> </td>
+                            <td> <?php
                                     $Issue = getIssueById($row['issue_id']) [0];
                                     echo$Issue['name']; 
                                     ?>
                             </td>
-                                <td> <?php
+                            <td> <?php
                                     $Student = getStudentById($row['student_id']) [0];
                                     echo$Student['name']; 
                                     ?>
                             </td>
-                                <td> <?php echo($row['amount']); ?> </td>
-                                  <td> <?php echo($row['state']); ?> </td>
-  
+                            <td> <?php echo($row['amount']); ?> </td>
+                            <td> <?php echo($row['state']); ?> </td>
+
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                     href="edit.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="edit"></i>
+                                    <i class="text-primary" data-feather="edit"></i>
                                 </a>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="delete.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="trash-2"></i>
+                                    <i class="text-danger" data-feather="trash-2"></i>
                                 </a>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="detail.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="eye"></i>
+                                    <i class="text-success" data-feather="eye"></i>
                                 </a>
                             </td>
                         </tr>
@@ -165,8 +164,8 @@
                         <div class="mb-0">
                             <label class="mb-1 small text-muted" for="formFineName">Fine
                                 Name</label>
-                            <input class="form-control" id="formFineName" type="text"
-                                placeholder="Enter Fine name..." value="Sales" />
+                            <input class="form-control" id="formFineName" type="text" placeholder="Enter Fine name..."
+                                value="Sales" />
                         </div>
                     </form>
                 </div>
@@ -185,5 +184,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-

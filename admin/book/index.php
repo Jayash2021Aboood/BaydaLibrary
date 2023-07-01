@@ -137,15 +137,15 @@
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                     href="edit.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="edit"></i>
+                                    <i class="text-primary" data-feather="edit"></i>
                                 </a>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="delete.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="trash-2"></i>
+                                    <i class="text-danger" data-feather="trash-2"></i>
                                 </a>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="detail.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="eye"></i>
+                                    <i class="text-success" data-feather="eye"></i>
                                 </a>
                             </td>
                         </tr>

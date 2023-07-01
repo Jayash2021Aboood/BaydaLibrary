@@ -72,7 +72,7 @@
                             <td>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="detail.php?id=<?php echo($row['id']); ?>">
-                                    <i data-feather="eye"></i>
+                                    <i class="text-success" data-feather="eye"></i>
                                 </a>
                             </td>
                         </tr>

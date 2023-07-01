@@ -1,46 +1,67 @@
 <?php
   session_start();
+
   include('../../includes/lib.php');
   include_once('../../includes/issue.php');
   include_once('../../includes/book.php');
   include_once('../../includes/student.php');
-  include_once('../../includes/setting.php');
   checkEmployeeSession();
 
-
-  
-  $pageTitle = lang("Add Issue");
+  $pageTitle = lang("Return Issue");
+  //$row = new Issue(null);
+   $id =  $book_id =  $student_id =  $issue_date =  $due_date =  $return_date =  $fine_per_day =  $total_fine = "";
+  //$id = $name = $manager = $managerPhone = $agent = $agentPhone = $kindergarten = $earlyChildhood = $elementary = $intermediate = $secondary = $active = "";
   include('../../template/header.php'); 
   $errors = array();
 
-  $setting = GetSetting();
-  if( count($setting) > 0 ){
-    $setting = $setting[0];
-  }
-  else{
-    redirectToReferer(lang("You shloud to do setting for library fisrt"));
+
+  if ($_SERVER['REQUEST_METHOD'] === 'GET') 
+  {
+    if(isset($_GET['id']))
+    {
+      $_SESSION["message"] = '';
+      $id = $_GET['id'];
+      $result = getIssueById($id);
+
+      if( count( $result ) > 0)
+      {
+        $row = $result[0];
+        $id = $row['id'];
+        $book_id = $row['book_id'];
+        $student_id = $row['student_id'];
+        $issue_date = $row['issue_date'];
+        $due_date = $row['due_date'];
+        $return_date = $row['return_date'];
+        $fine_per_day = $row['fine_per_day'];
+        $total_fine = $row['total_fine'];
+      }
+      else
+      {
+        $_SESSION["message"] = lang('There is No data for this id');
+        $_SESSION["fail"] = lang('There is No data for this id');
+      }
+
+    }
+    else
+    {
+      $_SESSION["message"] = lang('No data for display');
+      $_SESSION["fail"] = lang('No data for display');
+      
+    }
   }
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') 
   {
-    if(isset($_POST['addIssue']))
+    if(isset($_POST['updateIssue']))
     {
-
-
-      $book_id = $_POST['book_id'];
-
-      $student_id = $_POST['student_id'];
-
-      $issue_date = $_POST['issue_date'];
-
-      $due_date = $_POST['due_date'];
-
-      $return_date = $_POST['return_date'];
-
-      $fine_per_day = $_POST['fine_per_day'];
-
-      $total_fine = $_POST['total_fine'];
-
+        $id = $_POST['id'];
+        $book_id = $_POST['book_id'];
+        $student_id = $_POST['student_id'];
+        $issue_date = $_POST['issue_date'];
+        $due_date = $_POST['due_date'];
+        $return_date = $_POST['return_date'];
+        $fine_per_day = $_POST['fine_per_day'];
+        $total_fine = $_POST['total_fine'];
       if( empty($book_id)){
         $errors[] = "<li>" . lang("Book is requierd") . "</li>";
         $_SESSION["fail"] .= "<li>" . lang("Book is requierd") . "</li>";
@@ -65,32 +86,33 @@
         $errors[] = "<li>" . lang("Total Fine is requierd") . "</li>";
         $_SESSION["fail"] .= "<li>" . lang("Total Fine is requierd") . "</li>";
         }
-  
+      
       if(count($errors) == 0)
       {
-        $add = addIssue(
-                                    $book_id,
-                                    $student_id,
-                                    $issue_date,
-                                    $due_date,
-                                    $return_date,
-                                    $fine_per_day,
-                                    $total_fine,
-                                    );
-        if($add ==  true)
+
+        $result = getIssueById($id);
+        if( count( $result ) > 0)
+          $row = $result[0];
+        
+        $update = updateIssue( $id,  $book_id,  $student_id,  $issue_date,  $due_date,  $return_date,  $fine_per_day,  $total_fine, );
+        if($update ==  true)
         {
-          $_SESSION["message"] = lang("Issue Added successfuly!");
-          $_SESSION["success"] = lang("Issue Added successfuly!");
+  
+          $_SESSION["message"] = lang("Issue Updated successfuly!");
+          $_SESSION["success"] = lang("Issue Updated successfuly!");
           header('Location:'. $PATH_EMPLOYEE_ISSUE .'index.php');
           exit();
         }
         else
         {
-          $_SESSION["message"] = lang("Error when Adding Data");
-          $_SESSION["fail"] = lang("Error when Adding Data");
-          $errors[] = lang("Error when Adding Data");
+          $_SESSION["message"] = lang("Error when Update Data");
+          $_SESSION["fail"] = lang("Error when Update Data");
+          $errors[] = lang("Error when Update Data");
         }
         
+      }
+      else
+      {
       }
   
     }
@@ -100,8 +122,6 @@
 <?php include('../../template/startNavbar.php'); ?>
 
 
-
-<!-- Content -->
 <main>
     <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
         <div class="container-xl px-4">
@@ -110,7 +130,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                            <?php echo lang("Add Issue"); ?>
+                            <?php echo lang("Return Issue"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
@@ -134,47 +154,52 @@
                         <form action="issueManager.php" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
+                                <input type="hidden" name="id" id="id" value="<?php echo $id;?>" />
                                 <!-- Form Group (book_id)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="book_id"><?php echo lang("Book"); ?></label>
                                     <select class="form-select" name="book_id" id="book_id" required>
-                                        <option selected disabled value=""><?php echo lang("Select a Book"); ?>:
-                                        </option>
+                                        <option disabled value=""><?php echo lang("Select a Book"); ?>:</option>
                                         <?php foreach(getAllBooks() as $Book) { ?>
-                                        <option value="<?php echo $Book['id']; ?>"> <?php echo $Book['name']; ?>
+                                        <option <?php if($book_id == $Book['id']) echo "selected" ?>
+                                            value="<?php echo $Book['id']; ?>"> <?php echo $Book['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
                                 </div>
-
                                 <!-- Form Group (student_id)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="student_id"><?php echo lang("Student"); ?></label>
                                     <select class="form-select" name="student_id" id="student_id" required>
-                                        <option selected disabled value=""><?php echo lang("Select a Student"); ?>:
-                                        </option>
+                                        <option disabled value=""><?php echo lang("Select a Student"); ?>:</option>
                                         <?php foreach(getAllStudents() as $Student) { ?>
-                                        <option value="<?php echo $Student['id']; ?>"> <?php echo $Student['name']; ?>
+                                        <option <?php if($student_id == $Student['id']) echo "selected" ?>
+                                            value="<?php echo $Student['id']; ?>"> <?php echo $Student['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <!-- Form Group (issue_date)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="issue_date"><?php echo lang("Issue Date"); ?></label>
                                     <input class="form-control" id="issue_date" name="issue_date" type="date"
                                         placeholder="<?php echo lang("Issue Date"); ?>"
-                                        value="<?php echo date('Y-m-d'); ?>" readonly=true />
+                                        value="<?php echo $issue_date;?>" required readonly />
                                 </div>
                                 <!-- Form Group (due_date)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="due_date"><?php echo lang("Due Date"); ?></label>
                                     <input class="form-control" id="due_date" name="due_date" type="date"
-                                        placeholder="<?php echo lang("Due Date"); ?>"
-                                        value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). $setting['return_days']. ' days')); ?>"
-                                        readonly=true />
+                                        placeholder="<?php echo lang("Due Date"); ?>" value="<?php echo $due_date;?>"
+                                        required readonly />
+                                </div>
+                                <!-- Form Group (return_date)-->
+                                <div class="col-md-4 mb-3">
+                                    <label class="small mb-1"
+                                        for="return_date"><?php echo lang("Return Date"); ?></label>
+                                    <input class="form-control" id="return_date" name="return_date" type="date"
+                                        placeholder="<?php echo lang("Return Date"); ?>"
+                                        value="<?php echo $return_date;?>" readonly />
                                 </div>
                                 <!-- Form Group (fine_per_day)-->
                                 <div class="col-md-4 mb-3">
@@ -182,12 +207,21 @@
                                         for="fine_per_day"><?php echo lang("Fine Per Day"); ?></label>
                                     <input class="form-control" id="fine_per_day" name="fine_per_day" type="text"
                                         placeholder="<?php echo lang("Fine Per Day"); ?>"
-                                        value="<?php echo $setting['fine_amount']; ?>" readonly=true />
+                                        value="<?php echo $fine_per_day;?>" required readonly />
                                 </div>
+                                <!-- Form Group (total_fine)-->
+                                <div class="col-md-4 mb-3">
+                                    <label class="small mb-1" for="total_fine"><?php echo lang("Total Fine"); ?></label>
+                                    <input class="form-control" id="total_fine" name="total_fine" type="text"
+                                        placeholder="<?php echo lang("Total Fine"); ?>"
+                                        value="<?php echo $total_fine;?>" required readonly />
+                                </div>
+
                             </div>
                             <!-- Submit button-->
-                            <button name="addIssue" class="btn btn-success"
-                                type="submit"><?php echo lang("Save"); ?></button>
+                            <button name="returnIssue" class="btn btn-info" type="submit"><?php echo lang("Return"); ?>
+                                <i style="margin-left: 0px; margin-right: 5px;" data-feather="refresh-ccw"></i>
+                            </button>
                             <a href="index.php" class="btn btn-danger"
                                 type="button"><?php echo lang("Back To List"); ?></a>
                         </form>

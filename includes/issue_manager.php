@@ -1,9 +1,8 @@
 <?php
 
-include('lib.php');
+//include('lib.php');
 
 function AddNewIssue($book_id, $student_id) {
-    try{
         // Check if setting is found
         $setting = GetSetting();
         if(is_null($setting) || count($setting) == 0){
@@ -30,43 +29,114 @@ function AddNewIssue($book_id, $student_id) {
         // Insert issue into database
         return addIssue($book_id, $student_id, $issue_date, $due_date, $return_date, $fine_per_day, 0);
         
-    } catch (Exception $e) {
-        // Handle error
-        echo "Error: ". $e->getMessage();
-    }
 }
 
 
-// function ReturnIssue($issue_id, $return_date = date('Y-m-d')) {
-//     // Check if issue is closed
-//     if (CheckIfIssueIsClosed($issue_id)) {
-//         // Calculate fine days
-//         $fine_days = CalculateFineDays($issue_id, $return_date);
+function ReturnIssue($issue_id, $return_date = null) {
 
-//         // Add fine to database
-//         if ($fine_days > 0) {
-//             AddNewFine($issue_id, $fine_days);
-//         }
+    $result = getIssueById($issue_id);
+    if(count($result) == 0){
+        throw new Exception(lang("no issue found Please choose issue first"));
+    }
 
-//         // Update issue in database
-//         $sql = "UPDATE issue SET return_date = '$return_date' WHERE id = '$issue_id'";
-//         mysqli_query($conn, $sql);
-//     }
-// }
 
-// function CheckIfIssueIsClosed($issue_id) {
-//     $sql = "SELECT return_date FROM issue WHERE id = '$issue_id'";
-//     $result = mysqli_query($conn, $sql);
-//     $row = mysqli_fetch_assoc($result);
-//     if ($row['return_date']!= null) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
+    $issue = $result[0];
+    // Check if issue is closed
+    if (CheckIfIssueIsReturned($issue)) 
+    {
+        throw new Exception(lang("this issue already returned"));
+    }
+
+    if(is_null($return_date)){
+        $return_date = date("Y-m-d");
+    }
+    // Calculate fine days
+    $fine_days = CalculateFineDays($issue, $return_date);
+
+
+    /**
+     * Start Transaction
+     **/
+
+    // Connect to the database
+
+	global $localhost;
+	global $DBusername;
+	global $dbname ;
+	global $pwd;
+
+    $servername = $localhost;
+    $username = $DBusername;
+    $password = $pwd;
+    $dbname = $dbname;
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: ". $conn->connect_error);
+    }
+
+    // Start the transaction
+    $conn->begin_transaction();
+
+    try {
+
+     $fine_amount = 0;
+    // Add fine to database
+    if ($fine_days > 0) {
+        // AddNewFine($issue_id, $fine_days);
+        $student_id = $issue['student_id'];
+        $fine_amount = $fine_days * $issue['fine_per_day'];
+        // Insert data into the fine table
+        $sql = "INSERT INTO fine (issue_id, student_id, amount) 
+                VALUES ($issue_id, $student_id, $fine_amount)";
+        if ($conn->query($sql)!== TRUE) {
+            throw new Exception("Error inserting data into fine table: ". $conn->error);
+        }
+    }
+
+    
+    // Update issue in database
+    $sql = "UPDATE issue SET return_date = '$return_date', total_fine = $fine_amount
+            WHERE id = '$issue_id'";
+    if ($conn->query($sql)!== TRUE) {
+        throw new Exception("Error inserting data into issue table: ". $conn->error);
+    }
+
+
+
+    // Commit the transaction
+    return $conn->commit();
+
+    } catch (Exception $e) {
+    // Rollback the transaction if an error occurs
+    $conn->rollback();
+
+    die($e->getMessage());
+    }
+
+    // Close the connection
+    $conn->close();
+    
+
+    /**
+     * End Transaction
+     **/
+    
+}
+
+function CheckIfIssueIsReturned($issue) {
+
+    if ($issue['return_date'] == null || $issue['return_date'] == '0000-00-00') {
+        return false;
+    } else {
+        return true;
+    }
+}
 
 // function CheckIfAllowUpdateClosedIssue($issue_id) {
-//     if (CheckIfIssueIsClosed($issue_id)) {
+//     if (CheckIfIssueIsReturned($issue_id)) {
 //         return false;
 //     } else {
 //         return true;
@@ -84,16 +154,6 @@ function AddNewIssue($book_id, $student_id) {
 //     }
 // }
 
-
-function GetSetting() {
-    // Code to check if setting is found
-    try {
-        return select("SELECT * From setting LIMIT 1;");
-    } catch (Exception $e) {
-        // Handle error
-        echo "Error: ". $e->getMessage();
-    }
-}
 
 function CheckIfBookIsAvailableForIssue($book_id) {
     // Code to check if book is available for issue
@@ -116,8 +176,29 @@ function CheckIfStudentCanIssue($student_id, $setting) {
     }
 }
 
-function CalculateFineDays($issue_id, $return_date) {
+function CalculateFineDays($issue, $return_date = null) {
     // Code to calculate fine days
+    if(is_null($return_date)){
+        $return_date = date("Y-m-d");
+    }
+
+
+    // Convert the dates to timestamps
+    $timestamp1 = strtotime($issue['due_date']);
+    $timestamp2 = strtotime($return_date);
+
+    // Compare the timestamps
+    if ($timestamp1 > $timestamp2) {
+        return 0;
+    } 
+    else{
+        
+        $date1 = new DateTime($issue['due_date']);
+        $date2 = new DateTime($return_date);
+        
+        $diff = $date2->diff($date1);
+        return $diff->format('%a'); // Output: 9
+    }
 }
 
 function AddNewFine($issue_id, $fine_days) {

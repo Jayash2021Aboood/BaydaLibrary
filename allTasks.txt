@@ -37,3 +37,70 @@ Final Tasks:
 18-
 19- 
 20-
+
+ Issue Manager Contains:
+1-    AddNewIssue($book_id, $student_id);
+        - CheckIfSettingNotFound();
+            - CheckIfBookIsAvailableForIssue($book_id);
+            - CheckIfStudentCanIssue($student_id);
+            - AssignIssueDateReturnDateAndFineAmmountPerDayFromSetting();
+
+
+2-    ReurnIssue($issue_id, $return_date = date('Y-m-d'));
+            - CalculateFineDays($issue_id, $return_date);
+                - if(CalculateFineDays > 0){
+                    AddNewFine();
+                    
+                }
+3-    CheckIfIssueIsClosed($issue_id); 
+        "when return_date is Not null return true otherwise return false"
+
+4-    CheckIfAllowUpdateClosedIssue($issue_id);
+
+5-    CheckIfIssueHasNotPaidFine($issue_id);
+
+6- PaidFine();
+
+=========================================
+
+
+
+i have library system by php language i want to manage the issues and fine for student .. i have student table contain id, name, book table contain id, name and numberOfCopies , setting table contain return_days, fine_amount and max_issue_times  columns  the return_days column that indecate the student should return book to the library through this days or the student will get fine for lating return book , fine_amount  indicate amount of fine per  every lating  day , max_issue_times  indicate how many issues can the student do the same with out return any book .. all student issues register in issue table that contain `id``book_id``student_id``issue_date``due_date``return_date``fine_per_day``total_fine` columns  issue_date clomn take system date when make isuue , due_date take system date + return_days value from setting , return_date take Null value ,fine_per_day take its value from 
+fine_amount column in  setting and total_fine column take 0 be defalut ... also we register the fine in fine table that contian id, issue_id, student_id, amount  columns when the student return the book now i want to create php method that impelemnt issues and return and fine Logic  ass i  explane bellow  :  Issue Manager Contains:
+1-    AddNewIssue($book_id, $student_id);
+        - CheckIfSettingNotFound();
+            - CheckIfBookIsAvailableForIssue($book_id);
+            - CheckIfStudentCanIssue($student_id);
+            - AssignIssueDateReturnDateAndFineAmmountPerDayFromSetting();
+
+
+2-    ReurnIssue($issue_id, $return_date = date('Y-m-d'));
+            - CalculateFineDays($issue_id, $return_date);
+                - if(CalculateFineDays > 0){
+                    AddNewFine();
+                    
+                }
+3-    CheckIfIssueIsClosed($issue_id); 
+        "when return_date is Not null return true otherwise return false"
+
+4-    CheckIfAllowUpdateClosedIssue($issue_id);
+
+5-    CheckIfIssueHasNotPaidFine($issue_id);
+
+6- PaidFine();
+
+
+
+
+
+============
+Setting Tasks:
+1- Page Name Be Setting Screen Not Setting List;                ============== DONE
+2- Create New button Change To Edit Setting.                    ============== DONE
+3- Setting List Must Display One Row;                           ============== DONE
+4- Update Setting Screen Make Both Logic For Add And Update Setting. ========= DONE
+5- Remove Un Wanted Screen In Setting .
+6- Change Setting Screen Display Style from table and form to be Form only. == DONE
+from This Link Take The Form http://localhost:90/BaidaLibrary/source/account-security.html
+
+7- in Employee Site Make The Same As Admin Site And Make Setting Read Only.

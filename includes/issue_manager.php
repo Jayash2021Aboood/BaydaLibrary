@@ -201,8 +201,44 @@ function CalculateFineDays($issue, $return_date = null) {
     }
 }
 
-function AddNewFine($issue_id, $fine_days) {
-    // Code to add fine to database
+function ChangeFineToDeported($fine_id){
+    $fine = getFineById($fine_id);
+    if(count($fine) == 0)
+    {
+        throw new Exception(lang("no data found for this id"));
+    }
+
+    $fine = $fine[0];
+
+    if($fine == 'deported'){
+        throw new Exception(lang("this fine already paid"));
+    }
+
+    if($fine == 'canceled'){
+        throw new Exception(lang("you cannot pay canceled fine"));
+    }
+    
+    return query("UPDATE fine SET state = 'deported' WHERE id = $fine_id;");
+}
+
+function ChangeFineToCanceled($fine_id){
+    $fine = getFineById($fine_id);
+    if(count($fine) == 0)
+    {
+        throw new Exception(lang("no data found for this id"));
+    }
+
+    if($fine == 'deported'){
+        throw new Exception(lang("you cannot pay deported fine"));
+    }
+
+    if($fine == 'canceled'){
+        throw new Exception(lang("this fine already canceled"));
+    }
+
+    $fine = $fine[0];
+    
+    return query("UPDATE fine SET state = 'canceled' WHERE id = $fine_id;");
 }
 
 

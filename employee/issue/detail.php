@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -121,7 +120,8 @@
                                     <select disabled class="form-select" name="book_id" id="book_id" required>
                                         <option disabled value=""><?php echo lang("Select a Book"); ?>:</option>
                                         <?php foreach(getAllBooks() as $Book) { ?>
-                                        <option <?php if($row['book_id'] == $Book['id']) echo "selected" ?> value="<?php echo $Book['id']; ?>"> <?php echo $Book['name']; ?>
+                                        <option <?php if($row['book_id'] == $Book['id']) echo "selected" ?>
+                                            value="<?php echo $Book['id']; ?>"> <?php echo $Book['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -132,7 +132,8 @@
                                     <select disabled class="form-select" name="student_id" id="student_id" required>
                                         <option disabled value=""><?php echo lang("Select a Student"); ?>:</option>
                                         <?php foreach(getAllStudents() as $Student) { ?>
-                                        <option <?php if($row['student_id'] == $Student['id']) echo "selected" ?> value="<?php echo $Student['id']; ?>"> <?php echo $Student['name']; ?>
+                                        <option <?php if($row['student_id'] == $Student['id']) echo "selected" ?>
+                                            value="<?php echo $Student['id']; ?>"> <?php echo $Student['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -140,38 +141,45 @@
                                 <!-- Form Group (issue_date)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="issue_date"><?php echo lang("Issue Date"); ?></label>
-                                    <input class="form-control" id="issue_date" name="issue_date" type="date" placeholder="<?php echo lang("Issue Date"); ?>"
+                                    <input class="form-control" id="issue_date" name="issue_date" type="date"
+                                        placeholder="<?php echo lang("Issue Date"); ?>"
                                         value="<?php echo $row['issue_date'];?>" readonly />
                                 </div>
                                 <!-- Form Group (due_date)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="due_date"><?php echo lang("Due Date"); ?></label>
-                                    <input class="form-control" id="due_date" name="due_date" type="date" placeholder="<?php echo lang("Due Date"); ?>"
+                                    <input class="form-control" id="due_date" name="due_date" type="date"
+                                        placeholder="<?php echo lang("Due Date"); ?>"
                                         value="<?php echo $row['due_date'];?>" readonly />
                                 </div>
                                 <!-- Form Group (return_date)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="return_date"><?php echo lang("Return Date"); ?></label>
-                                    <input class="form-control" id="return_date" name="return_date" type="date" placeholder="<?php echo lang("Return Date"); ?>"
+                                    <label class="small mb-1"
+                                        for="return_date"><?php echo lang("Return Date"); ?></label>
+                                    <input class="form-control" id="return_date" name="return_date" type="date"
+                                        placeholder="<?php echo lang("Return Date"); ?>"
                                         value="<?php echo $row['return_date'];?>" readonly />
                                 </div>
                                 <!-- Form Group (fine_per_day)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="fine_per_day"><?php echo lang("Fine Per Day"); ?></label>
-                                    <input class="form-control" id="fine_per_day" name="fine_per_day" type="text" placeholder="<?php echo lang("Fine Per Day"); ?>"
+                                    <label class="small mb-1"
+                                        for="fine_per_day"><?php echo lang("Fine Per Day"); ?></label>
+                                    <input class="form-control" id="fine_per_day" name="fine_per_day" type="text"
+                                        placeholder="<?php echo lang("Fine Per Day"); ?>"
                                         value="<?php echo $row['fine_per_day'];?>" readonly />
                                 </div>
                                 <!-- Form Group (total_fine)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="total_fine"><?php echo lang("Total Fine"); ?></label>
-                                    <input class="form-control" id="total_fine" name="total_fine" type="text" placeholder="<?php echo lang("Total Fine"); ?>"
+                                    <input class="form-control" id="total_fine" name="total_fine" type="text"
+                                        placeholder="<?php echo lang("Total Fine"); ?>"
                                         value="<?php echo $row['total_fine'];?>" readonly />
                                 </div>
- 
+
                             </div>
                             <!-- Submit button-->
-                            <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-success" type="button"><?php echo lang("Edit"); ?></a>
-                            <a href="index.php" class="btn btn-primary" type="button"><?php echo lang("Back To List"); ?></a>
+                            <a href="index.php" class="btn btn-primary"
+                                type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

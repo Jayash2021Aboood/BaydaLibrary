@@ -3,6 +3,7 @@
   include('../../includes/lib.php');
   include('../../includes/book.php');
   include('../../includes/issue.php');
+  include('../../includes/fine.php');
   include('../../includes/setting.php');
   include_once('../../includes/issue_manager.php');
   
@@ -128,6 +129,93 @@
         redirectToReferer($e->getMessage());
       }
     }
+
+    // =======================================================================
+    // =========================== Change Fine To Deported ===================
+    // =======================================================================
+    if(isset($_POST['deportFine']))
+    {
+
+      try{
+
+        $id = $_POST['id'];
+        
+        if( empty($id)){
+          $errors[] = "<li>" . lang("Fine is requierd") . "</li>";
+          $_SESSION["fail"] .= "<li>" . lang("Fine is requierd") . "</li>";
+          }
+
+        if(count($errors) == 0)
+        {
+
+          $deported = ChangeFineToDeported($id);
+          
+          if($deported ==  true)
+          {
+            $_SESSION["message"] = lang("Fine Deported successfuly!");
+            $_SESSION["success"] = lang("Fine Deported successfuly!");
+            header('Location:'. $PATH_EMPLOYEE_FINE .'index.php');
+            exit();
+          }
+          else
+          {
+            $_SESSION["message"] = lang("Error when Deported Fine");
+            $_SESSION["fail"] = lang("Error when Deported Fine");
+            $errors[] = lang("Error when Deported Fine");
+          }
+          
+        }
+
+      }
+       catch (Exception $e) {
+        // Handle error
+        redirectToReferer($e->getMessage());
+      }
+    }
+
+    // =======================================================================
+    // =========================== Change Fine To Canceled ===================
+    // =======================================================================
+    if(isset($_POST['cancelFine']))
+    {
+
+      try{
+
+        $id = $_POST['id'];
+        
+        if( empty($id)){
+          $errors[] = "<li>" . lang("Fine is requierd") . "</li>";
+          $_SESSION["fail"] .= "<li>" . lang("Fine is requierd") . "</li>";
+          }
+
+        if(count($errors) == 0)
+        {
+
+          $canceled = ChangeFineToCanceled($id);
+          
+          if($canceled ==  true)
+          {
+            $_SESSION["message"] = lang("Fine Canceled successfuly!");
+            $_SESSION["success"] = lang("Fine Canceled successfuly!");
+            header('Location:'. $PATH_EMPLOYEE_FINE .'index.php');
+            exit();
+          }
+          else
+          {
+            $_SESSION["message"] = lang("Error when Canceled Fine");
+            $_SESSION["fail"] = lang("Error when Canceled Fine");
+            $errors[] = lang("Error when Canceled Fine");
+          }
+          
+        }
+
+      }
+       catch (Exception $e) {
+        // Handle error
+        redirectToReferer($e->getMessage());
+      }
+    }
+
 
     redirectToReferer();
   }

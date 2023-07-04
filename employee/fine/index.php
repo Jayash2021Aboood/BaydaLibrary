@@ -24,12 +24,6 @@
                             <?php echo lang("Fine List"); ?>
                         </h1>
                     </div>
-                    <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="create.php">
-                            <i class="me-1" data-feather="plus"></i>
-                            <?php echo lang("Create New"); ?>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -47,7 +41,6 @@
                             <th><?php echo lang("Student"); ?></th>
                             <th><?php echo lang("TotalAmount"); ?></th>
                             <th><?php echo lang("State"); ?></th>
-                            <th><?php echo lang("Actions"); ?></th>
                         </tr>
                     </thead>
                     <!-- <tfoot>
@@ -88,7 +81,7 @@
                             <td> <?php echo($row['id']); ?> </td>
                             <td> <?php
                                     $Issue = getIssueById($row['issue_id']) [0];
-                                    echo$Issue['name']; 
+                                    echo$Issue['id']; 
                                     ?>
                             </td>
                             <td> <?php
@@ -97,21 +90,22 @@
                                     ?>
                             </td>
                             <td> <?php echo($row['amount']); ?> </td>
-                            <td> <?php echo($row['state']); ?> </td>
-
                             <td>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                    href="edit.php?id=<?php echo($row['id']); ?>">
-                                    <i class="text-primary" data-feather="edit"></i>
-                                </a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark"
-                                    href="delete.php?id=<?php echo($row['id']); ?>">
-                                    <i class="text-danger" data-feather="trash-2"></i>
-                                </a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark"
-                                    href="detail.php?id=<?php echo($row['id']); ?>">
-                                    <i class="text-success" data-feather="eye"></i>
-                                </a>
+                                <?php if($row['state'] == 'draft'){
+                                ?>
+                                <form action="../issue/issueManager.php" method="POST">
+                                    <input type="hidden" name="id" id="id" value="<?php echo $row['id'] ;?>" />
+                                    <button name="deportFine" class="btn btn-success btn-sm"
+                                        type="submit"><?php echo lang("Paid"); ?></button>
+                                    <button name="cancelFine" class="btn btn-danger btn-sm"
+                                        type="submit"><?php echo lang("Cancel"); ?></button>
+                                </form>
+                                <?php
+                                }
+                                else{
+                                echo($row['state']);
+                                }
+                                ?>
                             </td>
                         </tr>
                         <?php }?>

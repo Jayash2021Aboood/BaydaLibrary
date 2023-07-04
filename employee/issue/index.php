@@ -4,6 +4,7 @@
   include_once('../../includes/issue.php');
   include_once('../../includes/book.php');
   include_once('../../includes/student.php');
+  include_once('../../includes/issue_manager.php');
   checkEmployeeSession();
 
   $pageTitle = lang("Issues");
@@ -109,19 +110,18 @@
                             <td> <?php echo($row['total_fine']); ?> </td>
 
                             <td>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                    href="edit.php?id=<?php echo($row['id']); ?>">
-                                    <i class="text-primary" data-feather="edit"></i>
-                                </a>
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="detail.php?id=<?php echo($row['id']); ?>">
                                     <i class="text-success" data-feather="eye"></i>
                                 </a>
+                                <?php if(!CheckIfIssueIsReturned($row)){ ?>
+
                                 <a class="btn btn-datatable btn-icon btn-transparent-dark"
                                     href="return.php?id=<?php echo($row['id']); ?>">
                                     <i class="text-info" data-feather="refresh-ccw"></i>
 
                                 </a>
+                                <?php }?>
                             </td>
                         </tr>
                         <?php }?>

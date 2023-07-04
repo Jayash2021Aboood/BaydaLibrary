@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -121,7 +120,8 @@
                                     <select disabled class="form-select" name="issue_id" id="issue_id" required>
                                         <option disabled value=""><?php echo lang("Select a Issue"); ?>:</option>
                                         <?php foreach(getAllIssues() as $Issue) { ?>
-                                        <option <?php if($row['issue_id'] == $Issue['id']) echo "selected" ?> value="<?php echo $Issue['id']; ?>"> <?php echo $Issue['name']; ?>
+                                        <option <?php if($row['issue_id'] == $Issue['id']) echo "selected" ?>
+                                            value="<?php echo $Issue['id']; ?>"> <?php echo $Issue['id']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -132,7 +132,8 @@
                                     <select disabled class="form-select" name="student_id" id="student_id" required>
                                         <option disabled value=""><?php echo lang("Select a Student"); ?>:</option>
                                         <?php foreach(getAllStudents() as $Student) { ?>
-                                        <option <?php if($row['student_id'] == $Student['id']) echo "selected" ?> value="<?php echo $Student['id']; ?>"> <?php echo $Student['name']; ?>
+                                        <option <?php if($row['student_id'] == $Student['id']) echo "selected" ?>
+                                            value="<?php echo $Student['id']; ?>"> <?php echo $Student['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -140,20 +141,24 @@
                                 <!-- Form Group (amount)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="amount"><?php echo lang("TotalAmount"); ?></label>
-                                    <input class="form-control" id="amount" name="amount" type="text" placeholder="<?php echo lang("TotalAmount"); ?>"
+                                    <input class="form-control" id="amount" name="amount" type="text"
+                                        placeholder="<?php echo lang("TotalAmount"); ?>"
                                         value="<?php echo $row['amount'];?>" readonly />
                                 </div>
                                 <!-- Form Group (state)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="state"><?php echo lang("State"); ?></label>
-                                    <input class="form-control" id="state" name="state" type="text" placeholder="<?php echo lang("State"); ?>"
-                                        value="<?php echo $row['state'];?>" readonly />
+                                    <input class="form-control" id="state" name="state" type="text"
+                                        placeholder="<?php echo lang("State"); ?>" value="<?php echo $row['state'];?>"
+                                        readonly />
                                 </div>
- 
+
                             </div>
                             <!-- Submit button-->
-                            <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-success" type="button"><?php echo lang("Edit"); ?></a>
-                            <a href="index.php" class="btn btn-primary" type="button"><?php echo lang("Back To List"); ?></a>
+                            <a href="edit.php?id=<?php echo $row['id'];?>" class="btn btn-success"
+                                type="button"><?php echo lang("Edit"); ?></a>
+                            <a href="index.php" class="btn btn-primary"
+                                type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>

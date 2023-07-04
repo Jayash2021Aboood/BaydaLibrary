@@ -55,9 +55,25 @@ function getSectionByName($search)
 
 function addSection( $parent_id, $number, $name)
 {
-    $sql = 
-		"INSERT INTO section VALUES(null,
-$parent_id,'$number','$name')";	return query($sql);
+	// adding Validation by Dewi Method
+	
+	// 1- check if there is no 10 brothers sections have the same parent
+	if(is_null( $parent_id )){
+		$rows = select("SELECT * FROM section WHERE parent_id is NULL;");
+		$parent_id = "NULL";
+	}
+	else{
+		$rows = select("SELECT * FROM section WHERE parent_id = $parent_id;");
+	}
+	
+	if(count($rows) >= 10){
+		throw new Exception(lang("you cannot add more than 10 sibiling sections as Dewi Role"));
+	}
+
+
+
+    $sql = "INSERT INTO section VALUES(null, $parent_id,'$number','$name')";
+	return query($sql);
 }
 
 function updateSection( $id, $parent_id, $number, $name)

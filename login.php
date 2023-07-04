@@ -225,10 +225,6 @@ if (isset($_SESSION['user']))
                             </div>
                         </form>
                     </div>
-                    <div class="card-footer text-center">
-                        <div class="small"><a href="index.php"><?php echo lang("Need an account? Sign up!"); ?></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

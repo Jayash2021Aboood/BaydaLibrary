@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 09:17 AM
+-- Generation Time: Jul 06, 2023 at 07:32 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 8.0.23
 
@@ -88,7 +88,32 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `name`, `number_copies`, `publish_date`, `detail`, `book_image`, `book_file`, `author_id`, `publisher_id`, `section_id`, `language_id`) VALUES
-(1, 'C++ for dummies', 6, '2016-01-25', '', '', '', 1, 1, 5, 1);
+(1, 'C++ for dummies', 6, '2016-01-25', '', '', '', 1, 1, 1, 1),
+(2, 'Book 2', 2, '2020-05-15', 'Consectetur adipiscing elit', 'book2.jpg', 'book2.pdf', 1, 1, 1, 1),
+(3, 'Book 3', 8, '2019-11-30', 'Sed do eiusmod tempor incididunt', 'book3.jpg', 'book3.pdf', 2, 1, 1, 2),
+(4, 'Book 4', 2, '2022-03-10', 'Ut enim ad minim veniam', 'book4.jpg', 'book4.pdf', 2, 1, 1, 1),
+(5, 'Book 5', 7, '2021-05-01', 'This is book 5', 'book5.jpg', 'book5.pdf', 1, 1, 1, 1),
+(6, 'Book 6', 9, '2021-06-01', 'This is book 6', 'book6.jpg', 'book6.pdf', 1, 1, 1, 1),
+(7, 'Book 7', 11, '2021-07-01', 'This is book 7', 'book7.jpg', 'book7.pdf', 1, 1, 1, 1),
+(8, 'Book 8', 6, '2021-08-01', 'This is book 8', 'book8.jpg', 'book8.pdf', 1, 1, 1, 1),
+(9, 'Book 9', 10, '2021-09-01', 'This is book 9', 'book9.jpg', 'book9.pdf', 1, 1, 1, 1),
+(10, 'Book 10', 13, '2021-10-01', 'This is book 10', 'book10.jpg', 'book10.pdf', 1, 1, 1, 1),
+(11, 'Book 11', 14, '2021-11-01', 'This is book 11', 'book11.jpg', 'book11.pdf', 1, 1, 1, 1),
+(12, 'Book 12', 15, '2021-12-01', 'This is book 12', 'book12.jpg', 'book12.pdf', 1, 1, 1, 1),
+(13, 'Book 13', 16, '2021-11-01', 'This is book 13', 'book13.jpg', 'book13.pdf', 1, 1, 1, 1),
+(14, 'Book 14', 17, '2021-12-01', 'This is book 14', 'book14.jpg', 'book14.pdf', 1, 1, 1, 1),
+(15, 'Book 15', 7, '2021-03-01', 'This is book 15', 'book15.jpg', 'book15.pdf', 1, 1, 1, 1),
+(16, 'Book 16', 10, '2021-04-01', 'This is book 16', 'book16.jpg', 'book16.pdf', 1, 1, 1, 1),
+(17, 'Book 17', 14, '2021-05-01', 'This is book 17', 'book17.jpg', 'book17.pdf', 1, 1, 1, 1),
+(18, 'Book 18', 5, '2021-06-01', 'This is book 18', 'book18.jpg', 'book18.pdf', 1, 1, 1, 1),
+(19, 'Book 19', 13, '2021-07-01', 'This is book 19', 'book19.jpg', 'book19.pdf', 1, 1, 1, 1),
+(20, 'Book 20', 23, '2021-12-01', 'This is book 20', 'book20.jpg', 'book20.pdf', 1, 1, 1, 1),
+(21, 'Book 21', 24, '2021-11-01', 'This is book 21', 'book21.jpg', 'book21.pdf', 1, 1, 1, 1),
+(22, 'Book 22', 25, '2021-12-01', 'This is book 22', 'book22.jpg', 'book22.pdf', 1, 1, 1, 1),
+(23, 'Book 23', 26, '2021-11-01', 'This is book 23', 'book23.jpg', 'book23.pdf', 1, 1, 1, 1),
+(24, 'Book 24', 27, '2021-12-01', 'This is book 24', 'book24.jpg', 'book24.pdf', 1, 1, 1, 1),
+(25, 'Book 25', 28, '2021-11-01', 'This is book 25', 'book25.jpg', 'book25.pdf', 1, 1, 1, 1),
+(26, 'c++ fundmintails', 2, '2023-07-04', 'اي شيء اكتب هنا براحتك يااصل العرب', 'WhatsApp Image 2023-07-03 at 7.41.13 PM.jpeg', '', 2, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -110,7 +135,9 @@ INSERT INTO `college` (`id`, `name`) VALUES
 (2, 'التجارة والاقتصاد'),
 (3, 'الشريعة والقانون'),
 (4, 'الاعلام'),
-(5, 'الزراعة');
+(5, 'الزراعة'),
+(6, 'التربية'),
+(7, 'الطب البشري');
 
 -- --------------------------------------------------------
 
@@ -156,8 +183,10 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`id`, `name`, `phone`, `email`, `password`, `address`) VALUES
 (1, 'huda', '778866554', 'huda@gmail.com', 'huda', ''),
-(2, 'q', '776654433', 'q@gmail.com', 'q', 'bayda radaa'),
-(3, 'Ali', '778844332', 'ali@gmail.com', 'ali', 'Bayda radaa');
+(2, 'q', '77885533', 'q@gmail.com', 'q', 'bayda radaa'),
+(3, 'Ali', '778844332', 'ali@gmail.com', 'ali', 'Bayda radaa'),
+(4, 'خالد الملاحي', '776655446', 'k@gmail.com', 'k', 'رداع - الشارع العام - جوار محل الشبس'),
+(5, 'gg', '5533', 'gg@gmail.com', '', 'gg');
 
 -- --------------------------------------------------------
 
@@ -178,7 +207,10 @@ CREATE TABLE `fine` (
 --
 
 INSERT INTO `fine` (`id`, `issue_id`, `student_id`, `amount`, `state`) VALUES
-(1, 2, 1, 2, 'draft');
+(1, 2, 1, 2, 'draft'),
+(2, 11, 3, 360, 'deported'),
+(3, 12, 3, 240, 'canceled'),
+(4, 9, 3, 360, 'draft');
 
 -- --------------------------------------------------------
 
@@ -203,7 +235,18 @@ CREATE TABLE `issue` (
 
 INSERT INTO `issue` (`id`, `book_id`, `student_id`, `issue_date`, `due_date`, `return_date`, `fine_per_day`, `total_fine`) VALUES
 (1, 1, 2, '2023-12-31', '2023-01-08', '0000-00-00', 200, 1),
-(2, 1, 1, '2023-05-01', '2023-05-05', '0000-00-00', 100, 100);
+(2, 1, 1, '2023-05-01', '2023-05-05', '0000-00-00', 100, 100),
+(3, 1, 2, '2023-06-13', '2023-06-13', '2023-06-13', 120, 120),
+(4, 25, 2, '2023-06-27', '2023-06-30', '0001-01-31', 200, 10),
+(5, 20, 2, '2023-06-27', '2023-06-30', '2023-07-01', 100, 100),
+(6, 9, 1, '2023-06-29', '2023-07-04', '2023-07-03', 400, 0),
+(7, 6, 2, '2023-06-29', '2023-07-02', '0000-00-00', 120, 0),
+(8, 24, 2, '2023-06-29', '2023-07-02', '0000-00-00', 120, 0),
+(9, 2, 3, '2023-06-29', '2023-07-02', '2023-07-05', 120, 360),
+(10, 2, 1, '2023-06-29', '2023-07-02', '2023-06-30', 120, 0),
+(11, 10, 3, '2023-06-30', '2023-07-03', '2023-06-30', 120, 360),
+(12, 9, 3, '2023-06-25', '2023-06-28', '2023-06-30', 120, 240),
+(13, 9, 3, '2023-07-03', '2023-07-06', '0000-00-00', 120, 0);
 
 -- --------------------------------------------------------
 
@@ -303,10 +346,20 @@ CREATE TABLE `section` (
 
 INSERT INTO `section` (`id`, `parent_id`, `number`, `name`) VALUES
 (1, NULL, '000', 'الاعمال العامة'),
-(2, 1, '001', 'المعرفة'),
-(3, 1, '002', 'الكتاب'),
-(4, 1, '003', 'النظم وتحليلها'),
-(5, 1, '004', 'معالجة البيانات_الحاسب الاَلي');
+(10, NULL, '200', 'الديانات'),
+(11, NULL, '100', ' الفلسفة والعلوم المتصلة بها'),
+(12, NULL, '300', 'العلوم الاجتماعية'),
+(13, NULL, '400', ' اللغات'),
+(14, NULL, '500', ' العلوم البحتة'),
+(15, NULL, '600', ' التكنولوجيا (العلوم التطبيقية)'),
+(16, NULL, '700', ' الآداب'),
+(17, NULL, '800', 'الجغرافية العامة والتاريخ '),
+(18, NULL, '900', 'قسم رقم 9'),
+(19, NULL, '1000', 'قسم رقم 1000'),
+(20, 13, '400', 'اللغات'),
+(21, 20, '400', ' مقارنة اللغات'),
+(22, 1, '000', 'الاعدادات العامة'),
+(23, 22, '000', 'الاعدادات العامة');
 
 -- --------------------------------------------------------
 
@@ -326,7 +379,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `return_days`, `fine_amount`, `student_max_issue`) VALUES
-(1, 5, 400, 3);
+(4, 3, 120, 6);
 
 -- --------------------------------------------------------
 
@@ -351,8 +404,11 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `name`, `phone`, `email`, `password`, `department_id`, `level_id`, `state`, `active`) VALUES
-(1, 'hadeel', '776655443', 'hadeel@gmail.com', 'hadeel', 1, 1, 'any', 1),
-(2, 'bushra', '778899009', 'bushra@gmail.com', 'bushra', 3, 1, 'any', 0);
+(1, 'hadeel', '77665555', 'hadeel@gmail.com', 'hadeel', 1, 1, 'any', 1),
+(2, 'bushra', '778899009', 'bushra@gmail.com', 'bushra', 3, 1, 'any', 0),
+(3, 'محمد خالد عبدالرؤف', '7766554434', 'm@gmail.com', 'm', 1, 1, 'Any', 1),
+(5, 't', '00', 't@gmail.com', '', 5, 1, 'any', 1),
+(7, 'hola', '876543', 'ssaa3002012@gmail.com', 'hola', 4, 1, 'any', 1);
 
 -- --------------------------------------------------------
 
@@ -376,7 +432,11 @@ INSERT INTO `webuser` (`id`, `email`, `usertype`) VALUES
 (3, 'q@gmail.com', 'e'),
 (4, 'maryam@gmail.com', 'c'),
 (5, 'bushra@gmail.com', 's'),
-(6, 'hadeel@gmail.com', 's');
+(6, 'hadeel@gmail.com', 's'),
+(7, 'm@gmail.com', 's'),
+(8, 't@gmail.com', 's'),
+(9, 'gg@gmail.com', 'e'),
+(10, 'ssaa3002012@gmail.com', 's');
 
 --
 -- Indexes for dumped tables
@@ -511,13 +571,13 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `college`
 --
 ALTER TABLE `college`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -529,19 +589,19 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `fine`
 --
 ALTER TABLE `fine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `language`
@@ -571,25 +631,25 @@ ALTER TABLE `publisher`
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `setting`
 --
 ALTER TABLE `setting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `webuser`
 --
 ALTER TABLE `webuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

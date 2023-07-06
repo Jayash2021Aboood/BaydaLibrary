@@ -2,6 +2,7 @@
   session_start();
   include('includes/lib.php');
   include('includes/section.php');
+  include('includes/book.php');
   $pageTitle = lang("Section Details");
 
 ?>
@@ -102,7 +103,9 @@
                         <div class="small text-muted"><?php echo $book['author_name']; ?></div>
                         <h2 class="card-title h4"><?php echo $book['name']; ?></h2>
                         <p class="card-text"><?php echo $book['detail']; ?></p>
-                        <p class="card-text"><?php echo displayAvailableCount($book['available_copies_count']); ?></p>
+                        <p class="card-text">
+                            <?php echo displayAvailableCount(getAvailableBooksToIssue($book['id'])); ?>
+                        </p>
                         <div class="text-end">
                             <?php if ( isset($book['book_file']) && !empty($book['book_file'])) { ?>
                             <a class="btn btn-success btn-sm"

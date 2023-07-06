@@ -133,10 +133,13 @@
                                 <!-- Form Group (parent_id)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="parent_id"><?php echo lang("Parent"); ?></label>
-                                    <select class="form-select" name="parent_id" id="parent_id" >
-                                        <option disabled value=""><?php echo lang("Select a Parent"); ?>:</option>
+                                    <select class="form-select" name="parent_id" id="parent_id">
+                                        <option value="NULL" <?php if(is_null($parent_id)) echo "selected" ?>>
+                                            <?php echo lang("Select a Parent"); ?>:</option>
                                         <?php foreach(getAllSections() as $Section) { ?>
-                                        <option <?php if($parent_id == $Section['id']) echo "selected" ?> value="<?php echo $Section['id']; ?>"> <?php echo $Section['name']; ?>
+                                        <option <?php if($parent_id == $Section['id']) echo "selected" ?>
+                                            value="<?php echo $Section['id']; ?>">
+                                            <?php echo $Section['number'].' - '. $Section['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -144,20 +147,24 @@
                                 <!-- Form Group (number)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="number"><?php echo lang("Number"); ?></label>
-                                    <input class="form-control" id="number" name="number" type="text" placeholder="<?php echo lang("Number"); ?>"
-                                        value="<?php echo $number;?>" required />
+                                    <input class="form-control" id="number" name="number" type="text"
+                                        placeholder="<?php echo lang("Number"); ?>" value="<?php echo $number;?>"
+                                        required />
                                 </div>
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
-                                        value="<?php echo $name;?>" required />
+                                    <input class="form-control" id="name" name="name" type="text"
+                                        placeholder="<?php echo lang("Name"); ?>" value="<?php echo $name;?>"
+                                        required />
                                 </div>
- 
+
                             </div>
                             <!-- Submit button-->
-                            <button name="updateSection" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
-                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
+                            <button name="updateSection" class="btn btn-success"
+                                type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger"
+                                type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>
@@ -168,4 +175,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-

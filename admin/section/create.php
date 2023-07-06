@@ -113,7 +113,8 @@
                                         <option selected disabled value=""><?php echo lang("Select a Parent"); ?>:
                                         </option>
                                         <?php foreach(getAllSections() as $Section) { ?>
-                                        <option value="<?php echo $Section['id']; ?>"> <?php echo $Section['name']; ?>
+                                        <option value="<?php echo $Section['id']; ?>">
+                                            <?php echo $Section['number'].' - '. $Section['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>

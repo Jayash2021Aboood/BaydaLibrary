@@ -173,9 +173,9 @@ function getAllBooksWithDetails($book_id = null)
 
 }
 
-function getAllBooksBySearch($search_term)
+function getAllBooksBySearch($search_term, $limit = null)
 {
-    return select(" SELECT book.*,
+    $sql = " SELECT book.*,
                            author.name AS author_name, 
                            publisher.name AS publisher_name, 
                            section.name AS section_name, 
@@ -190,7 +190,12 @@ function getAllBooksBySearch($search_term)
                     OR author.name LIKE '%$search_term%'
                     OR publisher.name LIKE '%$search_term%'
                     OR section.name LIKE '%$search_term%'
-                    OR language.name LIKE '%$search_term%';");
+                    OR language.name LIKE '%$search_term%' ";
+
+    if(!is_null($limit)){
+        $sql .= "LIMIT $limit";
+    }
+    return select($sql);
 }
 
 function getAllAuthorsBySearch($search_term)
@@ -255,7 +260,12 @@ function getStudentIssuesTimes($student_id){
 
 function getAllIssuesByStudentId($student_id)
 {
-    return select("SELECT * FROM issue WHERE student_id = $student_id ;");
+    return select("SELECT * FROM issue WHERE student_id = $student_id order by id desc;");
+}
+
+function getAllFinesByStudentId($student_id)
+{
+    return select("SELECT * FROM fine WHERE student_id = $student_id order by id desc;");
 }
 //Publisher
 
@@ -360,22 +370,152 @@ function isUserExist($email)
 {
     $webusers =  select("SELECT COUNT(id) as total FROM webuser WHERE email = '$email';");
     $admins =  select("SELECT COUNT(id) as total FROM admin WHERE email = '$email';");
-    $customers =  select("SELECT COUNT(id) as total FROM customer WHERE email = '$email';");
-    $engineers =  select("SELECT COUNT(id) as total FROM engineer WHERE email = '$email';");
+    $students =  select("SELECT COUNT(id) as total FROM student WHERE email = '$email';");
+    $employees =  select("SELECT COUNT(id) as total FROM employee WHERE email = '$email';");
 
     if( $webusers[0]["total"] > 0  ||
         $admins[0]["total"] > 0 ||
-        $customers[0]["total"] > 0 ||
-        $engineers[0]["total"] > 0) 
+        $students[0]["total"] > 0 ||
+        $employees[0]["total"] > 0) 
     {
         return true;
     }
     else
     {
         return false;
+    }
+}
 
+function AddNewStudent($name, $phone, $email, $password, $department_id, $level_id, $state, $active)
+{
+    $isExsist = isUserExist($email);
+    if($isExsist == true){
+        throw new Exception(lang("this student email is exist try to use another email"));
     }
 
+    /**
+     * Start Transaction
+     **/
 
+    // Connect to the database
+
+	global $localhost;
+	global $DBusername;
+	global $dbname ;
+	global $pwd;
+
+    $servername = $localhost;
+    $username = $DBusername;
+    $password = $pwd;
+    $dbname = $dbname;
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: ". $conn->connect_error);
+    }
+
+    // Start the transaction
+    $conn->begin_transaction();
+
+    try {
+        // Insert data into the student table
+        $sql = "INSERT INTO student VALUES(null,'$name','$phone','$email','$password',$department_id,$level_id,'$state',$active)";
+        if ($conn->query($sql)!== TRUE) {
+            throw new Exception("Error inserting data into student table: ". $conn->error);
+        }
+
+        // Insert data into the webuser table
+        $sql = "INSERT INTO webuser VALUES(null,'$email','s')";	
+        if ($conn->query($sql)!== TRUE) {
+            throw new Exception("Error inserting data into webuser table: ". $conn->error);
+        }
+
+        // Commit the transaction
+        return $conn->commit();
+
+    } catch (Exception $e) {
+        // Rollback the transaction if an error occurs
+        $conn->rollback();
+
+        die($e->getMessage());
+    }
+
+    // Close the connection
+    $conn->close();
+    
+
+    /**
+     * End Transaction
+     **/
+    
 }
+
+function AddNewEmployee( $name, $phone, $email, $password, $address)
+{
+    $isExsist = isUserExist($email);
+    if($isExsist == true){
+        throw new Exception(lang("this employee email is exist try to use another email"));
+    }
+
+    /**
+     * Start Transaction
+     **/
+
+    // Connect to the database
+
+	global $localhost;
+	global $DBusername;
+	global $dbname ;
+	global $pwd;
+
+    $servername = $localhost;
+    $username = $DBusername;
+    $password = $pwd;
+    $dbname = $dbname;
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: ". $conn->connect_error);
+    }
+
+    // Start the transaction
+    $conn->begin_transaction();
+
+    try {
+        // Insert data into the employee table
+        $sql = "INSERT INTO employee VALUES(null,'$name','$phone','$email','$password','$address')";
+        if ($conn->query($sql)!== TRUE) {
+            throw new Exception("Error inserting data into employee table: ". $conn->error);
+        }
+
+        // Insert data into the webuser table
+        $sql = "INSERT INTO webuser VALUES(null,'$email','e')";	
+        if ($conn->query($sql)!== TRUE) {
+            throw new Exception("Error inserting data into webuser table: ". $conn->error);
+        }
+
+        // Commit the transaction
+        return $conn->commit();
+
+    } catch (Exception $e) {
+        // Rollback the transaction if an error occurs
+        $conn->rollback();
+
+        die($e->getMessage());
+    }
+
+    // Close the connection
+    $conn->close();
+    
+
+    /**
+     * End Transaction
+     **/
+    
+}
+
 ?>

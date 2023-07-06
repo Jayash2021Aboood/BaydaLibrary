@@ -1,5 +1,3 @@
-
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -60,7 +58,10 @@
   
       if(count($errors) == 0)
       {
-        $add = addStudent(
+        try{
+
+        
+        $add = AddNewStudent(
                                     $name,
                                     $phone,
                                     $email,
@@ -85,7 +86,12 @@
         }
         
       }
-  
+      catch(Exception $e){
+          $_SESSION["message"] = $e->getMessage();
+          $_SESSION["fail"] = $e->getMessage();
+          $errors[] = $e->getMessage();
+      }
+    }
     }
   }
 ?>
@@ -103,7 +109,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                           <?php echo lang("Add Student"); ?>
+                            <?php echo lang("Add Student"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
@@ -130,34 +136,37 @@
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="name" name="name" type="text"
+                                        placeholder="<?php echo lang("Name"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (phone)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="phone"><?php echo lang("Phone"); ?></label>
-                                    <input class="form-control" id="phone" name="phone" type="tel" placeholder="<?php echo lang("Phone"); ?>"
-                                        value=""   />
+                                    <input class="form-control" id="phone" name="phone" type="tel"
+                                        placeholder="<?php echo lang("Phone"); ?>" value="" />
                                 </div>
                                 <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="email"><?php echo lang("Email"); ?></label>
-                                    <input class="form-control" id="email" name="email" type="email" placeholder="<?php echo lang("Email"); ?>"
-                                        value=""   />
+                                    <input class="form-control" id="email" name="email" type="email"
+                                        placeholder="<?php echo lang("Email"); ?>" value="" />
                                 </div>
                                 <!-- Form Group (password)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="password"><?php echo lang("Password"); ?></label>
-                                    <input class="form-control" id="password" name="password" type="password" placeholder="<?php echo lang("Password"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="password" name="password" type="password"
+                                        placeholder="<?php echo lang("Password"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (department_id)-->
                                 <div class="col-md-4 mb-3">
-                                    <label class="small mb-1" for="department_id"><?php echo lang("Department"); ?></label>
+                                    <label class="small mb-1"
+                                        for="department_id"><?php echo lang("Department"); ?></label>
                                     <select class="form-select" name="department_id" id="department_id" required>
-                                        <option selected disabled value=""><?php echo lang("Select a Department"); ?>:</option>
+                                        <option selected disabled value=""><?php echo lang("Select a Department"); ?>:
+                                        </option>
                                         <?php foreach(getAllDepartments() as $Department) { ?>
-                                        <option value="<?php echo $Department['id']; ?>"> <?php echo $Department['name']; ?>
+                                        <option value="<?php echo $Department['id']; ?>">
+                                            <?php echo $Department['name']; ?>
                                         </option>
                                         <?php }?>
                                     </select>
@@ -167,7 +176,8 @@
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="level_id"><?php echo lang("Level"); ?></label>
                                     <select class="form-select" name="level_id" id="level_id" required>
-                                        <option selected disabled value=""><?php echo lang("Select a Level"); ?>:</option>
+                                        <option selected disabled value=""><?php echo lang("Select a Level"); ?>:
+                                        </option>
                                         <?php foreach(getAllLevels() as $Level) { ?>
                                         <option value="<?php echo $Level['id']; ?>"> <?php echo $Level['name']; ?>
                                         </option>
@@ -178,18 +188,19 @@
                                 <!-- Form Group (state)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="state"><?php echo lang("State"); ?></label>
-                                    <input class="form-control" id="state" name="state" type="text" placeholder="<?php echo lang("State"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="state" name="state" type="text"
+                                        placeholder="<?php echo lang("State"); ?>" value="" required />
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" id="active" name="active"
-                                        type="checkbox" />
+                                    <input class="form-check-input" id="active" name="active" type="checkbox" />
                                     <label class="form-check-label" for="active"><?php echo lang("Active"); ?></label>
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addStudent" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
-                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
+                            <button name="addStudent" class="btn btn-success"
+                                type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger"
+                                type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>
@@ -200,6 +211,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-
-

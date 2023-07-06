@@ -1,5 +1,3 @@
-
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -48,27 +46,35 @@
   
       if(count($errors) == 0)
       {
-        $add = addEmployee(
-                                    $name,
-                                    $phone,
-                                    $email,
-                                    $password,
-                                    $address,
-                                    );
-        if($add ==  true)
-        {
-          $_SESSION["message"] = lang("Employee Added successfuly!");
-          $_SESSION["success"] = lang("Employee Added successfuly!");
-          header('Location:'. $PATH_ADMIN_EMPLOYEE .'index.php');
-          exit();
+        try{
+
+            $add = AddNewEmployee(
+                                        $name,
+                                        $phone,
+                                        $email,
+                                        $password,
+                                        $address,
+                                        );
+            if($add ==  true)
+            {
+                $_SESSION["message"] = lang("Employee Added successfuly!");
+                $_SESSION["success"] = lang("Employee Added successfuly!");
+                header('Location:'. $PATH_ADMIN_EMPLOYEE .'index.php');
+                exit();
+            }
+            else
+            {
+                $_SESSION["message"] = lang("Error when Adding Data");
+                $_SESSION["fail"] = lang("Error when Adding Data");
+                $errors[] = lang("Error when Adding Data");
+            }
         }
-        else
-        {
-          $_SESSION["message"] = lang("Error when Adding Data");
-          $_SESSION["fail"] = lang("Error when Adding Data");
-          $errors[] = lang("Error when Adding Data");
+        catch(Exception $e){
+            $_SESSION["message"] = $e->getMessage();
+            $_SESSION["fail"] = $e->getMessage();
+            $errors[] = $e->getMessage();
         }
-        
+
       }
   
     }
@@ -88,7 +94,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                           <?php echo lang("Add Employee"); ?>
+                            <?php echo lang("Add Employee"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
@@ -115,37 +121,39 @@
                                 <!-- Form Group (name)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="name"><?php echo lang("Name"); ?></label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="<?php echo lang("Name"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="name" name="name" type="text"
+                                        placeholder="<?php echo lang("Name"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (phone)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="phone"><?php echo lang("Phone"); ?></label>
-                                    <input class="form-control" id="phone" name="phone" type="tel" placeholder="<?php echo lang("Phone"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="phone" name="phone" type="tel"
+                                        placeholder="<?php echo lang("Phone"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="email"><?php echo lang("Email"); ?></label>
-                                    <input class="form-control" id="email" name="email" type="email" placeholder="<?php echo lang("Email"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="email" name="email" type="email"
+                                        placeholder="<?php echo lang("Email"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (password)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="password"><?php echo lang("Password"); ?></label>
-                                    <input class="form-control" id="password" name="password" type="password" placeholder="<?php echo lang("Password"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="password" name="password" type="password"
+                                        placeholder="<?php echo lang("Password"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (address)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="address"><?php echo lang("Address"); ?></label>
-                                    <input class="form-control" id="address" name="address" type="text" placeholder="<?php echo lang("Address"); ?>"
-                                        value=""   />
+                                    <input class="form-control" id="address" name="address" type="text"
+                                        placeholder="<?php echo lang("Address"); ?>" value="" />
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addEmployee" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
-                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
+                            <button name="addEmployee" class="btn btn-success"
+                                type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger"
+                                type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>
@@ -156,6 +164,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-
-

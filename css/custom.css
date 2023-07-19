@@ -1,4 +1,5 @@
-/* .clean-block{
+/*
+ .clean-block{
     padding-top: 100px;
     text-align: center;
     font-family: Montserrat, sans-serif;
@@ -33,19 +34,19 @@
 /* Start Color Change To Brown */
 
 
-/* .text-primary{
-    color: #8d6e63 !important;
+.text-primary{
+    color: #ee2327 !important;
 }
 
 
 .btn-primary {
     color: #fff;
-    background-color: #8d6e63;
-    border-color: #8d6e63;
+    background-color: #ee2327;
+    border-color: #ee2327;
 }
 
 .sidenav-light .sidenav-menu .nav-link:hover {
-    color: #8d6e63;
+    color: #ee2327;
 }
 
 .nav-link:hover,
@@ -63,12 +64,12 @@ a:hover {
 .nav-link {
     display: block;
     padding: 0.5rem 1rem;
-    color: #8d6e63;
+    color: #ee2327;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
 a {
-    color: #8d6e63;
+    color: #ee2327;
     text-decoration: none;
 }
 
@@ -80,17 +81,17 @@ a {
 
 
 .bg-primary {
-    background-color: #8d6e63 !important;
+    background-color: #ee2327 !important;
 }
 
 .form-check-input:checked {
-    background-color: #8d6e63;
-    border-color: #8d6e63;
+    background-color: #ee2327;
+    border-color: #ee2327;
 }
 
 
 .icons-org-create .icon-plus {
-    color: #8d6e63;
+    color: #ee2327;
     position: absolute;
     font-size: 1.5rem;
     top: -0.5rem;
@@ -99,7 +100,7 @@ a {
 
 .icons-org-create .icon-users circle,
 .icons-org-create .icon-users path:first-of-type {
-    color: #8d6e63;
+    color: #ee2327;
 }
 
 .icons-org-create .icon-users path {
@@ -107,11 +108,11 @@ a {
 }
 
 .card:not([class*="bg-"]) .card-header {
-    color: #8d6e63;
+    color: #ee2327;
 }
 
 .border-start-primary {
-    border-left-color: #8d6e63 !important;
+    border-left-color: #ee2327 !important;
 }
 
 .btn-secondary {
@@ -158,9 +159,13 @@ a {
     color: rgba(191, 54, 12, 0.5);
 }
 .bg-gradient-primary-to-secondary {
-    background-color: #8d6e63 !important;
-    background-image: linear-gradient(135deg, #8d6e63 0%, rgba(191, 54, 12, 0.8) 100%) !important;
-} */
+    background-color: #ee2327 !important;
+    background-image: linear-gradient(135deg, #ee2327 0%, rgba(191, 54, 12, 0.8) 100%) !important;
+} 
+
+.overlay-primary{
+    background-color: #ee2327;
+}
 
 /* End Color Change To Brown */
 

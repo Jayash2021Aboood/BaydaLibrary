@@ -18,7 +18,8 @@
 ;
          ?>
         <div class="avatar avatar-lg">
-            <img class="avatar-img img-fluid" src="<?php echo $PATH_SERVER ?>assets/img/favicon.png" />
+            <img class="avatar-img img-fluid" style="min-width: 32px; min-height: 32px;"
+                src="<?php echo $PATH_SERVER ?>assets/img/favicon.png" />
         </div>
         <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="<?php echo $mainPage; ?>">
             <!-- <img class="img-fluid" src="<?php //echo $PATH_SERVER ?>assets/img/favicon.png" /> -->
@@ -45,7 +46,7 @@
 
             <!-- Navbar Search Dropdown-->
             <!-- * * Note: * * Visible only below the lg breakpoint-->
-            <li class="nav-item dropdown no-caret me-3 d-lg-none">
+            <li class="d-none nav-item dropdown no-caret me-3 d-lg-none">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                         data-feather="search"></i></a>

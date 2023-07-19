@@ -77,7 +77,7 @@
             <div class="col-8 m-auto">
                 <!-- Blog post-->
                 <div class="card mb-4">
-                    <a href="book.php?id=<?php echo $row['id'] ?>"><img class="card-img-top"
+                    <a href="book.php?id=<?php echo $row['id'] ?>"><img class="card-img-top mh-100"
                             src="<?php echo $PATH_PHOTOES . $row['book_image'] ?? 'book_default.jpg'; ?>"
                             alt="<?php echo $row['book_image'] ?>"></a>
                     <div class="card-body">

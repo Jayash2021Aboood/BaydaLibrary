@@ -1,7 +1,7 @@
-    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
+    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-dark bg-black"
         id="sidenavAccordion">
         <!-- Sidenav Toggle Button-->
-        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
+        <button class="btn btn-icon btn-transparent order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
                 data-feather="menu"></i></button>
         <!-- Navbar Brand-->
         <!-- * * Tip * * You can use text or an image for your navbar brand.-->
@@ -17,8 +17,13 @@
                 $mainPage = $PATH_STUDENT
 ;
          ?>
-        <a class="navbar-brand pe-3 ps-4 ps-lg-2"
-            href="<?php echo $mainPage; ?>"><?php echo lang("Bayda Library");?></a>
+        <div class="avatar avatar-lg">
+            <img class="avatar-img img-fluid" src="<?php echo $PATH_SERVER ?>assets/img/favicon.png" />
+        </div>
+        <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="<?php echo $mainPage; ?>">
+            <!-- <img class="img-fluid" src="<?php //echo $PATH_SERVER ?>assets/img/favicon.png" /> -->
+            <?php echo lang("Bayda Library");?>
+        </a>
         <!-- Navbar Search Input-->
         <!-- * * Note: * * Visible only on and above the lg breakpoint-->
         <form class="form-inline me-auto d-none d-lg-block me-3">
@@ -60,7 +65,7 @@
 
             <!-- Messages Dropdown-->
             <li class="nav-item dropdown no-caret d-sm-block me-3 dropdown-notifications">
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages"
+                <a class="btn btn-icon btn-transparent-light dropdown-toggle" id="navbarDropdownMessages"
                     href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false"><i data-feather="globe"></i></a>
                 <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
@@ -107,9 +112,9 @@
                         <img class="dropdown-user-img"
                             src="<?php echo $PATH_SERVER ?>assets/img/illustrations/profiles/profile-1.png" />
                         <div class="dropdown-user-details">
-                            <div class="dropdown-user-details-name">Valerie Luna</div>
+                            <div class="dropdown-user-details-name"><?php echo lang("Welcome"); ?></div>
                             <div class="dropdown-user-details-email">
-                                <a href="/cdn-cgi/l/email-protection"><?php echo getLoginEmail();?>
+                                <a href="<?php echo $mainPage; ?>profile.php"><?php echo getLoginEmail();?>
                                 </a>
                             </div>
                         </div>
@@ -117,22 +122,8 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?php echo $mainPage; ?>profile.php">
                         <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                        Account
+                        <?php echo lang("My Profile"); ?>
                     </a>
-                    <?php if(isEmployee()){ ?>
-                    <a class="dropdown-item" href="<?php echo $PATH_EMPLOYEE; ?>my_bookings.php">
-                        <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                        My Bookings
-                    </a>
-                    <?php } ?>
-
-                    <?php if(isStudent()){ ?>
-                    <a class="dropdown-item" href="<?php echo $PATH_STUDENT
-; ?>my_bookings.php">
-                        <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                        My Bookings
-                    </a>
-                    <?php } ?>
 
                     <a class="dropdown-item" href="<?php echo $PATH_SERVER; ?>logout.php">
                         <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
@@ -146,7 +137,7 @@
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sidenav shadow-right sidenav-light">
+            <nav class="sidenav shadow-right sidenav-dark">
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
 
@@ -201,85 +192,61 @@
                             </div>
                             <?php echo lang("Home");?>
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_ADMIN_ADMIN; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            <?php echo lang("Admins");?>
-                        </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_AUTHOR; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-feather"></i></div>
                             <?php echo lang("Author");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_BOOK; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             <?php echo lang("Books");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_COLLEGE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-building-columns"></i></div>
                             <?php echo lang("Colleges");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_DEPARTMENT; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-building"></i></div>
                             <?php echo lang("Departments");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_EMPLOYEE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
                             <?php echo lang("Employees");?>
+                        </a>
+                        <a class="nav-link" href="<?php echo $PATH_ADMIN_FINE; ?>">
+                            <div class="nav-link-icon"><i class="fa-solid fa-coins"></i></div>
+                            <?php echo lang("Fines");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_ISSUE; ?>">
                             <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                             <?php echo lang("Issues");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_LANGUAGE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-language"></i></div>
                             <?php echo lang("Languages");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_LEVEL; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-layer-group"></i></div>
                             <?php echo lang("Levels");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_LIBRARY; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-book-open-reader"></i></div>
                             <?php echo lang("Library");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_PUBLISHER; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
                             <?php echo lang("Publishers");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_SECTION; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-list-ul"></i></i></div>
                             <?php echo lang("Sections");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_SETTING; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-sliders"></i></i></div>
                             <?php echo lang("Setting");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_ADMIN_STUDENT; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-users"></i></div>
                             <?php echo lang("Students");?>
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_ADMIN_BOOKING; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            Booking
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_ADMIN_RATING; ?>">
-                            <div class="nav-link-icon"><i class="fa fa-star" aria-hidden="true"></i></div>
-                            Rating
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_ADMIN_CUSTOMER; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
-                            Customer
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_ADMIN_ENGINEER; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
-                            Engineer
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_ADMIN_SERVICE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
-                            Service
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_ADMIN_SERVICE_TYPE; ?>">
-                            <div class="nav-link-icon"> <i class="fa fa-list"></i></div>
-                            Service Type
                         </a>
 
                         <!-- ============================================================  -->
@@ -295,27 +262,23 @@
                             <?php echo lang("Home");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_AUTHOR; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-feather"></i></div>
                             <?php echo lang("Author");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_BOOK; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             <?php echo lang("Books");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_COLLEGE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-building-columns"></i></div>
                             <?php echo lang("Colleges");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_DEPARTMENT; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-building"></i></div>
                             <?php echo lang("Departments");?>
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_EMPLOYEE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            <?php echo lang("Employees");?>
-                        </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_FINE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-coins"></i></div>
                             <?php echo lang("Fines");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_ISSUE; ?>">
@@ -323,48 +286,28 @@
                             <?php echo lang("Issues");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_LANGUAGE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-language"></i></div>
                             <?php echo lang("Languages");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_LEVEL; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-layer-group"></i></div>
                             <?php echo lang("Levels");?>
                         </a>
-                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_LIBRARY; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            <?php echo lang("Library");?>
-                        </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_PUBLISHER; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
                             <?php echo lang("Publishers");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_SECTION; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-list-ul"></i></div>
                             <?php echo lang("Section");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_SETTING; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-sliders"></i></div>
                             <?php echo lang("Setting");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_STUDENT; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-users"></i></div>
                             <?php echo lang("Students");?>
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE_SERVICE; ?>">
-                            <div class="nav-link-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
-                            Service
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_EMPLOYEE; ?>my_bookings.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                            My Booking
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER; ?>faq.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-question"></i></div>
-                            <?PHP ECHO LANG("FAQ");?>
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER; ?>about_us.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
-                            <?php echo lang("About Us");?>
                         </a>
 
                         <!-- ============================================================  -->
@@ -385,7 +328,7 @@
                             <?PHP echo lang("My Issues");?>
                         </a>
                         <a class="nav-link" href="<?php echo $mainPage; ?>my_fines.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-coins"></i></div>
                             <?PHP echo lang("My Fines");?>
                         </a>
                         <?php } ?>
@@ -399,36 +342,28 @@
                         <?php }
                         //else{ 
                             ?>
-                        <div class="sidenav-menu-heading">Fast Access</div>
+                        <div class="sidenav-menu-heading"><?php echo lang("Fast Access"); ?></div>
 
-                        <a class="nav-link" href="<?php echo $PATH_SERVER;?>index.php">
+                        <a class="nav-link active" href="<?php echo $PATH_SERVER;?>index.php">
                             <div class="nav-link-icon"><i class="fa fa-home fa-lg"></i>
                             </div>
                             <?php echo lang("Home");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_SERVER;?>author_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-feather"></i></div>
                             <?php echo lang("Author");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_SERVER;?>book_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-book"></i></div>
                             <?php echo lang("Books");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_SERVER;?>publisher_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
                             <?php echo lang("Publishers");?>
                         </a>
                         <a class="nav-link" href="<?php echo $PATH_SERVER;?>section_list.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-helmet-safety"></i> </div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-list-ul"></i> </div>
                             <?php echo lang("Sections");?>
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER; ?>faq.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-question"></i></div>
-                            <?PHP echo lang("FAQ");?>
-                        </a>
-                        <a class="nav-link" href="<?php echo $PATH_SERVER; ?>about_us.php">
-                            <div class="nav-link-icon"><i class="fa-solid fa-circle-info"></i></div>
-                            <?php echo lang("About Us");?>
                         </a>
                         <?php if(!isLogin()) {?>
                         <a class="nav-link" href="<?php echo $PATH_SERVER; ?>login.php">

@@ -61,6 +61,7 @@
 	$PATH_ADMIN_COLLEGE = $PATH_ADMIN . 'college/';
 	$PATH_ADMIN_DEPARTMENT = $PATH_ADMIN . 'department/';
 	$PATH_ADMIN_EMPLOYEE = $PATH_ADMIN . 'employee/';
+	$PATH_ADMIN_FINE = $PATH_ADMIN . 'fine/';
 	$PATH_ADMIN_ISSUE = $PATH_ADMIN . 'issue/';
 	$PATH_ADMIN_LANGUAGE = $PATH_ADMIN . 'language/';
 	$PATH_ADMIN_LEVEL = $PATH_ADMIN . 'level/';

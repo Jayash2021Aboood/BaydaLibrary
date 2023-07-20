@@ -1,5 +1,3 @@
-
-
 <?php
   session_start();
   include('../../includes/lib.php');
@@ -71,7 +69,7 @@
                     <div class="col-auto mb-3">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i class="fa fa-school"></i></div>
-                           <?php echo lang("Add Admin"); ?>
+                            <?php echo lang("Add Admin"); ?>
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
@@ -98,19 +96,21 @@
                                 <!-- Form Group (email)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="email"><?php echo lang("Email"); ?></label>
-                                    <input class="form-control" id="email" name="email" type="email" placeholder="<?php echo lang("Email"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="email" name="email" type="email"
+                                        placeholder="<?php echo lang("Email"); ?>" value="" required />
                                 </div>
                                 <!-- Form Group (password)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="password"><?php echo lang("Password"); ?></label>
-                                    <input class="form-control" id="password" name="password" type="password" placeholder="<?php echo lang("Password"); ?>"
-                                        value="" required  />
+                                    <input class="form-control" id="password" name="password" type="password"
+                                        placeholder="<?php echo lang("Password"); ?>" value="" required />
                                 </div>
                             </div>
                             <!-- Submit button-->
-                            <button name="addAdmin" class="btn btn-success" type="submit"><?php echo lang("Save"); ?></button>
-                            <a href="index.php" class="btn btn-danger" type="button"><?php echo lang("Back To List"); ?></a>
+                            <button name="addAdmin" class="btn btn-success"
+                                type="submit"><?php echo lang("Save"); ?></button>
+                            <a href="index.php" class="btn btn-danger"
+                                type="button"><?php echo lang("Back To List"); ?></a>
                         </form>
                     </div>
                 </div>
@@ -121,6 +121,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-
-

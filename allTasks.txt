@@ -89,7 +89,22 @@ fine_amount column in  setting and total_fine column take 0 be defalut ... also 
 
 6- PaidFine();
 
-
+7- Add ChangeFineToDeported(); and Add ChangeFineToCanceled(); =========== DONE
+8- Display Student Fines in student site.                      =========== DONE
+9- Display Student Issues in student site.                     =========== DONE
+10- Display Student Fines in employee site.
+11- Display Student Issues in employee site.
+12- add webuser when create new student, admin, Employee as transaction. = DONE
+13- add forget password page.                                            = DONE
+14- remove create account from login page.                    ============ DONE
+15- adding dewi section from excel file to section table in database.
+16- adding print button to tables in index pages.
+17- adding export to Excel button to tables in index pages.
+18- change icons .
+19- remove unwanted links from sites.
+20- remove unwanted pages from employee site.
+21- make validation cannot edit deported or canceled fine 
+22- upload website to the hosting.
 
 
 
@@ -103,4 +118,13 @@ Setting Tasks:
 6- Change Setting Screen Display Style from table and form to be Form only. == DONE
 from This Link Take The Form http://localhost:90/BaidaLibrary/source/account-security.html
 
-7- in Employee Site Make The Same As Admin Site And Make Setting Read Only.
+7- in Employee Site Make The Same As Admin Site And Make Setting Read Only.  = DONE
+
+
+1- Change icons ================================= DONE.
+2- Remove Un Wanted Links.======================= DONE.
+3- Remove UnWanted Pages.
+4- Adding Logo For All Pages. =================== DONE.
+5- bookimage in book Details page  ============== DONE.
+6- Replace Main Page With another Page ========== DONE.
+7- adding Navigation top an visitor pages. ====== DONE.
